@@ -1,7 +1,7 @@
 'use client';
 
-import NavigationBar from './components/navbar';
-import Coroussel from './components/coroussel';
+import NavigationBar from '../components/navbar';
+import Coroussel from '../components/coroussel';
 import { useRouter } from 'next/navigation';
 
 export default function InitialPage() {
@@ -15,7 +15,7 @@ export default function InitialPage() {
       </header>
       <main>
         <section className='get-start'>
-          <button onClick={() => router.push('pages/lessons/main')}>Get started now for FREE!</button>
+          <button onClick={() => router.push('./Lessons/main')}>Get started now for FREE!</button>
         </section>
         {/* 
         Image thanks to - Flaticon.com
