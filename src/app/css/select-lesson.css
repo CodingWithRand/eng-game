@@ -1,0 +1,8 @@
+@tailwind component;
+@tailwind utilities;
+
+@layer component{
+  .head-text{
+    @apply f-jc text-4xl mt-10;
+  }
+}

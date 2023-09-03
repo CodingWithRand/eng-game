@@ -1,10 +1,10 @@
-@tailwind base;
-@tailwind components;
+@tailwind component;
 @tailwind utilities;
 
-@layer components{
+/* @import './globals.css'; */
 
-  .nav-bar{
+@layer component{
+    .nav-bar{
     @apply bg-blue-400 px-2 py-3;
   }
   .nav-bar ul{
@@ -56,25 +56,17 @@
   }
 
   .get-start{
-    @apply flex justify-center p-20;
+    @apply f-jc p-20;
   }
 
   .get-start button {
-    @apply bg-blue-400 btn-style;
+    @apply bg-blue-400 shadow-btn-blue btn-style !important;
   }
 }
 
 @layer utilities{
-  .f-ic{
-    @apply flex items-center;
-  }
-  .fr-ic{
-    @apply f-ic flex-row ;
-  }
-  .btn-Shadow{
+  .shadow-btn-blue{
     box-shadow: 0 0.75rem 0 0 rgb(37 99 235);
   }
-  .btn-style{
-    @apply btn-Shadow rounded-xl p-5 text-white text-xl;
-  }
 }
+
