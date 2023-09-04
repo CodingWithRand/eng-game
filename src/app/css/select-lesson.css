@@ -12,6 +12,18 @@
     @apply bg-transparent rounded-md p-1;
   }
   .lesson-name{
-    @apply f-jc
+    @apply f-jc;
+  }
+  .continue-btn{
+    @apply btn-style bg-emerald-400 w-[40%] py-4;
+  }
+  .form-container{
+    @apply h-full w-[80%];
+  }
+}
+
+@layer utilities{
+  .shadow-btn-green{
+    box-shadow: 0 0.75rem 0 0 rgb(16, 185, 129);
   }
 }

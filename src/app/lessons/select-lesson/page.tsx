@@ -8,15 +8,17 @@ export default function InitialPage() {
 
   return (
     <main>
-      <div className='head-text'>
-        Select the lesson you'd like to learn
-      </div>
-      <div className='lessons-list'>
-        <div className='lesson-choice'>
-          <button className='check-box'></button>
-          <label className='lesson-name'>
+      <div className='form-container'>
+        <div className='head-text'>
+         Select the lesson you'd like to learn
+        </div>
+        <div className='lessons-list'>
+          <div className='lesson-choice'>
+            <button className='check-box'></button>
+            <label className='lesson-name'>
             Premilary
-          </label>
+            </label>
+          </div>
         </div>
       </div>
     </main>
