@@ -11,7 +11,7 @@
   .check-box{
     @apply bg-transparent rounded-md p-1;
   }
-  .lesson-name{
+  .lesson-name, .submit{
     @apply f-jc;
   }
   .continue-btn{
