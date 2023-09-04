@@ -5,4 +5,13 @@
   .head-text{
     @apply f-jc text-4xl mt-10;
   }
+  .lesson-choice{
+    @apply border-solid rounded-md border-gray-400 fr-ic gap-x-4 p-4;
+  }
+  .check-box{
+    @apply bg-transparent rounded-md p-1;
+  }
+  .lesson-name{
+    @apply f-jc
+  }
 }
