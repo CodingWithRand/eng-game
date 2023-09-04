@@ -6,24 +6,27 @@
     @apply f-jc text-4xl mt-10;
   }
   .lesson-choice{
-    @apply border-solid rounded-md border-gray-400 fr-ic gap-x-4 p-4;
+    @apply border-solid rounded-md border-gray-400 fr-ic gap-x-4 p-4 border-2 !important;
   }
   .check-box{
-    @apply bg-transparent rounded-md p-1;
+    @apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-400 border-2 !important;
   }
-  .lesson-name, .submit{
+  .lesson-name, .submit, main{
     @apply f-jc;
   }
   .continue-btn{
-    @apply btn-style bg-emerald-400 w-[40%] py-4;
+    @apply shadow-btn-green btn-style bg-emerald-400 w-[40%] py-4 !important;
   }
   .form-container{
-    @apply h-full w-[80%];
+    @apply h-full w-[80%]
+  }
+  .lessons-list{
+    @apply my-10;
   }
 }
 
 @layer utilities{
   .shadow-btn-green{
-    box-shadow: 0 0.75rem 0 0 rgb(16, 185, 129);
+    box-shadow: 0 0.75rem 0 0 rgb(16, 185, 129) !important;
   }
 }
