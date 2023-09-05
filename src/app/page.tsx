@@ -16,7 +16,7 @@ export default function InitialPage() {
       </header>
       <main>
         <section className='get-start'>
-          <button onClick={() => router.push('lessons/select-lesson/1')}>Get started now for FREE!</button>
+          <button onClick={() => router.push('lessons/select-lesson?form-question=1')}>Get started now for FREE!</button>
         </section>
         {/* 
         Image thanks to - Flaticon.com

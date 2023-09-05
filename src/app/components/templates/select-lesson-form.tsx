@@ -1,11 +1,11 @@
 'use client';
 import { useState } from "react";
 import Image from "next/image";
-import { useFormState } from "@/lessons/select-lesson/[id]/form-state-provider"
+import { useFormState } from "@/lessons/select-lesson/form-state-provider"
 
 export default function FormPage({ children, utilities }: any) {
-    const {}
-    let footerEl, headerEl: JSX.Element;
+    let footerEl: JSX.Element = <></>;
+    let headerEl: JSX.Element = <></>;
     if (utilities.footerStyle.name === 'one-btn') {
         footerEl =
             <div className='submit'>
