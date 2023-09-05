@@ -16,7 +16,7 @@ export default function InitialPage() {
       </header>
       <main>
         <section className='get-start'>
-          <button onClick={() => router.push('lessons/select-lesson')}>Get started now for FREE!</button>
+          <button onClick={() => router.push('lessons/select-lesson/1')}>Get started now for FREE!</button>
         </section>
         {/* 
         Image thanks to - Flaticon.com
@@ -24,6 +24,8 @@ export default function InitialPage() {
         <a href="https://www.flaticon.com/free-icons/arrows" title="arrows icons">Arrows icons created by gravisio - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/next" title="next icons">Next icons created by Roundicons - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/tick" title="tick icons">Tick icons created by Octopocto - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Handicon - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/left-arrow" title="left arrow icons">Left arrow icons created by Freepik - Flaticon</a>
         */}
       </main>
     </>

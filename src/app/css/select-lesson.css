@@ -3,7 +3,7 @@
 
 @layer component{
   .head-text{
-    @apply f-jc text-4xl mt-10;
+    @apply flex justify-normal text-4xl mt-20;
   }
   .lesson-choice{
     @apply border-solid rounded-md border-gray-400 fr-ic gap-x-4 p-4 border-2 !important;
@@ -21,7 +21,11 @@
     @apply h-full w-[80%]
   }
   .lessons-list{
-    @apply my-10;
+    @apply my-14;
+  }
+
+  .prev-next{
+    @apply mt-20 flex justify-between w-full;
   }
 }
 
