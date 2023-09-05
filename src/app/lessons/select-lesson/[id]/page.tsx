@@ -53,17 +53,15 @@ export default function SelectPage() {
             headerText: "Select the lesson you'd like to take"
           }
       }))
-      setTSXHolder(
-        <FormsStatesProvider>
-          <Question2/>
-        </FormsStatesProvider>
-      );
+      setTSXHolder(<Question2/>);
     }
   }, [TSXholder])
   
   return (
-    <FormPage utilities={layoutUtilities}>
-      {TSXholder}
-    </FormPage>
+    <FormsStatesProvider>
+      <FormPage utilities={layoutUtilities}>
+        {TSXholder}
+      </FormPage>
+    </FormsStatesProvider>
   );
 };

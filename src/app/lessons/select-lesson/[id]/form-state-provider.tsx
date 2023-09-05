@@ -2,14 +2,14 @@
 import { useState, createContext, useContext } from "react";
 
 type fs = {
-    fillState: boolean,
-    setFillState: React.Dispatch<React.SetStateAction<boolean>>
+    fillState: boolean[],
+    setFillState: React.Dispatch<React.SetStateAction<boolean[]>>
 }
 
 const FormsStates = createContext<fs | undefined>(undefined);
 
 export const FormsStatesProvider = ({ children }: { children: React.ReactNode }) => {
-    const [fillState, setFillState] = useState<boolean>(false);
+    const [fillState, setFillState] = useState<boolean[] | null>(null);
     return (
         <FormsStates.Provider value={{ fillState, setFillState }}>
             {children}

@@ -11,7 +11,7 @@
   .check-box{
     @apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-400 border-2 !important;
   }
-  .lesson-name, .submit, main{
+  .lesson-name, .submit{
     @apply f-jc;
   }
   .continue-btn{
@@ -26,6 +26,10 @@
 
   .prev-next{
     @apply mt-20 flex justify-between w-full;
+  }
+  
+  main{
+    @apply f-jc flex-col w-full h-full;
   }
 }
 
