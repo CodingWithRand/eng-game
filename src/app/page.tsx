@@ -2,12 +2,16 @@
 
 import NavigationBar from '@/components/navbar';
 import Coroussel from '@/components/coroussel';
-import { useRouter } from 'next/navigation';
+import Cookies from 'universal-cookie';
+import Link from 'next/link'
 import '@/css/index.css';
 
 export default function InitialPage() {
-  const router = useRouter();
-
+  const cookies = new Cookies();
+  function start() {
+    cookies.set("page", "1");
+  }
+  
   return (
     <>
       <NavigationBar />
@@ -16,7 +20,9 @@ export default function InitialPage() {
       </header>
       <main>
         <section className='get-start'>
-          <button onClick={() => router.push('lessons/select-lesson?form-question=1')}>Get started now for FREE!</button>
+          <Link href='lessons/select-lesson'>
+            <button onClick={start}>Get started now for FREE!</button>
+          </Link>
         </section>
         {/* 
         Image thanks to - Flaticon.com

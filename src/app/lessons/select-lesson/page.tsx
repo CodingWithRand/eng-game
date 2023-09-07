@@ -6,12 +6,15 @@ import FormPage from '@/templates/select-lesson-form';
 import { FormsStatesProvider, selectedLesson } from './form-state-provider';
 import '@/css/select-lesson.css';
 import { useSearchParams } from 'next/navigation';
+import Cookies from 'universal-cookie';
 
 
 export default function SelectPage() {
   const query = useSearchParams();
   const currentQuestion = Number(query.get('form-question'))
   const loggedIn = true;
+  const cookies = new Cookies()
+  
   
   const [ layoutUtilities, setLayoutUtilities] = useState({
     headerStyle: {
