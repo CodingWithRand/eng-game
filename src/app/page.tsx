@@ -2,14 +2,15 @@
 
 import NavigationBar from '@/components/navbar';
 import Coroussel from '@/components/coroussel';
-import Cookies from 'universal-cookie';
+import { qPage, MembershipStatus } from '@/server/cookies'
 import Link from 'next/link'
 import '@/css/index.css';
 
 export default function InitialPage() {
-  const cookies = new Cookies();
   function start() {
-    cookies.set("page", "1");
+    const { Guest } = MembershipStatus;
+    if(Guest.get("login") === undefined) Guest.set("login", true);
+    if(qPage.get("page") === undefined) qPage.set("page", 1);
   }
   
   return (

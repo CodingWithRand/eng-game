@@ -4,16 +4,13 @@ import { useState, useEffect } from 'react';
 import Question2 from './question-2';
 import FormPage from '@/templates/select-lesson-form';
 import { FormsStatesProvider, selectedLesson } from './form-state-provider';
+import { qPage, MembershipStatus } from '@/server/cookies'
 import '@/css/select-lesson.css';
-import { useSearchParams } from 'next/navigation';
-import Cookies from 'universal-cookie';
 
 
 export default function SelectPage() {
-  const query = useSearchParams();
-  const currentQuestion = Number(query.get('form-question'))
-  const loggedIn = true;
-  const cookies = new Cookies()
+  const loggedIn = MembershipStatus.User.get("login") || MembershipStatus.Guest.get("login");
+  const currentQuestion: number = qPage.get('page');
   
   
   const [ layoutUtilities, setLayoutUtilities] = useState({
@@ -29,13 +26,12 @@ export default function SelectPage() {
   const [ TSXholder, setTSXHolder ] = useState<JSX.Element | null>(null);
 
   useEffect(() => {
-    // if(!loggedIn){setTSXHolder(<div>You're not logged in</div>); return;};
     if(TSXholder) return;
     if(!loggedIn) return;
 
     switch(currentQuestion)
     {
-      case 2:
+      case 1:
         setLayoutUtilities(prevState => ({
         ...prevState,
           headerStyle: {

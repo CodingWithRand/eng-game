@@ -13,7 +13,7 @@ type fs = [
 ]
 
 const FormsStates = createContext<fs | undefined>(undefined);
-let selectedLesson: string;
+let selectedLesson: string | undefined;
 
 export const FormsStatesProvider = ({ children }: { children: React.ReactNode }) => {
     const [ fillState, setFillState ] = useState<boolean[]>([]);
