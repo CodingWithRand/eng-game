@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, ChangeEvent } from 'react'
 
 export default function Question1(){
   const [ name, setName ] = useState('')
