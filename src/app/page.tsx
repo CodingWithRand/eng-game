@@ -21,7 +21,7 @@ export default function InitialPage() {
       </header>
       <main>
         <section className='get-start'>
-          <Link href='lessons/select-lesson'>
+          <Link href='/lessons'>
             <button onClick={start}>Get started now for FREE!</button>
           </Link>
         </section>

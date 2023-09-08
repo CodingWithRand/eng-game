@@ -20,8 +20,8 @@ export const FormsStatesProvider = ({ children }: { children: React.ReactNode })
     const [ fillState, setFillState ] = useState<boolean[]>([]);
     
     selectedLesson = (() => {
-        const stateIndex = fillState.findIndex((element) => element === true)
-        const lessonIndex = MemberData.lessons.get("lessons").findIndex((element) => element !== '')
+        const stateIndex = fillState.findIndex((element: boolean) => element === true)
+        const lessonIndex = MemberData.lessons.get("lessons").findIndex((element: string) => element !== '')
         if(stateIndex && lessonIndex) return lesson[lessonIndex];
     })()
 
