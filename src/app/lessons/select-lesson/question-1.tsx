@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 export default function Question1(){
   const [ name, setName ] = useState('')
-  function retrieveInput(e) {setName(e.target.value)}
+  function retrieveInput(e: ChangeEvent<HTMLInputElement>) {setName(e.target.value)}
   
   return(
     <>
