@@ -2,7 +2,7 @@
 
 import NavigationBar from '@/components/navbar';
 import Coroussel from '@/components/coroussel';
-import { qPage, MembershipStatus } from '@/server/cookies'
+import { question, MembershipStatus } from '@/server/cookies'
 import Link from 'next/link'
 import '@/css/index.css';
 
@@ -10,7 +10,7 @@ export default function InitialPage() {
   function start() {
     const { Guest } = MembershipStatus;
     if(Guest.get("login") === undefined) Guest.set("login", true);
-    if(qPage.get("page") === undefined) qPage.set("page", 1);
+    if(question.get("question") === undefined) question.set("question", 1);
   }
   
   return (

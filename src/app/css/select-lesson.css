@@ -33,7 +33,11 @@
   }
   
   main{
-    @apply f-ic flex-col w-[full];
+    @apply f-ic flex-col w-full;
+  }
+  
+  .form-input{
+    @apply p-2 text-xl w-full border-solid border-gray-400 border-2;
   }
 }
 

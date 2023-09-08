@@ -1,12 +1,11 @@
 'use client';
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { qPage } from "@/server/cookies"
+import { question } from "@/server/cookies"
 import { useFormState } from "@/lessons/select-lesson/form-state-provider"
 
 export default function FormPage({ children, utilities }: any) {
-    const [ { fillState }, { lesson } ] = useFormState();
-    // const currentPage = new Caches("page")
+    const [ { fillState } ] = useFormState();
     const [ availability, setAvailability ] = useState(
     {
       cssStyle: {
@@ -18,9 +17,9 @@ export default function FormPage({ children, utilities }: any) {
     let headerEl: JSX.Element = <></>;
     
     function prevBtn(){
-      qPage.set('page', (() => {
-        if(qPage.get('page') > 2){
-            return qPage.get('page') - 1
+      question.set('question', (() => {
+        if(question.get('question') > 2){
+            return question.get('question') - 1
         }
       }
       )())
@@ -28,7 +27,7 @@ export default function FormPage({ children, utilities }: any) {
     
     function nextBtn(){
       if(fillState.some(() => {return true;})){
-        qPage.set('page', (qPage.get('page')) + 1)
+        question.set('question', (question.get('question')) + 1)
       };
     };
     

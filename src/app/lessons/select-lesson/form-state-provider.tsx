@@ -1,5 +1,6 @@
 'use client';
 import { useState, createContext, useContext } from "react";
+import { MemberData } from '@/server/cookies'
 
 type fs = [   
     {
@@ -17,16 +18,15 @@ let selectedLesson: string | undefined;
 
 export const FormsStatesProvider = ({ children }: { children: React.ReactNode }) => {
     const [ fillState, setFillState ] = useState<boolean[]>([]);
-    const [ lesson, setLesson ] = useState<string[]>([]);
     
     selectedLesson = (() => {
         const stateIndex = fillState.findIndex((element) => element === true)
-        const lessonIndex = lesson.findIndex((element) => element !== '')
+        const lessonIndex = MemberData.lessons.get("lessons").findIndex((element) => element !== '')
         if(stateIndex && lessonIndex) return lesson[lessonIndex];
     })()
 
     return (
-        <FormsStates.Provider value={[ { fillState, setFillState }, { lesson, setLesson } ]}>
+        <FormsStates.Provider value={[ { fillState, setFillState } ]}>
             {children}
         </FormsStates.Provider>
     )

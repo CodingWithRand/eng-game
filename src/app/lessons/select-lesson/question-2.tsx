@@ -2,11 +2,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useFormState } from "./form-state-provider";
+import { MemberData } from '@/server/cookies'
 
 
 export default function Question2() 
 {
-    const [ { fillState, setFillState }, { lesson, setLesson } ] = useFormState();
+    const [ { fillState, setFillState } ] = useFormState();
     const [ checked, setCheckedImg ] = useState<JSX.Element[]>([]);
     const lessons_number: number = 2;
     let tfs: boolean[] = [];
@@ -33,6 +34,7 @@ export default function Question2()
       }
       setFillState(tfs);
       setCheckedImg(checked_Images);
+      MemberData.lessons.set("lesson", tlsn)
     }, [])
 
     function overwrite(i: number, ci: number, newContent: { passCase: any | any[], failCase: any | any[] }){
@@ -43,10 +45,10 @@ export default function Question2()
     function radio_check_box(currentIndex: number, lessons_name: string[]) {
       if(!fillState[currentIndex]){
         setFillState(fillState.map((state, index) => overwrite(index, currentIndex, { passCase: true, failCase: false })));
-        setLesson(lesson.map((state, index) => overwrite(index, currentIndex, { passCase: lessons_name[currentIndex], failCase: state })));
+        MemberData.lessons.set('lessons', lesson.get("lessons").map((state, index) => overwrite(index, currentIndex, { passCase: lessons_name[currentIndex], failCase: state })));
       }else{
         setFillState(fillState.map((state, index) => overwrite(index, currentIndex, { passCase: false, failCase: state })));
-        setLesson(lesson.map((state, index) => overwrite(index, currentIndex, { passCase: '', failCase: state })));
+        MemberData.lessons.set('lessons', lesson.get("lessons").map((state, index) => overwrite(index, currentIndex, { passCase: '', failCase: state })));
       }
     }
     
