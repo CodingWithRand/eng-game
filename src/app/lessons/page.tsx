@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { MembershipStatus, MemberData } from '@/server/cookies';
+import { question, MembershipStatus, MemberData } from '@/server/cookies';
 
 const EmptyPage: React.FC = () => {
   const router = useRouter()
