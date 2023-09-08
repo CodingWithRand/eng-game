@@ -44,11 +44,11 @@ export default function Question2()
 
     function radio_check_box(currentIndex: number, lessons_name: string[]) {
       if(!fillState[currentIndex]){
-        setFillState(fillState.map((state, index) => overwrite(index, currentIndex, { passCase: true, failCase: false })));
-        MemberData.lessons.set('lessons', MemberData.lessons.get("lessons").map((state, index) => overwrite(index, currentIndex, { passCase: lessons_name[currentIndex], failCase: state })));
+        setFillState(fillState.map((state: boolean, index: number) => overwrite(index, currentIndex, { passCase: true, failCase: false })));
+        MemberData.lessons.set('lessons', MemberData.lessons.get("lessons").map((state: string, index: number) => overwrite(index, currentIndex, { passCase: lessons_name[currentIndex], failCase: state })));
       }else{
-        setFillState(fillState.map((state, index) => overwrite(index, currentIndex, { passCase: false, failCase: state })));
-        MemberData.lessons.set('lessons', MemberData.lessons.get("lessons").map((state, index) => overwrite(index, currentIndex, { passCase: '', failCase: state })));
+        setFillState(fillState.map((state: boolean, index: number) => overwrite(index, currentIndex, { passCase: false, failCase: state })));
+        MemberData.lessons.set('lessons', MemberData.lessons.get("lessons").map((state: string, index: number) => overwrite(index, currentIndex, { passCase: '', failCase: state })));
       }
     }
     
