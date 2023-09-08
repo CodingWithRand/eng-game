@@ -6,10 +6,6 @@ type fs = [
     {
         fillState: boolean[],
         setFillState: React.Dispatch<React.SetStateAction<boolean[]>>  
-    },
-    {
-        lesson: string[],
-        setLesson: React.Dispatch<React.SetStateAction<string[]>>
     }
 ]
 
