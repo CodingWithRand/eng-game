@@ -1,38 +1,36 @@
 'use client';
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { question } from "@/server/cookies"
-import { useFormState } from "@/lessons/select-lesson/form-state-provider"
+import { useCaches } from "@/components/client-caches"
+
+let footerEl: JSX.Element = <></>;
+let headerEl: JSX.Element = <></>;
 
 export default function FormPage({ children, utilities }: any) {
-    const [ { fillState } ] = useFormState();
+    const [ { userState }, { q, setQ } ] = useCaches();
     const [ availability, setAvailability ] = useState(
     {
       cssStyle: {
         opacity: 0.5
       },
       disable: true
-    })
-    let footerEl: JSX.Element = <></>;
-    let headerEl: JSX.Element = <></>;
-    
-    function prevBtn(){
-      question.set('question', (() => {
-        if(question.get('question') > 2){
-            return question.get('question') - 1
-        }
-      }
-      )())
-    }
-    
-    function nextBtn(){
-      if(fillState.some(() => {return true;})){
-        question.set('question', (question.get('question')) + 1)
-      };
-    };
-    
+    });
+
+    let detector: boolean;
+
     useEffect(() => {
-      if(fillState.some(() => {return true;})) setAvailability(prevState => ({
+      detector = (() => {
+        switch(q){
+          case 1:
+            return userState.name !== '' && userState.name !== null
+          case 2: 
+            return userState.lessons.some((elem) => elem !== "")
+          default:
+            return true
+        }
+      })()
+
+      if(detector) setAvailability(prevState => ({
           ...prevState,
           cssStyle: {
             ...prevState.cssStyle,
@@ -40,7 +38,24 @@ export default function FormPage({ children, utilities }: any) {
           },
           disable: false
       }))
-    })
+      else setAvailability(prevState => ({
+        ...prevState,
+        cssStyle: {
+          ...prevState.cssStyle,
+          opacity: 0.5
+        },
+        disable: true
+    }))
+    }, [q, userState])
+
+    function prevBtn(){ 
+      setQ((() => { 
+        if(q > 1) return q - 1 
+        else return q 
+      } 
+    )()); }
+    
+    function nextBtn(){ setQ(q+1); };
     
     if (utilities.footerStyle.name === 'one-btn') {
         footerEl =

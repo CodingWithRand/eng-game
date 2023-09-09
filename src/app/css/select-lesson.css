@@ -37,7 +37,7 @@
   }
   
   .form-input{
-    @apply p-2 text-xl w-full border-solid border-gray-400 border-2;
+    @apply p-2 text-xl w-full border-solid border-gray-300 border-2 my-10 rounded-md !important;
   }
 }
 

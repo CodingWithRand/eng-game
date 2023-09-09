@@ -2,15 +2,20 @@
 
 import NavigationBar from '@/components/navbar';
 import Coroussel from '@/components/coroussel';
-import { question, MembershipStatus } from '@/server/cookies'
+import { Caches, useCaches } from './components/client-caches';
 import Link from 'next/link'
 import '@/css/index.css';
 
-export default function InitialPage() {
+function Render() {
+  const [{ userState, setUserState }, { q, setQ } ] = useCaches();
+
   function start() {
-    const { Guest } = MembershipStatus;
-    if(Guest.get("login") === undefined) Guest.set("login", true);
-    if(question.get("question") === undefined) question.set("question", 1);
+    if(userState.membership === null || userState.membership === 'guest') setUserState((prevUserState) => ({
+      ...prevUserState,
+      membership: 'guest',
+      loggedIn: true,
+    }))
+    if(q === undefined) setQ(1);
   }
   
   return (
@@ -37,4 +42,12 @@ export default function InitialPage() {
       </main>
     </>
   );
+}
+
+export default function InitialPage() {
+  return(
+    <Caches>
+      <Render />
+    </Caches>
+  )
 };

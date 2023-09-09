@@ -1,12 +1,19 @@
-import { useState, ChangeEvent } from 'react'
+import { useEffect, ChangeEvent } from 'react'
+import { Caches, useCaches } from '@/components/client-caches'
 
 export default function Question1(){
-  const [ name, setName ] = useState('')
-  function retrieveInput(e: ChangeEvent<HTMLInputElement>) {setName(e.target.value)}
-  
+  const [ { userState, setUserState } ] = useCaches()
+
+  function retrieveInput(e: ChangeEvent<HTMLInputElement>){
+    setUserState((prevUserState) => ({
+      ...prevUserState,
+      name: e.target.value
+    }))
+  }
+
   return(
     <>
-      <input onChange={retrieveInput} placeholder="Enter your name here" className="form-input"></input>
+      <input onChange={retrieveInput} placeholder="Enter your name here" className="form-input" value={userState.name || ''}></input>
     </>
   )
 }
