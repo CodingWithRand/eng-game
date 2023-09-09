@@ -37,7 +37,6 @@ export default function Question2()
               matchedPatternIndex.push(i);
             }
           }
-          console.log(index)
           if(matchedPatternIndex.includes(index)) return true;
           else return false;
         })
@@ -100,7 +99,7 @@ export default function Question2()
     function LessonsList ({ name }: { name: string[]}) {
       for(let i = 0; i<lessons_number; i++){
         lessonsListEl.push(
-          <div className='lesson-choice'>
+          <div key={i} className='lesson-choice'>
             <button className='check-box' onClick={() => radio_check_box(i, name)}>
             {checkImgs[i]}
             </button>

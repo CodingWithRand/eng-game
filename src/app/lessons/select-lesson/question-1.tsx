@@ -1,5 +1,5 @@
-import { useEffect, ChangeEvent } from 'react'
-import { Caches, useCaches } from '@/components/client-caches'
+import { ChangeEvent } from 'react'
+import { useCaches } from '@/components/client-caches'
 
 export default function Question1(){
   const [ { userState, setUserState } ] = useCaches()

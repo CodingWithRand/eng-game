@@ -6,17 +6,20 @@
     height: 100%;
   }
   
-  .head-text{
-    @apply flex justify-normal text-4xl mt-20;
+  .default-head-text{
+    @apply flex justify-normal text-4xl mt-20 w-[80%];
   }
-  .lesson-choice{
-    @apply border-solid rounded-md border-gray-400 fr-ic gap-x-4 p-4 border-2 !important;
+  .center-head-text{
+    @apply f-jc text-4xl mt-20 w-[80%];
   }
   .check-box{
-    @apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-400 border-2 !important;
+    @apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-300 border-2 !important;
   }
-  .lesson-name, .submit{
+  .lesson-name{
     @apply f-jc;
+  }
+  .submit{
+    @apply f-jc w-full pb-10
   }
   .continue-btn{
     @apply shadow-btn-green btn-style bg-emerald-400 w-[40%] py-4 !important;
@@ -25,7 +28,14 @@
     @apply h-full w-[80%]
   }
   .lessons-list{
-    @apply my-14;
+    @apply my-14 border-solid border-2 border-gray-400 rounded-md px-1 !important;
+  }
+
+  .lessons-list .lesson-choice:last-child{
+    @apply border-0 !important
+  }
+  .lesson-choice{
+    @apply border-solid border-gray-300 fr-ic gap-x-4 p-4 border-b-2 !important;
   }
 
   .prev-next{
@@ -38,6 +48,10 @@
   
   .form-input{
     @apply p-2 text-xl w-full border-solid border-gray-300 border-2 my-10 rounded-md !important;
+  }
+
+  .lessons-preview{
+    @apply py-5
   }
 }
 

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useCaches } from "@/components/client-caches"
+import { useRouter } from "next/navigation";
 
 let footerEl: JSX.Element = <></>;
 let headerEl: JSX.Element = <></>;
@@ -15,6 +16,7 @@ export default function FormPage({ children, utilities }: any) {
       },
       disable: true
     });
+    const router = useRouter()
 
     let detector: boolean;
 
@@ -51,7 +53,10 @@ export default function FormPage({ children, utilities }: any) {
     function prevBtn(){ 
       setQ((() => { 
         if(q > 1) return q - 1 
-        else return q 
+        else{
+          router.push('/')
+          return q
+        }
       } 
     )()); }
     
@@ -74,12 +79,17 @@ export default function FormPage({ children, utilities }: any) {
             </div>
     }
 
-    if (utilities.headerStyle.name === 'default-left') {
+    if (utilities.headerStyle.name === 'default') {
         headerEl =
-            <div className='head-text'>
+            <div className='default-head-text'>
                 {utilities.headerStyle.headerText}
             </div>
 
+    } else if (utilities.headerStyle.name === 'center') {
+      headerEl =
+          <div className='center-head-text'>
+              {utilities.headerStyle.headerText}
+          </div>
     }
 
     return (

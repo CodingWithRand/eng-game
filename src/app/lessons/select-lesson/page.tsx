@@ -1,21 +1,22 @@
 'use client';
 
-import { Caches, useCaches } from '../../components/client-caches';
+import { Caches, useCaches } from '@/components/client-caches';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Question2 from './question-2';
-import Question1 from './question-1'
+import Question1 from './question-1';
+import LessonsInfo from './info';
 import FormPage from '@/templates/select-lesson-form';
-import '@/css/select-lesson.css';
-
+import { MemberData } from '@/components/server/cookies';
 
 import '@/css/select-lesson.css';
 
 function Render() {
   const [{ userState }, { q }] = useCaches();
-
+  const router = useRouter()
   const [layoutUtilities, setLayoutUtilities] = useState({
     headerStyle: {
-      name: "default-left",
+      name: "default",
       headerText: ""
     },
     footerStyle: {
@@ -24,15 +25,20 @@ function Render() {
     }
   })
   const [TSXholder, setTSXHolder] = useState<JSX.Element | null>(null);
-  //   const [ reloadState, reload ] = useState(false)
-
-  //   useEffect(() => {
-  //     if(differer.get("differ") || differer.get("differ") === undefined){
-  //       reload(!differer.get("differ"))
-  //       differer.set("differ", reloadState)
-  //       window.location.reload()
-  //     }
-  //   }, [reloadState])
+  
+  useEffect(() => {
+    function checkPeriodically() {
+      if(MemberData.get('user') === undefined){
+        alert("Your session has expired")
+        router.push('/')
+      }
+      const timeoutId = setTimeout(checkPeriodically, 5000);
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    }
+    checkPeriodically();
+  }, []);
 
   useEffect(() => {
     if (!userState.loggedIn) return;
@@ -43,6 +49,7 @@ function Render() {
           ...prevState,
           headerStyle: {
             ...prevState.headerStyle,
+            name: "center",
             headerText: "Enter your name in English"
           }
         }));
@@ -53,6 +60,7 @@ function Render() {
           ...prevState,
           headerStyle: {
             ...prevState.headerStyle,
+            name: "center",
             headerText: "Select the lesson you'd like to take"
           }
         }))
@@ -63,9 +71,24 @@ function Render() {
           ...prevState,
           headerStyle: {
             ...prevState.headerStyle,
-            headerText: `You selected ${userState.lessons.join(', ')}`
+            name: "default",
+            headerText: `You've selected ${
+              (() => {
+                const SelectedLesson: string[] = [];
+                userState.lessons.forEach((lesson) => {
+                  if(lesson !== '') SelectedLesson.push(lesson)
+                })
+                return SelectedLesson
+              })().join()
+            }`
+          },
+          footerStyle: {
+            ...prevState.footerStyle,
+            name: "one-btn",
+            btnText: "Let's go!"
           }
         }))
+        if (TSXholder !== <LessonsInfo />) setTSXHolder(<LessonsInfo />);
         break;
       default:
         break;

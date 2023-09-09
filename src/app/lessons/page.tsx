@@ -11,7 +11,7 @@ function Render() {
     if(userState === undefined || q === undefined){
       page = <div>Loading...</div>
     }
-    if(userState.lessons === null) {
+    if(userState.lessons === null || userState.lessons.length === 0 || userState.lessons.every((elem) => elem === '')) {
       setUserState((prevUserState) => ({
         ...prevUserState,
         lessons: []
