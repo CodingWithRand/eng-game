@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 
 const PremilinaryTopic = (
     <div className="lesson" id="premilinary">
-        <h3 className="opening">In this Premilinary topic{","} You'll learn{"..."}</h3>
+        <h3 className="opening">In this Premilinary topic, You{"\'"}ll learn...</h3>
         <hr></hr>
         <ul className="units">
             <li className="unit">
