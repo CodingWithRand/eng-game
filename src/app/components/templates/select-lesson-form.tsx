@@ -22,13 +22,14 @@ export default function FormPage({ children, utilities }: any) {
 
     useEffect(() => {
       detector = (() => {
+        if(userState.name === null) return false
         switch(q){
           case 1:
             return userState.name !== '' && userState.name !== null
           case 2: 
             return userState.lessons.some((elem) => elem !== "")
           default:
-            return true
+            return false
         }
       })()
 
