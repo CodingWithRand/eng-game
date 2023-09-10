@@ -7,7 +7,7 @@ const PremilinaryTopic = (
         <hr></hr>
         <ul className="units">
             <li className="unit">
-                <p><span>{"•"}</span> Meaning of Suffix & Prefix</p>
+                <p><span>•</span> Meaning of Suffix & Prefix</p>
             </li>
         </ul>
     </div>
@@ -15,6 +15,7 @@ const PremilinaryTopic = (
 
 function LessonsPreview({ selectedLesson }: { selectedLesson: string[] | null }){
     const lesson_preview: JSX.Element[] = []
+    if(selectedLesson === null) return 
     selectedLesson.forEach((lesson) => {
         if(lesson === "Premilinary"){
             lesson_preview.push(PremilinaryTopic)
