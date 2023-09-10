@@ -32,6 +32,7 @@ export default function Question2()
       check((prevState) => {
         return prevState.map((_, index) => {
           let matchedPatternIndex: number[] = [] 
+          if(userState.lessons === null) return false
           for (let i = 0; i < userState.lessons.length; i++) {
             if (userState.lessons[i] !== '') {
               matchedPatternIndex.push(i);
@@ -69,11 +70,12 @@ export default function Question2()
     }
 
     function radio_check_box(currentIndex: number, lessons_name: string[]) {
+      if(userState.lessons === null) return
       if(userState.lessons[currentIndex] === ''){
-        // setFillState((prevState) => prevState[lessonSelectorIndex].map((state: boolean, index: number) => overwrite(index, currentIndex, { passCase: true, failCase: false })));
+        const selectingLesson = userState.lessons.map((state: string, index: number) => overwrite(index, currentIndex, { passCase: lessons_name[currentIndex], failCase: state }))
         setUserState((prevUserState) => ({
           ...prevUserState,
-          lessons: userState.lessons.map((state: string, index: number) => overwrite(index, currentIndex, { passCase: lessons_name[currentIndex], failCase: state }))
+          lessons: selectingLesson
         }))
         check((prevState) => {
           return prevState.map((state, index) => {
@@ -82,10 +84,10 @@ export default function Question2()
           })
         })
       }else{
-        // setFillState((prevState) => prevState[lessonSelectorIndex].map((state: boolean, index: number) => overwrite(index, currentIndex, { passCase: false, failCase: state })));
+        const selectingLesson = userState.lessons.map((state: string, index: number) => overwrite(index, currentIndex, { passCase: '', failCase: state }))
         setUserState((prevUserState) => ({
           ...prevUserState,
-          lessons: userState.lessons.map((state: string, index: number) => overwrite(index, currentIndex, { passCase: '', failCase: state }))
+          lessons: selectingLesson
         }))
         check((prevState) => {
           return prevState.map((state, index) => {

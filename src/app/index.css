@@ -1,0 +1,84 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .nav-bar{
+      @apply bg-blue-400 px-2 py-3;
+    }
+    .nav-bar ul{
+      @apply fr-ic justify-between;
+    }
+    .app-name{
+      @apply grow f-ic justify-center text-4xl text-white;
+    }
+    .menu{
+      @apply f-ic ml-3;
+    }
+    .reg{
+      @apply fr-ic mr-10 text-white gap-x-10 text-lg;
+    }
+  
+    .coroussel{
+      @apply f-ic;
+    }
+  
+    .coroussel .imgs > img{
+      /* width: 100vw !important;
+      height: 75vh !important; */
+      aspect-ratio: 2.25 / 1;
+      @apply transition-transform duration-500;
+    }
+  
+    .coroussel .imgs{
+      @apply flex flex-row;
+    }
+  
+    .ctrl-btn{
+      aspect-ratio: 2.25 / 1;
+      @apply absolute f-ic flex-col-reverse h-max w-full z-[10];
+    }
+  
+    .arrows{
+      @apply fr-ic justify-between absolute w-full h-[100%];
+    }
+  
+    .arrows #lft{@apply h-full pl-6 !important;}
+    .arrows #rght{@apply h-full pr-6 !important;}
+  
+    .page-selector{
+      @apply absolute fr-ic justify-evenly w-[50%] mb-4 gap-x-2 cursor-pointer;
+    }
+  
+    .tab{
+      @apply grow h-2 rounded-md bg-neutral-200 opacity-50;
+    }
+  
+    .get-start{
+      @apply flex justify-center p-20;
+    }
+  
+    .get-start button {
+      @apply bg-blue-400 focus:bg-blue-500 btn-style;
+    }
+  }
+
+  @layer utilities{
+    .f-ic{
+      @apply flex items-center;
+    }
+    .fr-ic{
+      @apply f-ic flex-row ;
+    }
+    .btn-Shadow{
+      box-shadow: 0 0.75rem 0 0 rgb(37 99 235);
+    }
+    .btn-Shadow:focus{
+      box-shadow: 0 0.75rem 0 0 rgb(29 78 216);
+    }
+    .btn-style{
+      @apply btn-Shadow rounded-xl p-5 text-white text-xl;
+    }
+  }
+  
+ 
+  
