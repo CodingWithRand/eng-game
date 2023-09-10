@@ -3,11 +3,11 @@ import { renderToStaticMarkup } from 'react-dom/server'
 
 const PremilinaryTopic = (
     <div className="lesson" id="premilinary">
-        <h3 className="opening">In this Premilinary topic, You'll learn...</h3>
+        <h3 className="opening">In this Premilinary topic{","} You'll learn{"..."}</h3>
         <hr></hr>
         <ul className="units">
             <li className="unit">
-                <p><span>•</span> Meaning of Suffix & Prefix</p>
+                <p><span>{"•"}</span> Meaning of Suffix & Prefix</p>
             </li>
         </ul>
     </div>
@@ -28,7 +28,7 @@ export default function LessonsInfo() {
     const info = renderToStaticMarkup(
         <html>
             <head>
-                <script src="https://cdn.tailwindcss.com"></script>
+                <script async src="https://cdn.tailwindcss.com"></script>
             </head>
             <style>
                 {`
