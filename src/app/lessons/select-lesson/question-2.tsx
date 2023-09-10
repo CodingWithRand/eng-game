@@ -22,10 +22,11 @@ export default function Question2()
         return tempArray;
       })()
     );
+    const [ btnState, setBtnState ] = useState<{ opacity: number, deactivate: boolean }>({opacity: 1, deactivate: false})
     let lessonsListEl: JSX.Element[] = [];
 
     useEffect(() => {
-      if(userState.lessons === null || userState.lessons.length === 0) setUserState((prevUserState) => ({ 
+      if(userState.lessons?.length === 0) setUserState((prevUserState) => ({ 
         ...prevUserState,
         lessons: ['', '']
       }))
@@ -63,6 +64,14 @@ export default function Question2()
       })
     }, [checked])
   
+    useEffect(() => {
+      if(userState.lessons === null) return
+      if(userState.lessons.some(elem => elem !== '')){
+        setBtnState({opacity: 0.5, deactivate: true})
+      }else{
+        setBtnState({opacity: 1, deactivate: false})
+      }
+    }, [userState.lessons])
 
     function overwrite(i: number, ci: number, newContent: { passCase: any | any[], failCase: any | any[] }){
       if(i === ci) return newContent.passCase;
@@ -100,16 +109,29 @@ export default function Question2()
     
     function LessonsList ({ name }: { name: string[]}) {
       for(let i = 0; i<lessons_number; i++){
-        lessonsListEl.push(
-          <div key={i} className='lesson-choice'>
-            <button className='check-box' onClick={() => radio_check_box(i, name)}>
-            {checkImgs[i]}
-            </button>
-            <label className='lesson-name'>
-              {name[i]}
-            </label>
-          </div>  
-        )
+        if(userState.lessons !== null && userState.lessons.some(elem => elem !== '') && i === userState.lessons.findIndex(elem => elem !== ''))
+          lessonsListEl.push(
+            <div key={i} className='lesson-choice'>
+              <button className='check-box' onClick={() => radio_check_box(i, name)}>
+              {checkImgs[i]}
+              </button>
+              <label className='lesson-name'>
+                {name[i]}
+              </label>
+            </div>  
+          )
+        else{
+          lessonsListEl.push(
+            <div key={i} className='lesson-choice' style={{opacity: btnState.opacity}}>
+              <button className='check-box' onClick={() => radio_check_box(i, name)} disabled={btnState.deactivate}>
+              {checkImgs[i]}
+              </button>
+              <label className='lesson-name'>
+                {name[i]}
+              </label>
+            </div>  
+          )
+        }
       }
       return lessonsListEl;
     }

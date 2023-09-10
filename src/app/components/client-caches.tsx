@@ -33,10 +33,16 @@ export const Caches = ({ children }: { children: React.ReactNode }) => {
     const [ q, setQ ] = useState<number>(question.get("question") || 1);
 
     if(MemberData.get("user") === undefined) MemberData.set("user", initialUserData, { path: '/' })
-    else if(userState.membership === 'guest') MemberData.set("user", userState, { path: '/', expires: new Date(Date.now() + 1800 * 1000) })
+    else MemberData.set("user", userState, { path: '/' })
     if(question.get("question") === undefined) question.set("question", 1);
     else question.set("question", q)
     
+    if(userState.membership === 'guest'){
+        const lifetime = 1800;
+        MemberData.set("user", userState, { path: '/', maxAge: lifetime })
+        question.set("question", q, { maxAge: lifetime })
+    }
+
     return (
         <CachesState.Provider value={[
             { userState, setUserState },

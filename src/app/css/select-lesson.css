@@ -47,11 +47,23 @@
   }
   
   .form-input{
-    @apply p-2 text-xl w-full border-solid border-gray-300 border-2 my-10 rounded-md !important;
+    @apply p-2 text-xl w-full border-solid border-gray-300 border-2 rounded-md !important;
   }
 
   .lessons-preview{
     @apply py-5
+  }
+
+  .warning{
+    @apply border-red-400 !important
+  }
+
+  .name-form{
+    @apply my-10
+  }
+
+  .warning-message{
+    @apply text-red-400 my-2
   }
 }
 

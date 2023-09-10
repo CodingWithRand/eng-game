@@ -61,12 +61,17 @@ export default function FormPage({ children, utilities }: any) {
       } 
     )()); }
     
-    function nextBtn(){ setQ(q+1); };
+    function nextBtn(){ setQ(prevQ => prevQ+1); };
+
+    function submit(){
+      if(q < 3) setQ(prevQ => prevQ+1);
+      else if(q === 3) setQ(4)
+    }
     
     if (utilities.footerStyle.name === 'one-btn') {
         footerEl =
             <div className='submit'>
-                <button className='continue-btn'>{utilities.footerStyle.btnText}</button>
+                <button className='continue-btn' onClick={submit}>{utilities.footerStyle.btnText}</button>
             </div>
     } else if (utilities.footerStyle.name === 'prev-next') {
         footerEl =

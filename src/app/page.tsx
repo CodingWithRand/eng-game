@@ -7,7 +7,7 @@ import Link from 'next/link'
 import '@/css/index.css';
 
 function Render() {
-  const [{ userState, setUserState }, { q, setQ } ] = useCaches();
+  const [{ userState, setUserState } ] = useCaches();
 
   function start() {
     if(userState.membership === null || userState.membership === 'guest') setUserState((prevUserState) => ({
@@ -15,7 +15,6 @@ function Render() {
       membership: 'guest',
       loggedIn: true,
     }))
-    if(q === undefined) setQ(1);
   }
   
   return (

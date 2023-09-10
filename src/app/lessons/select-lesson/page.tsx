@@ -25,6 +25,8 @@ function Render() {
     }
   })
   const [TSXholder, setTSXHolder] = useState<JSX.Element | null>(null);
+
+  if(userState.lessons?.some(elem => elem !== '') && userState.name !== '' && q === 4) router.push('/lessons')
   
   useEffect(() => {
     function checkPeriodically() {
@@ -91,6 +93,8 @@ function Render() {
         }))
         if (TSXholder !== <LessonsInfo />) setTSXHolder(<LessonsInfo />);
         break;
+      case 4:
+        router.push('/lessons')
       default:
         break;
     }
