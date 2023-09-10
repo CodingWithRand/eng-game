@@ -4,7 +4,7 @@ import { MemberData, question } from '@/server/cookies'
 
 type user = {
     membership: string | null, 
-    status: boolean | null,
+    loggedIn: boolean | null,
     name: string | null,
     lessons: string[] | null
 }
