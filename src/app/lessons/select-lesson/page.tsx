@@ -41,7 +41,7 @@ function Render() {
   }, []);
 
   useEffect(() => {
-    if (!userState.loggedIn) return;
+    if (!userState.loggedIn || userState.loggedIn === null) return;
     
     switch (q) {
       case 1:
