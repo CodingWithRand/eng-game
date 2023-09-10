@@ -75,6 +75,7 @@ function Render() {
             headerText: `You've selected ${
               (() => {
                 const SelectedLesson: string[] = [];
+                if(userState.lessons === null) return
                 userState.lessons.forEach((lesson) => {
                   if(lesson !== '') SelectedLesson.push(lesson)
                 })
