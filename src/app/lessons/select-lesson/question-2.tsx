@@ -25,7 +25,7 @@ export default function Question2()
     let lessonsListEl: JSX.Element[] = [];
 
     useEffect(() => {
-      if(userState.lessons.length === 0) setUserState((prevUserState) => ({ 
+      if(userState.lessons.length === 0 || userState.lessons === null) setUserState((prevUserState) => ({ 
         ...prevUserState,
         lessons: ['', '']
       }))
