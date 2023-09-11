@@ -1,12 +1,12 @@
 'use client';
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useCaches } from "../../components/client-caches";
+import { useRegistry } from "../../components/client-caches";
 
 
 export default function Question2() 
 {
-    const [ { userState, setUserState } ] = useCaches();
+    const [ { userState, setUserState } ] = useRegistry();
     const lessons_number: number = 2;
     const [ checked, check ] = useState<boolean[]>(
       (() => {

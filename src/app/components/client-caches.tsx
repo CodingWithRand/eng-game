@@ -1,6 +1,6 @@
 'use client';
 import { useState, createContext, useContext } from "react";
-import { MemberData, question } from '@/server/cookies'
+import { MemberData, question, UserStats } from '@/server/cookies'
 
 type user = {
     membership: string | null, 
@@ -9,9 +9,9 @@ type user = {
     lessons: string[] | null
 }
 
-type cs = [   
+type rs = [   
     {
-        userState: user
+        userState: user,
         setUserState: React.Dispatch<React.SetStateAction<user>>
     },
     {
@@ -20,9 +20,21 @@ type cs = [
     },
 ]
 
-const CachesState = createContext<cs | undefined>(undefined);
+type ls = [
+    {
+        xp: number,
+        generateXP: React.Dispatch<React.SetStateAction<number>>
+    },
+    {
+        level: number,
+        levelup: Rect.Dispatch<React.SetStateAction<number>>
+    }
+]
 
-export const Caches = ({ children }: { children: React.ReactNode }) => {
+const RegistryState = createContext<rs | undefined>(undefined);
+const LevelState = createContext<ls | undefined>(undefined)
+
+export const Registry = ({ children }: { children: React.ReactNode }) => {
     const initialUserData = {
         membership: null, 
         loggedIn: null,
@@ -44,19 +56,40 @@ export const Caches = ({ children }: { children: React.ReactNode }) => {
     }
 
     return (
-        <CachesState.Provider value={[
+        <RegistryState.Provider value={[
             { userState, setUserState },
             { q, setQ },
         ]}>
             {children}
-        </CachesState.Provider>
+        </RegistryState.Provider>
     )
 }
 
-export const useCaches = (): cs => {
-    const context = useContext(CachesState);
+export const Level = ({ children }: { children: React.ReactNode }): ls => {
+  const [ xp, generateXP ] = useState<number>(UserStats.get("xp") || 0)
+  const [ level, levelup ] = useState<number>(UserStats.get("level") || 1)
+  return (
+        <LevelState.Provider value={[
+            { xp, generateXP },
+            { level, levelup },
+        ]}>
+            {children}
+        </LevelState.Provider>
+    )
+}
+
+export const useRegistry = (): rs => {
+    const context = useContext(RegistryState);
     if (!context) {
-        throw new Error("useCaches must be used within a Caches");
+        throw new Error("useRegistry must be used within a Registry");
+    }
+    return context;
+}
+
+export const useLevel = (): ls => {
+    const context = useContext(LevelState)
+    if (!context) {
+        throw new Error("useLevel must be used within a Registry");
     }
     return context;
 }

@@ -1,14 +1,14 @@
 'use client';
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { useCaches } from "@/components/client-caches"
+import { useRegistry } from "@/components/client-caches"
 import { useRouter } from "next/navigation";
 
 let footerEl: JSX.Element = <></>;
 let headerEl: JSX.Element = <></>;
 
 export default function FormPage({ children, utilities }: any) {
-    const [ { userState }, { q, setQ } ] = useCaches();
+    const [ { userState }, { q, setQ } ] = useRegistry();
     const [ availability, setAvailability ] = useState(
     {
       cssStyle: {
@@ -80,6 +80,13 @@ export default function FormPage({ children, utilities }: any) {
                     <Image src="/imgs/icons/prev.png" width={50} height={50} alt="Previous Page" />
                 </button>
                 <button onClick={nextBtn} disabled={availability.disable} style={availability.cssStyle}>
+                    <Image src="/imgs/icons/next.png" width={50} height={50} alt="Next Page" />
+                </button>
+            </div>
+    } else if (utilities.footerStyle.name === 'o-next') {
+      footerEl =
+            <div className='o-next'>
+                <button onClick={nextBtn}>
                     <Image src="/imgs/icons/next.png" width={50} height={50} alt="Next Page" />
                 </button>
             </div>

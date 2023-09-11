@@ -1,11 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useCaches, Caches } from '@/components/client-caches';
+import { useRegistry, Registry } from '@/components/client-caches';
 
 function Render() {
   const [ holderPage, setHolderPage ] = useState<JSX.Element>(<></>)
-  const [ { userState, setUserState }, { q, setQ } ] = useCaches()
+  const [ { userState, setUserState }, { q, setQ } ] = useRegistry()
   const router = useRouter()
 
   if(q === undefined) setQ(1);
@@ -28,8 +28,8 @@ function Render() {
 
 export default function LessonMain() {
   return(
-    <Caches>
+    <Registry>
       <Render />
-    </Caches>
+    </Registry>
   )
 }

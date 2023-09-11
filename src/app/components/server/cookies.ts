@@ -6,9 +6,10 @@ import Cookies from "universal-cookie"
 
 const question = new Cookies(null, { path: '/lessons'});
 const MemberData = new Cookies(null, { path: '/'}) 
+const UserStats = new Cookies(null, { path: '/lessons' })
 
 
-export { question, MemberData }
+export { question, MemberData, UserStats }
 
 // export default async function setServerCookie(req: NextApiRequest, res: NextApiResponse, ca: { cookieName: string, cookieValue: any | { [key: string]: any | any[] }, path?: string, maxAge?: number }) {
 //     let cookieAttributes: string[] = [ `${ca.cookieName}=${ca.cookieValue}` ]

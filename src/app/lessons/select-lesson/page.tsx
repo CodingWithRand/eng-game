@@ -1,18 +1,19 @@
 'use client';
 
-import { Caches, useCaches } from '@/components/client-caches';
+import { Registry, useRegistry } from '@/components/client-caches';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Question2 from './question-2';
 import Question1 from './question-1';
 import LessonsInfo from './info';
+import Introduction from './introduction'
 import FormPage from '@/templates/select-lesson-form';
-import { MemberData } from '@/components/server/cookies';
+import { MemberData } from '@/server/cookies';
 
 import '@/css/select-lesson.css';
 
 function Render() {
-  const [{ userState }, { q }] = useCaches();
+  const [{ userState }, { q }] = useRegistry();
   const router = useRouter()
   const [layoutUtilities, setLayoutUtilities] = useState({
     headerStyle: {
@@ -46,6 +47,19 @@ function Render() {
     if (!userState.loggedIn || userState.loggedIn === null) return;
     
     switch (q) {
+      case 0:
+        setLayoutUtilities(prevState => ({
+          ...prevState,
+          headerStyle: {
+            ...prevState.headerStyle,
+            name: "center",
+            headerText: "Term of uses & Condition"
+          },
+          footerStyle: {
+            ...prevState.footerStyle,
+            name: "o-next"
+          }
+        }));
       case 1:
         setLayoutUtilities(prevState => ({
           ...prevState,
@@ -109,8 +123,8 @@ function Render() {
 
 export default function SelectPage() {
   return (
-    <Caches>
+    <Registry>
       <Render />
-    </Caches>
+    </Registry>
   );
 };

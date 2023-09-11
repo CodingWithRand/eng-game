@@ -1,4 +1,4 @@
-import { useCaches } from "@/components/client-caches";
+import { useRegistry } from "@/components/client-caches";
 import { renderToStaticMarkup } from 'react-dom/server'
 
 const PremilinaryTopic = (
@@ -25,7 +25,7 @@ function LessonsPreview({ selectedLesson }: { selectedLesson: string[] | null })
 }
 
 export default function LessonsInfo() {
-    const [ { userState } ] = useCaches()
+    const [ { userState } ] = useRegistry()
     const info = renderToStaticMarkup(
         <html>
             <head>

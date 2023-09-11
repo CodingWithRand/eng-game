@@ -1,8 +1,8 @@
 import { ChangeEvent, useState, useEffect } from 'react'
-import { useCaches } from '@/components/client-caches'
+import { useRegistry } from '@/components/client-caches'
 
 export default function Question1(){
-  const [ { userState, setUserState } ] = useCaches()
+  const [ { userState, setUserState } ] = useRegistry()
   const [ name, setName ] = useState('')
   const [ warning, setWarning ] = useState({
     className: '',
