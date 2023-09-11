@@ -2,7 +2,7 @@
 
 import NavigationBar from '@/components/navbar';
 import Coroussel from '@/components/coroussel';
-import { Caches, useCaches } from './components/client-caches';
+import { Caches, useCaches } from '@/components/client-caches';
 import Link from 'next/link'
 import '@/css/index.css';
 

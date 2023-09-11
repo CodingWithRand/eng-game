@@ -1,6 +1,33 @@
 import Image from "next/image"
+import { MemberData } from "@/components/navbar"
+
 
 export default function NavigationBar() {
+    function SelectedLesson()
+    {
+      if(MemberData.get("user").loggedIn === null || MemberData.get("user").loggedIn === false) return(
+          <>
+            <button>Sign Up</button>
+            <button>Login</button>
+          </>
+        )
+      else if(MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons.some(elem => elem !== '')){
+          return (
+            <>
+            <label>{
+            `
+            Select Lesson: ${MemberData.get("user").lessons[MemberData.get("user").lessons.findIndex(elem => elem !== '')]}
+            `  
+            }</label>
+            <label>
+            {
+              `Name: ${MemberData.get("user").name}`
+            }
+            </label>
+            </>
+        )
+      }
+    }
     return(
         <nav className='nav-bar'>
         <ul>
@@ -12,9 +39,9 @@ export default function NavigationBar() {
           <li className='app-name'>
             <div>Thringo</div>
           </li>
+          <SelectedLesson />
           <li className='reg'>
-            <button>Sign Up</button>
-            <button>Login</button>
+            <SelectedLesson />
           </li>
         </ul>
       </nav>
