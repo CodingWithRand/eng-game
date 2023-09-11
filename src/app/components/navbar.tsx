@@ -5,19 +5,19 @@ import { MemberData } from "@/server/cookies"
 export default function NavigationBar() {
     function SelectedLesson()
     {
-  console.log(MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons.some(elem => elem !== ''))
+  console.log(MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons.some((elem: string) => elem !== ''))
       if(MemberData.get("user").loggedIn === null || MemberData.get("user").loggedIn === false) return(
           <>
             <button>Sign Up</button>
             <button>Login</button>
           </>
         )
-      else if(MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons.some(elem => elem !== '')){
+      else if(MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons.some((elem: string) => elem !== '')){
           return (
             <>
             <label>{
             `
-            Select Lesson: ${MemberData.get("user").lessons[MemberData.get("user").lessons.findIndex(elem => elem !== '')]}
+            Select Lesson: ${MemberData.get("user").lessons[MemberData.get("user").lessons.findIndex((elem: string) => elem !== '')]}
             `  
             }</label>
             <label>
