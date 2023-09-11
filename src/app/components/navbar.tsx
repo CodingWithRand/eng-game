@@ -3,10 +3,9 @@ import { MemberData } from "@/components/navbar"
 
 
 export default function NavigationBar() {
-  console.log(MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons.some(elem => elem !== ''))
     function SelectedLesson()
     {
-      
+  console.log(MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons.some(elem => elem !== ''))
       if(MemberData.get("user").loggedIn === null || MemberData.get("user").loggedIn === false) return(
           <>
             <button>Sign Up</button>
