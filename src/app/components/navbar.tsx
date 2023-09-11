@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { MemberData } from "@/components/navbar"
+import { MemberData } from "@/server/cookies"
 
 
 export default function NavigationBar() {
