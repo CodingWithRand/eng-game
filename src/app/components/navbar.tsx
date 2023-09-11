@@ -40,7 +40,6 @@ export default function NavigationBar() {
           <li className='app-name'>
             <div>Thringo</div>
           </li>
-          <SelectedLesson />
           <li className='reg'>
             <SelectedLesson />
           </li>
