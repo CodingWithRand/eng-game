@@ -53,7 +53,7 @@ export default function FormPage({ children, utilities }: any) {
 
     function prevBtn(){ 
       setQ((() => { 
-        if(q > 1) return q - 1 
+        if(q > 0) return q - 1 
         else{
           router.push('/')
           return q
@@ -64,8 +64,8 @@ export default function FormPage({ children, utilities }: any) {
     function nextBtn(){ setQ(prevQ => prevQ+1); };
 
     function submit(){
-      if(q < 3) setQ(prevQ => prevQ+1);
-      else if(q === 3) setQ(4)
+      if(q < 4) setQ(prevQ => prevQ+1);
+      else if(q === 4) setQ(5)
     }
     
     if (utilities.footerStyle.name === 'one-btn') {
@@ -83,14 +83,7 @@ export default function FormPage({ children, utilities }: any) {
                     <Image src="/imgs/icons/next.png" width={50} height={50} alt="Next Page" />
                 </button>
             </div>
-    } else if (utilities.footerStyle.name === 'o-next') {
-      footerEl =
-            <div className='o-next'>
-                <button onClick={nextBtn}>
-                    <Image src="/imgs/icons/next.png" width={50} height={50} alt="Next Page" />
-                </button>
-            </div>
-    }
+    } else { footerEl = <></> }
 
     if (utilities.headerStyle.name === 'default') {
         headerEl =
@@ -103,7 +96,7 @@ export default function FormPage({ children, utilities }: any) {
           <div className='center-head-text'>
               {utilities.headerStyle.headerText}
           </div>
-    }
+    } else { headerEl = <></> }
 
     return (
         <main>

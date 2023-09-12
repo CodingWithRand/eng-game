@@ -2,18 +2,15 @@ export default function Term() {
   return(
 <div className="term-container">
   <div className="term-nester">
-    <h1 className="term-header">
-    Term of uses & Condition
-  </h1>
   <ol className="term-ol">
     <li>
-      <p>When you sign up by clicking the blue button on the homepage, it means youre browsing this website as a "Guest" user, and youre allowing us create and modify your caches data in the form of "Cookies"</p>
+      <p>When you sign up by clicking the blue button on the homepage, it means you're browsing this website as a "Guest" user, and you're allowing us create and modify your caches data in the form of "Cookies"</p>
     </li>
     <li>
       <p>The purpose of cookies is only for storing the user data while browsing the webpage</p>
     </li>
     <li>
-      <p>After you finish filling this form session, youre allowed to access the full content of this webpage for 30 minutes. When your access permission session expire, youll be signed out automatically</p>
+      <p>A guest account's accessibility is limited to presently available objects. It cannot access to systems that need server data calling, such as daily rewards, badge hunting, quests, and so on due to the limitation of account age (the account will be terminated after being inactive for more than a day), such as daily rewards, badge hunting, quests, and so on.</p>
     </li>
     <li>
       <p>Here are the list of your data we will collect in the form of "Cookies"</p>

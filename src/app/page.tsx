@@ -7,7 +7,7 @@ import Link from 'next/link'
 import '@/css/index.css';
 
 function Render() {
-  const [{ userState, setUserState } ] = useCaches();
+  const [{ userState, setUserState } ] = useRegistry();
 
   function start() {
     if(userState.membership === null || userState.membership === 'guest') setUserState((prevUserState) => ({
@@ -37,6 +37,7 @@ function Render() {
         <a href="https://www.flaticon.com/free-icons/tick" title="tick icons">Tick icons created by Octopocto - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Handicon - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/left-arrow" title="left arrow icons">Left arrow icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/chat" title="chat icons">Chat icons created by srip - Flaticon</a>
         */}
       </main>
     </>
@@ -45,8 +46,8 @@ function Render() {
 
 export default function InitialPage() {
   return(
-    <Caches>
+    <Registry>
       <Render />
-    </Caches>
+    </Registry>
   )
 };

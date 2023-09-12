@@ -7,6 +7,7 @@ import Question2 from './question-2';
 import Question1 from './question-1';
 import LessonsInfo from './info';
 import Introduction from './introduction'
+import Term from './term';
 import FormPage from '@/templates/select-lesson-form';
 import { MemberData } from '@/server/cookies';
 
@@ -27,7 +28,7 @@ function Render() {
   })
   const [TSXholder, setTSXHolder] = useState<JSX.Element | null>(null);
 
-  if(userState.lessons?.some(elem => elem !== '') && userState.name !== '' && q === 4) router.push('/lessons')
+  if(userState.lessons?.some(elem => elem !== '') && userState.name !== '' && q === 5) router.push('/lessons')
   
   useEffect(() => {
     function checkPeriodically() {
@@ -52,14 +53,16 @@ function Render() {
           ...prevState,
           headerStyle: {
             ...prevState.headerStyle,
-            name: "center",
+            name: "",
             headerText: ""
           },
           footerStyle: {
             ...prevState.footerStyle,
-            name: "o-next",
+            name: "",
           }
         }));
+        if (TSXholder !== <Introduction />) setTSXHolder(<Introduction />);
+        break;
       case 1:
         setLayoutUtilities(prevState => ({
           ...prevState,
@@ -74,8 +77,9 @@ function Render() {
             btnText: "I accept"
           }
         }));
+        if (TSXholder !== <Term />) setTSXHolder(<Term />);
         break;
-      case 1:
+      case 2:
         setLayoutUtilities(prevState => ({
           ...prevState,
           headerStyle: {
@@ -86,7 +90,7 @@ function Render() {
         }));
         if (TSXholder !== <Question1 />) setTSXHolder(<Question1 />);
         break;
-      case 2:
+      case 3:
         setLayoutUtilities(prevState => ({
           ...prevState,
           headerStyle: {
@@ -97,7 +101,7 @@ function Render() {
         }))
         if (TSXholder !== <Question2 />) setTSXHolder(<Question2 />);
         break;
-      case 3:
+      case 4:
         setLayoutUtilities(prevState => ({
           ...prevState,
           headerStyle: {

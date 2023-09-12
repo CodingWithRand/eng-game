@@ -1,14 +1,14 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useRegistry, Registry } from '@/components/client-caches';
+import { useRegistry, Registry, Level, useLevel } from '@/components/client-caches';
 
 function Render() {
   const [ holderPage, setHolderPage ] = useState<JSX.Element>(<></>)
   const [ { userState, setUserState }, { q, setQ } ] = useRegistry()
   const router = useRouter()
 
-  if(q === undefined) setQ(1);
+  if(q === undefined) setQ(0);
 
   useEffect(() => {
     if(userState.lessons === null || userState.lessons.length === 0 || userState.lessons?.every((elem) => elem === '')) {
@@ -23,7 +23,7 @@ function Render() {
     }
   }, [])
   
-  return( <>{holderPage}</> );
+  return( <>{holderPage}</>);
 }
 
 export default function LessonMain() {

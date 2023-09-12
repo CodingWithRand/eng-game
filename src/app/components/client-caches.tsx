@@ -27,7 +27,7 @@ type ls = [
     },
     {
         level: number,
-        levelup: Rect.Dispatch<React.SetStateAction<number>>
+        levelup: React.Dispatch<React.SetStateAction<number>>
     }
 ]
 
@@ -42,17 +42,16 @@ export const Registry = ({ children }: { children: React.ReactNode }) => {
         lessons: null,
     }
     const [ userState, setUserState] = useState<user>(MemberData.get("user") || initialUserData);
-    const [ q, setQ ] = useState<number>(question.get("question") || 1);
+    const [ q, setQ ] = useState<number>(question.get("question") || 0);
 
     if(MemberData.get("user") === undefined) MemberData.set("user", initialUserData, { path: '/' })
     else MemberData.set("user", userState, { path: '/' })
-    if(question.get("question") === undefined) question.set("question", 1);
+    if(question.get("question") === undefined) question.set("question", 0);
     else question.set("question", q)
     
     if(userState.membership === 'guest'){
-        const lifetime = 1800;
-        MemberData.set("user", userState, { path: '/', maxAge: MemberData.get("user").maxAge })
-        question.set("question", q, { maxAge: question.get("question").maxAge})
+        MemberData.set("user", userState, { path: '/', maxAge: 60 * 60 * 24})
+        question.set("question", q, { maxAge: 60 * 60 * 24})
     }
 
     return (
@@ -65,7 +64,7 @@ export const Registry = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export const Level = ({ children }: { children: React.ReactNode }): ls => {
+export const Level = ({ children }: { children: React.ReactNode }) => {
   const [ xp, generateXP ] = useState<number>(UserStats.get("xp") || 0)
   const [ level, levelup ] = useState<number>(UserStats.get("level") || 1)
   return (
@@ -89,7 +88,7 @@ export const useRegistry = (): rs => {
 export const useLevel = (): ls => {
     const context = useContext(LevelState)
     if (!context) {
-        throw new Error("useLevel must be used within a Registry");
+        throw new Error("useLevel must be used within a Level");
     }
     return context;
 }

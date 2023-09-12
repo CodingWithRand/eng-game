@@ -7,11 +7,14 @@ export default function Introduction() {
     
     <div className="msg-box">
       <div className="nester">
-        <Image src="chat-box.png" alt="outline" layout='fill' objectFit='contain' className='absolute'/>
-        <p className="msg">Hello, my name is Andy. Ill be your teacher for this English course</p>
+        <Image src="/imgs/icons/conversation.png" alt="outline" layout='fill' objectFit='contain'/>
+        <div className="msg">
+          <p>Hello, my name is Andy. I'll be your teacher for this English course</p>
+          <button>» Next »</button>
+        </div>
       </div>
     </div>
-  					<Image src="andy_greet.png" alt='teacher' width={240} height={160} className="absolute"/>
+  	<Image src="/imgs/andy/andy-greet.png" alt='teacher' width={240} height={160} className="teacher"/>
   </div>
   </>
   )
