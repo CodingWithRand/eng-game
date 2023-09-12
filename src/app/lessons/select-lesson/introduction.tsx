@@ -9,7 +9,7 @@ export default function Introduction() {
       <div className="nester">
         <Image src="/imgs/icons/conversation.png" alt="outline" layout='fill' objectFit='contain'/>
         <div className="msg">
-          <p>Hello, my name is Andy. I'll be your teacher for this English course</p>
+          <p>Hello, my name is Andy. I&apos;ll be your teacher for this English course</p>
           <button>» Next »</button>
         </div>
       </div>
