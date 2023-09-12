@@ -29,7 +29,9 @@ function Render() {
 export default function LessonMain() {
   return(
     <Registry>
-      <Render />
+      <Level>
+        <Render />
+      </Level>
     </Registry>
   )
 }

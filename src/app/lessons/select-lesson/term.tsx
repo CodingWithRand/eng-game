@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-
-<html>
-<head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Hello, World!</title>
-</head>
-<body class="flex justify-center">
-  <main class="w-[80%] flex flex-col justify-center items-center my-10">
-    <h1 class="text-xl my-4">
+export default function Term() {
+  return(
+<div className="term-container">
+  <div className="term-nester">
+    <h1 className="term-header">
     Term of uses & Condition
   </h1>
-  <ol class="list-decimal">
+  <ol className="term-ol">
     <li>
       <p>When you sign up by clicking the blue button on the homepage, it means youre browsing this website as a "Guest" user, and youre allowing us create and modify your caches data in the form of "Cookies"</p>
     </li>
@@ -23,8 +17,8 @@
     </li>
     <li>
       <p>Here are the list of your data we will collect in the form of "Cookies"</p>
-      <hr class="my-2">
-      <ul class="list-disc ml-4 mb-2">
+      <hr className="term-hr"></hr>
+      <ul className="term-ul">
         <li>
           <p>Your custom name</p>
         </li>
@@ -35,13 +29,13 @@
           <p>Your learning progress, in form of completed staged, levels, and experiences</p>
         </li>
       </ul>
-      <hr class="my-2">
+      <hr className="term-hr"></hr>
     </li>
     <li>
       <p>Some of the mentioned data may be also collected to database, such as experiences which is a part of leaderboard system</p>
     </li>
   </ol>
-  </main>
-  
-</body>
-</html>
+  </div>
+</div>
+  )
+}

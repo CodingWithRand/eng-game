@@ -68,14 +68,32 @@
   .greeting-page{
     @apply flex flex-col justify-end h-full;
   }
-  .msg-box{
-    @apply flex justify-center items-center h-[40%];
+  .msg{
+    @apply h-[85%] text-lg text-center p-4 md:text-4xl flex justify-center items-center;
   }
   .nester{
-    @apply relative inline-block w-[70%]
+    @apply relative inline-block w-[50%] h-[50%] flex justify-center;
   }
-  .msg{
-    @apply absolute text-2xl text-center p-2 md:text-[4rem] bottom-[30%] md:bottom-[50%]
+  .msg-box{
+    @apply relative flex justify-center items-center h-[60%] bottom-[25%];
+  }
+  .term-container{
+    @apply flex justify-center
+  }
+  .term-nester{
+    w-[80%] flex flex-col justify-center items-center my-10
+  }
+  .term-header{
+    @apply text-xl my-4
+  }
+  .term-ol{
+    @apply list-decimal
+  }
+  .term-hr{
+    @apply my-2
+  }
+  .term-ul{
+    @appy list-disc ml-4 mb-2
   }
 }
 
