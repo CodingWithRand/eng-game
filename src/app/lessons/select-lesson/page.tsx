@@ -53,13 +53,28 @@ function Render() {
           headerStyle: {
             ...prevState.headerStyle,
             name: "center",
+            headerText: ""
+          },
+          footerStyle: {
+            ...prevState.footerStyle,
+            name: "o-next",
+          }
+        }));
+      case 1:
+        setLayoutUtilities(prevState => ({
+          ...prevState,
+          headerStyle: {
+            ...prevState.headerStyle,
+            name: "center",
             headerText: "Term of uses & Condition"
           },
           footerStyle: {
             ...prevState.footerStyle,
-            name: "o-next"
+            name: "one-button",
+            btnText: "I accept"
           }
         }));
+        break;
       case 1:
         setLayoutUtilities(prevState => ({
           ...prevState,

@@ -51,19 +51,31 @@
   }
 
   .lessons-preview{
-    @apply py-5
+    @apply py-5;
   }
 
   .warning{
-    @apply border-red-400 !important
+    @apply border-red-400 !important;
   }
 
   .name-form{
-    @apply my-10
+    @apply my-10;
   }
 
   .warning-message{
-    @apply text-red-400 my-2
+    @apply text-red-400 my-2;
+  }
+  .greeting-page{
+    @apply flex flex-col justify-end h-full;
+  }
+  .msg-box{
+    @apply flex justify-center items-center h-[40%];
+  }
+  .nester{
+    @apply relative inline-block w-[70%]
+  }
+  .msg{
+    @apply absolute text-2xl text-center p-2 md:text-[4rem] bottom-[30%] md:bottom-[50%]
   }
 }
 

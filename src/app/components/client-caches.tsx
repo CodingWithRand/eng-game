@@ -51,8 +51,8 @@ export const Registry = ({ children }: { children: React.ReactNode }) => {
     
     if(userState.membership === 'guest'){
         const lifetime = 1800;
-        MemberData.set("user", userState, { path: '/', maxAge: lifetime })
-        question.set("question", q, { maxAge: lifetime })
+        MemberData.set("user", userState, { path: '/', maxAge: MemberData.get("user").maxAge })
+        question.set("question", q, { maxAge: question.get("question").maxAge})
     }
 
     return (

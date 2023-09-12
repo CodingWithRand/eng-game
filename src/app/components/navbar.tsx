@@ -5,13 +5,7 @@ import { MemberData } from "@/server/cookies"
 export default function NavigationBar() {
     function SelectedLesson()
     {
-      if(MemberData.get("user") === undefined || MemberData.get("user").loggedIn === null || MemberData.get("user").loggedIn === false) return(
-          <>
-            <button>Sign Up</button>
-            <button>Login</button>
-          </>
-        )
-      else if(MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons.some((elem: string) => elem !== '')){
+      if(MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons.some((elem: string) => elem !== ''))
           return (
             <>
             <label>{
@@ -26,7 +20,12 @@ export default function NavigationBar() {
             </label>
             </>
         )
-      }
+      else return (
+        <>
+                  <button>Sign Up</button>
+                  <button>Login</button>
+                </>
+      )
     }
     return(
         <nav className='nav-bar'>
