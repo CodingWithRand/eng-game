@@ -7,7 +7,7 @@ export default function Lobby() {
   const [ { s, nextS } ] = useStage()
   const [ { userState } ] = useRegistry()
   const router = useRouter()
-  let availableStages: JSX.Element[];
+  let availableStages: JSX.Element[] = [];
   
   function enter(stage: number, les: string){
     nextS(stage)
