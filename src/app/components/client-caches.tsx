@@ -1,6 +1,6 @@
 'use client';
 import { useState, createContext, useContext } from "react";
-import { MemberData, question, UserStats } from '@/server/cookies'
+import { MemberData, question, UserStats, stage } from '@/server/cookies'
 
 type user = {
     membership: string | null, 
@@ -31,8 +31,16 @@ type ls = [
     }
 ]
 
+type ss = [
+  {
+    stage: number,
+    nextStage: React.Dispatch<React.SetStateAction<number>>
+  }
+]
+
 const RegistryState = createContext<rs | undefined>(undefined);
 const LevelState = createContext<ls | undefined>(undefined)
+const StageState = createContext<ss | undefined>(undefined)
 
 export const Registry = ({ children }: { children: React.ReactNode }) => {
     const initialUserData = {
@@ -77,6 +85,18 @@ export const Level = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
+export const Stage = ({ children }: { children: React.ReactNode }) => {
+  const [ s, nextS ] = useState<number>(stage.get("stage") || 1)
+  
+  return (
+        <StageState.Provider value={[
+            { s, nextS },
+        ]}>
+            {children}
+        </StageState.Provider>
+    )
+}
+
 export const useRegistry = (): rs => {
     const context = useContext(RegistryState);
     if (!context) {
@@ -89,6 +109,14 @@ export const useLevel = (): ls => {
     const context = useContext(LevelState)
     if (!context) {
         throw new Error("useLevel must be used within a Level");
+    }
+    return context;
+}
+
+export const useStage = (): ss => {
+    const context = useContext(StageState)
+    if (!context) {
+        throw new Error("useStage must be used within a Stage");
     }
     return context;
 }

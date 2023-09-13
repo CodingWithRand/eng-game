@@ -24,9 +24,9 @@ export default function FormPage({ children, utilities }: any) {
       detector = (() => {
         if(userState.name === null || userState.lessons === null) return false
         switch(q){
-          case 1:
+          case 2:
             return userState.name !== '' && userState.name !== null
-          case 2: 
+          case 3: 
             return userState.lessons.some((elem) => elem !== "")
           default:
             return false

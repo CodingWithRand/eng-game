@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useRegistry, Registry, Level, useLevel } from '@/components/client-caches';
+import { useRegistry, Registry, Level, Stage } from '@/components/client-caches';
+import '@/css/lobby.css'
 
 function Render() {
   const [ holderPage, setHolderPage ] = useState<JSX.Element>(<></>)
@@ -30,7 +31,9 @@ export default function LessonMain() {
   return(
     <Registry>
       <Level>
-        <Render />
+        <Stage>
+          <Render />
+        </Stage>
       </Level>
     </Registry>
   )
