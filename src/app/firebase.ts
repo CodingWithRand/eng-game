@@ -1,5 +1,6 @@
-import firebase, { initializeApp } from 'firebase/app';
-import { Database, getDatabase } from 'firebase/database'
+import firebase from 'firebase/app';
+import { getDatabase } from 'firebase/database';
+import 'firebase/database';
 import 'firebase/auth';
 
 const clientCredentials = {
@@ -12,12 +13,13 @@ const clientCredentials = {
     measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 };
 
-let app: firebase.FirebaseApp | undefined, db: Database;
+console.log(clientCredentials)
+
 
 if(!firebase.getApps.length){
-    app = initializeApp(clientCredentials);
-    db = getDatabase(app)
+    firebase.initializeApp(clientCredentials);
 }
 
+const db = getDatabase()
 
 export default db;

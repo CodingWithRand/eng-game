@@ -5,9 +5,9 @@ import db from "@/firebase";
 
 export default function Test(){
     // const [ testState, setTestState ] = useState(1)
-    const addItem = async () => {
-        await addDoc(collection(db, 'items'), 3)
-    }
+    // const addItem = async () => {
+    //     await addDoc(collection(db, 'items'), 3)
+    // }
     return(
         <button></button>
     )
