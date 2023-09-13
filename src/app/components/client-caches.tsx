@@ -35,6 +35,14 @@ type ss = [
   {
     s: number,
     nextS: React.Dispatch<React.SetStateAction<number>>
+  },
+  {
+    clp: number,
+    nextCLP: React.Dispatch<React.SetStateAction<number>>
+  },
+  {
+    maxPage: number,
+    setMaxPage: React.Dispatch<React.SetStateAction<number>>
   }
 ]
 
@@ -87,10 +95,13 @@ export const Level = ({ children }: { children: React.ReactNode }) => {
 
 export const Stage = ({ children }: { children: React.ReactNode }) => {
   const [ s, nextS ] = useState<number>(stage.get("stage") || 0)
-  
+  const [ clp, nextCLP ] = useState<number>(1);
+  const [ maxPage, setMaxPage] = useState<number>()
   return (
         <StageState.Provider value={[
             { s, nextS },
+            { clp, nextCLP },
+            { maxPage, setMaxPage }
         ]}>
             {children}
         </StageState.Provider>
