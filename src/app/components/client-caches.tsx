@@ -33,8 +33,8 @@ type ls = [
 
 type ss = [
   {
-    stage: number,
-    nextStage: React.Dispatch<React.SetStateAction<number>>
+    s: number,
+    nextS: React.Dispatch<React.SetStateAction<number>>
   }
 ]
 
@@ -86,7 +86,7 @@ export const Level = ({ children }: { children: React.ReactNode }) => {
 }
 
 export const Stage = ({ children }: { children: React.ReactNode }) => {
-  const [ s, nextS ] = useState<number>(stage.get("stage") || 1)
+  const [ s, nextS ] = useState<number>(stage.get("stage") || 0)
   
   return (
         <StageState.Provider value={[
