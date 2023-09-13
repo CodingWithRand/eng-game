@@ -1,28 +1,38 @@
 'use client';
-//import NavigationBar from '@/components/navbar';
+import LessonBody from '@/components/templates/lesson-page';
 import { useState, useEffect } from 'react';
 import { useStage, Stage } from '@/components/client-caches'
 
-export default function Premilinary({ params: { id } }: { params: { id: string[] | number[] } })
-{
-  console.log(id)
+function Render({ id }: { id: string[] }){
   const lessonStructure = [
-    <></>,
+    <>erwe</>,
     <></>
   ]
   const [ {}, { clp } ] = useStage()
-  let currentContent: JSX.Element = <></>;
+  const [ content, setContent ] = useState<JSX.Element>(<></>)
+
   useEffect(() => {
     lessonStructure.forEach((page, index) => {
-      if(id[1] === index) nextCLP(page)
+      if(Number(id[1]) === index + 1) setContent(page) 
     })
-  }, [nextCLP])
+  }, [clp])
+
+  return(
+    <main>
+        {content}
+    </main>
+  )
+}
+
+export default function Premilinary({ params: { id } }: { params: { id: string[] } })
+{
+  
   return(
     <Stage>
+      <LessonBody>
       {/*<NavigationBar />*/}
-      <main>
-        {clp}
-      </main>
+        <Render id={id}/>
+      </LessonBody>
     </Stage>
   )
 }

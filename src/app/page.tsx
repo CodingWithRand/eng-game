@@ -1,10 +1,12 @@
 'use client';
 
-import NavigationBar from '@/components/navbar';
 import Coroussel from '@/components/coroussel';
 import { Registry, useRegistry } from '@/components/client-caches';
 import Link from 'next/link'
 import '@/css/index.css';
+import dynamic from 'next/dynamic';
+
+const Nav = dynamic(() => import('@/components/navbar'), { ssr: false })
 
 function Render() {
   const [{ userState, setUserState } ] = useRegistry();
@@ -19,7 +21,7 @@ function Render() {
   
   return (
     <>
-      <NavigationBar />
+      <Nav />
       <header style={{ overflowX: 'hidden' }}>
         <Coroussel />
       </header>

@@ -3,7 +3,7 @@
 
 @layer components{
   .a-stage{
-    @apply w-[50px] h-[50px] rounded-full bg-blue-400
+    @apply w-[50px] h-[50px] rounded-full bg-blue-400 stage-btn-style
   }
 }
 

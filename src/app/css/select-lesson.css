@@ -2,10 +2,6 @@
 @tailwind utilities;
 
 @layer component{
-  body, html, main{
-    height: 100%;
-  }
-  
   .default-head-text{
     @apply flex justify-normal text-4xl mt-20 w-[80%];
   }

@@ -1,6 +1,6 @@
 'use client';
 import { useState, createContext, useContext } from "react";
-import { MemberData, question, UserStats, stage } from '@/server/cookies'
+import { MemberData, question, UserStats, LessonComponent } from '@/server/cookies'
 
 type user = {
     membership: string | null, 
@@ -94,9 +94,10 @@ export const Level = ({ children }: { children: React.ReactNode }) => {
 }
 
 export const Stage = ({ children }: { children: React.ReactNode }) => {
-  const [ s, nextS ] = useState<number>(stage.get("stage") || 0)
+  const [ s, nextS ] = useState<number>(LessonComponent.get("stage") || 1)
   const [ clp, nextCLP ] = useState<number>(1);
-  const [ maxPage, setMaxPage] = useState<number>()
+  const [ maxPage, setMaxPage] = useState<number>(1)
+
   return (
         <StageState.Provider value={[
             { s, nextS },

@@ -73,7 +73,7 @@ function Render() {
           },
           footerStyle: {
             ...prevState.footerStyle,
-            name: "one-button",
+            name: "one-btn",
             btnText: "I accept"
           }
         }));
@@ -86,6 +86,10 @@ function Render() {
             ...prevState.headerStyle,
             name: "center",
             headerText: "Enter your name in English"
+          },
+          footerStyle: {
+            ...prevState.footerStyle,
+            name: "prev-next"
           }
         }));
         if (TSXholder !== <Question1 />) setTSXHolder(<Question1 />);

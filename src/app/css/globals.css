@@ -1,1 +1,5 @@
 @tailwind base;
+
+@layer base{
+    html, body, main { @apply h-full }
+}

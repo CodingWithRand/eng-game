@@ -1,23 +1,29 @@
 import { useStage, useRegistry } from '@/components/client-caches'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 
 export default function Lobby() {
+  const totalLesson = 1;
   const [ { s, nextS } ] = useStage()
   const [ { userState } ] = useRegistry()
+  const [ availableZones, addAvailableZone ] = useState<JSX.Element[]>((() => {
+    let tempZone: JSX.Element[] = [];
+    for(let i = 0; i<totalLesson; i++) tempZone.push(<></>)
+    return tempZone;
+  })())
   const router = useRouter()
-  let availableStages: JSX.Element[] = [];
   
-  function enter(stage: number, les: string){
-    nextS(stage)
-    router.push(`/lessons/${les}`)
+  
+  function enter(LessonComponent: number, les: string){
+    nextS(LessonComponent)
+    router.push(`/lessons/${les}/${s}`)
   }
   
   function PremilinaryStages(){
     return(
       <div>
-      <button onClick={() => enter(1, "premilinary")}  className="a-stage"></button>
+        <button onClick={() => enter(1, "preliminary")}  className="a-stage"></button>
       </div>
     )
   }
@@ -27,10 +33,16 @@ export default function Lobby() {
     userState.lessons.forEach((lesson) => {
       switch(lesson){
         case 'Premilinary':
-          availableStages.push(<PremilinaryStages />)
+          addAvailableZone(prevZones => {
+            if(!prevZones.some(zone => zone === <PremilinaryStages/>)) return prevZones.concat(<PremilinaryStages/>) 
+            else return prevZones
+          })
+          break;
       }
     })
   }, [])
+
+  console.log(availableZones)
   
-  return(<>{availableStages}</>)
+  return(<>{availableZones}</>)
 }

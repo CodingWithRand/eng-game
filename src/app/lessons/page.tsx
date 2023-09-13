@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useRegistry, Registry, Level, Stage } from '@/components/client-caches';
+import Lobby from './lobby';
 import '@/css/lobby.css'
 
 function Render() {
@@ -20,10 +21,10 @@ function Render() {
       router.push('/lessons/select-lesson')
     }
     if(userState.lessons?.some(elem => elem !== '') && userState.name !== ''){
-      setHolderPage(<>hi</>)
+      setHolderPage(<Lobby/>)
     }
   }, [])
-  
+
   return( <>{holderPage}</>);
 }
 

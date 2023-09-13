@@ -7,12 +7,12 @@ import Cookies from "universal-cookie"
 const question = new Cookies(null, { path: '/lessons'});
 const MemberData = new Cookies(null, { path: '/'}) 
 const UserStats = new Cookies(null, { path: '/lessons' })
-const stage = new Cookies(null, {
+const LessonComponent = new Cookies(null, {
   path: '/lessons'
 })
 
 
-export { question, MemberData, UserStats, stage }
+export { question, MemberData, UserStats, LessonComponent }
 
 // export default async function setServerCookie(req: NextApiRequest, res: NextApiResponse, ca: { cookieName: string, cookieValue: any | { [key: string]: any | any[] }, path?: string, maxAge?: number }) {
 //     let cookieAttributes: string[] = [ `${ca.cookieName}=${ca.cookieValue}` ]
