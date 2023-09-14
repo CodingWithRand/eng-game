@@ -8,6 +8,7 @@ import '@/css/lesson-structure/index.css'
 function Render({ id }: { id: string[] }){
   const lessonStructure = [
     <ExplanationWithExamples 
+      key="expn-exp1"
       explanations={["Prefix is a group of letters added to the beginning of a word to change its meaning or create a new word."]}
       initExampleWord='For example'
       examples={[
@@ -17,6 +18,7 @@ function Render({ id }: { id: string[] }){
       note={undefined}
       />,
     <ExplanationWithExamples
+      key="expn-exp2"
       explanations={["Suffix is a group of letters added to the end of a word to modify its meaning or create a new word, which also changes its part of speech"]}
       initExampleWord='For instance'
       examples={[
@@ -36,7 +38,7 @@ function Render({ id }: { id: string[] }){
     lessonStructure.forEach((page, index) => {
       if(Number(id[1]) === index + 1) setContent(page)
     })
-  }, [clp])
+  }, [clp, id, lessonStructure])
 
   return(
     <main>

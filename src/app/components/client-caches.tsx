@@ -65,7 +65,7 @@ export const Registry = ({ children }: { children: React.ReactNode }) => {
     if(question.get("question") === undefined) question.set("question", 0);
     else question.set("question", q)
     
-    if(MemberData.get('user').membership === 'guest'){
+    if(MemberData.get('user')?.membership === 'guest'){
         MemberData.set("user", userState, { path: '/', maxAge: 60 * 60 * 24})
         question.set("question", q, { maxAge: 60 * 60 * 24})
     }
@@ -103,7 +103,7 @@ export const Stage = ({ children }: { children: React.ReactNode }) => {
   if(LessonComponent.get("clp") === undefined) LessonComponent.set("clp", 1)
   else LessonComponent.set("clp", clp)
 
-  if(MemberData.get("user").membership === 'guest'){
+  if(MemberData.get("user")?.membership === 'guest'){
     LessonComponent.set("stage", s, { maxAge: 60 * 60 * 24})
     LessonComponent.set("clp", clp, { maxAge: 60 * 60 * 24})
   }
