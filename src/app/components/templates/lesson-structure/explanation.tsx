@@ -1,13 +1,15 @@
+import '@/css/lesson-structure/explanation.css'
+
 function ExplanationParagraphs({ explanations }: { explanations: string [] }){
   let holderJSX: JSX.Element[] = []
-explanation.forEach((t) => holderJSX.push(<p>{t}</p>))
+explanations.forEach((t) => holderJSX.push(<p>{t}</p>))
   return <>{holderJSX}</>
 }
 
-function ExamplesTable({ examples }: { examples: string[][] }){
+function ExamplesTable({ init, examples, note }: { init: string, examples: string[][], note: string[] | undefined }){
   let tableRows: JSX.Element[] = []
   examples.forEach((example) => {
-    if(example.length !== 2) return
+    if(example.length !== 3) return
     else{
       tableRows.push(
         <div className="row">
@@ -19,9 +21,13 @@ function ExamplesTable({ examples }: { examples: string[][] }){
     }
   })
   return(
-    <div className="tableLike">
-      {tableRows}
-    </div>
+    <>
+      <strong>{init}</strong>
+      <hr></hr>
+      <div className="tableLike">
+        {tableRows}
+      </div>
+    </>
   )
 }
 
@@ -33,12 +39,17 @@ export function Explanations({ explanations }: { explanations: string[] }){
   )
 }
 
-export function ExplanationWithExamples({ explanations, examples, note }: { explanations: string[], examples: string[][], note: string[] | undefined }){
+export function ExplanationWithExamples({ explanations, examples, initExampleWord, note }: { 
+  explanations: string[], 
+  initExampleWord: string,
+  examples: string[][], 
+  note: string[] | undefined 
+}){
   let content: JSX.Element[] = []
   return(
     <div>
       <ExplanationParagraphs explanations={explanations} />
-      <ExamplesTable examples={examples} />
+      <ExamplesTable init={initExampleWord} examples={examples} note={note} />
     </div>
   )
 }

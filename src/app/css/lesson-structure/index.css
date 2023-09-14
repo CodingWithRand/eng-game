@@ -1,0 +1,17 @@
+@tailwind components;
+@tailwind base;
+
+@layer components{
+    body{
+        @apply f-ic flex-col
+    }
+    .prev-next{
+        @apply my-10 flex justify-between w-[90%];
+    }
+    main{
+        @apply h-[85%] w-[75%]
+    }
+    .topic-header{
+        @apply text-[3rem] text-center my-5
+    }
+}

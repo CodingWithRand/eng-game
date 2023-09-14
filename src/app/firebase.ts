@@ -1,7 +1,6 @@
-import firebase from 'firebase/app';
+import { initializeApp, getApp, getApps } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
 import 'firebase/database';
-import 'firebase/auth';
 
 const clientCredentials = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -10,16 +9,15 @@ const clientCredentials = {
     storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+    databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL
 };
 
-console.log(clientCredentials)
 
-
-if(!firebase.getApps.length){
-    firebase.initializeApp(clientCredentials);
-}
+getApps().length === 0 ? initializeApp(clientCredentials) : getApp();
 
 const db = getDatabase()
+
+console.log(db)
 
 export default db;

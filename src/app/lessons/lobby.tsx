@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 export default function Lobby() {
   const totalLesson = 1;
-  const [ { s, nextS } ] = useStage()
+  const [ { s, nextS }, { clp } ] = useStage()
   const [ { userState } ] = useRegistry()
   const [ availableZones, addAvailableZone ] = useState<JSX.Element[]>((() => {
     let tempZone: JSX.Element[] = [];
@@ -17,7 +17,7 @@ export default function Lobby() {
   
   function enter(LessonComponent: number, les: string){
     nextS(LessonComponent)
-    router.push(`/lessons/${les}/${s}`)
+    router.push(`/lessons/${les}/${s}/${clp}`)
   }
   
   function PremilinaryStages(){

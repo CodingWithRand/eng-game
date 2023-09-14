@@ -5,11 +5,9 @@
 import Cookies from "universal-cookie"
 
 const question = new Cookies(null, { path: '/lessons'});
-const MemberData = new Cookies(null, { path: '/'}) 
+const MemberData = new Cookies(null, { path: '/' }) 
 const UserStats = new Cookies(null, { path: '/lessons' })
-const LessonComponent = new Cookies(null, {
-  path: '/lessons'
-})
+const LessonComponent = new Cookies(null, { path: '/lessons' })
 
 
 export { question, MemberData, UserStats, LessonComponent }

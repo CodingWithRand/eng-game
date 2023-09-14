@@ -60,12 +60,12 @@ export const Registry = ({ children }: { children: React.ReactNode }) => {
     const [ userState, setUserState] = useState<user>(MemberData.get("user") || initialUserData);
     const [ q, setQ ] = useState<number>(question.get("question") || 0);
 
-    if(MemberData.get("user") === undefined) MemberData.set("user", initialUserData, { path: '/' })
-    else MemberData.set("user", userState, { path: '/' })
+    if(MemberData.get("user") === undefined) MemberData.set("user", initialUserData)
+    else MemberData.set("user", userState)
     if(question.get("question") === undefined) question.set("question", 0);
     else question.set("question", q)
     
-    if(userState.membership === 'guest'){
+    if(MemberData.get('user').membership === 'guest'){
         MemberData.set("user", userState, { path: '/', maxAge: 60 * 60 * 24})
         question.set("question", q, { maxAge: 60 * 60 * 24})
     }
@@ -95,8 +95,18 @@ export const Level = ({ children }: { children: React.ReactNode }) => {
 
 export const Stage = ({ children }: { children: React.ReactNode }) => {
   const [ s, nextS ] = useState<number>(LessonComponent.get("stage") || 1)
-  const [ clp, nextCLP ] = useState<number>(1);
+  const [ clp, nextCLP ] = useState<number>(LessonComponent.get("clp") || 1);
   const [ maxPage, setMaxPage] = useState<number>(1)
+
+  if(LessonComponent.get("stage") === undefined) LessonComponent.set("stage", 1)
+  else LessonComponent.set("stage", s)
+  if(LessonComponent.get("clp") === undefined) LessonComponent.set("clp", 1)
+  else LessonComponent.set("clp", clp)
+
+  if(MemberData.get("user").membership === 'guest'){
+    LessonComponent.set("stage", s, { maxAge: 60 * 60 * 24})
+    LessonComponent.set("clp", clp, { maxAge: 60 * 60 * 24})
+  }
 
   return (
         <StageState.Provider value={[
