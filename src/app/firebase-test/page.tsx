@@ -19,3 +19,7 @@
 //         <button onClick={addItem}>test</button>
 //     )
 // }
+
+export default function Test(){
+    return<div>currently close</div>
+}
