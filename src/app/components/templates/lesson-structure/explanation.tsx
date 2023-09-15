@@ -45,11 +45,27 @@ export function ExplanationWithExamples({ explanations, examples, initExampleWor
   examples: string[][], 
   note: string[] | undefined 
 }){
-  let content: JSX.Element[] = []
   return(
     <div>
       <ExplanationParagraphs explanations={explanations} />
       <ExamplesTable init={initExampleWord} examples={examples} note={note} />
+    </div>
+  )
+}
+
+export function Introduction({ intro, topics }: { intros: string[], topics: string[] }){
+  let allIntros: JSX.Element[] = []
+  let allTopics: JSX.Element[] = []
+  intros.forEach(intr => allIntros.push(<p>{intr}</p>))
+  topics.forEach(topc => allTopics.push(<li><p>{topc}</p></li>))
+  return(
+    <div>
+      {allIntros}
+      <strong>Here's what you will learn from this stage</strong>
+      <hr></hr>
+      <ul>
+        {allTopics}
+      </ul>
     </div>
   )
 }
