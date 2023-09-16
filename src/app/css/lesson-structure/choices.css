@@ -6,4 +6,13 @@
         @apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-300 border-2 !important;
     } */
     .q{ @apply text-2xl mb-[-1rem] }
+    .notf-correct{
+        @apply border-8 border-solid border-green-400 rounded-md bg-emerald-400/50 py-4 f-ic flex-col w-[100%]
+    }
+    .andy-resp{
+        @apply w-[80%] text-start font-bold text-green-600 text-4xl my-6
+    }
+    .user-resp{
+        @apply w-[50%] bg-green-400 text-start
+    }
 }

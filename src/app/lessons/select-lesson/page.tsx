@@ -28,6 +28,13 @@ function Render() {
   })
   const [TSXholder, setTSXHolder] = useState<JSX.Element | null>(null);
 
+  const element = document?.querySelector("body");
+  const className = "pre-lesson-body";
+
+  if (!element?.classList.contains(className)) {
+      element?.classList.add(className);
+  }
+
   if(userState.lessons?.some(elem => elem !== '') && userState.name !== '' && q === 5) router.push('/lessons')
   
   useEffect(() => {

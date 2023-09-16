@@ -32,14 +32,23 @@ function Render({ id }: { id: string[] }){
     <Choices
       question='What is the meaning of "Prefix"?'
       choices={["Something", "IDK"]}
+      answers={["Something"]}
       mode="radio"
     />
   ]
-  const [ {}, { clp } ] = useStage()
+  const [ {}, { clp }, {}, { stageFooter, setFooterStyle } ] = useStage()
   const [ content, setContent ] = useState<JSX.Element>(<></>)
   const [ header, setHeaderTXT ] = useState<string>('')
 
-  useEffect(() => {
+  const element = document?.querySelector("body");
+  const className = "pre-lesson-body";
+
+  if (!element?.classList.contains(className)) {
+      element?.classList.add(className);
+  }
+
+  useEffect(() => {    
+    if(stageFooter !== "notf-correct"){ console.log('a'); setFooterStyle("prev-next") }
     if(clp > 0 && clp <= 1) setHeaderTXT('What is the Prefix?')
     else if(clp > 1 && clp <=2) setHeaderTXT('What is the Suffix?')
     else if(clp > 2 && clp <=4) setHeaderTXT('Review')
