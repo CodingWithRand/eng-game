@@ -47,25 +47,35 @@ export function ChoiceTable({ c, mode }: { c: string[], mode: string }) {
       })
     });
   }
+  
+  function check_box(currentIndex: number) {
+    setCheck(prevCheck => {
+      return prevCheck.map((b, i) => {
+        if (i === currentIndex){
+          if (!b) return true
+          else return false
+        }
+      })
+    });
+  }
 
   console.log(checked)
 
-  let btnFuncHolder: () => void;
+  let btnFuncHolder: (i: number) => void;
   
-  useEffect(() => {
     if(mode === "radio"){
-      
-      // if(checked.some(elem => elem === true)){
-      //   setBtnState({opacity: 0.5, deactivate: true})
-      // }else{
-      //   setBtnState({opacity: 1, deactivate: false})
-      // }
+      btnFuncHolder = (i: number) => { radio_check_box(i) }
+    } else if(mode === "check-box") {
+      btnFuncHolder = (i: number) => { check_box(i) }
+    } else {
+      btnFuncHolder = (i: number) => {
+        console.log("retrieve", i)
+      }
     }
-  }, [checked])
 
   c.forEach((choice, index) => {
     totalChoices.push(<div key={index} className="a-choice">
-      <button className="check-box" onClick={() => { radio_check_box(index) }}>{isSelected[index]}</button>
+      <button className="check-box" onClick={() => { btnFuncHolder(index) }}>{isSelected[index]}</button>
       <label className="choice-name">{choice}</label>
     </div>)
   })
@@ -73,12 +83,12 @@ export function ChoiceTable({ c, mode }: { c: string[], mode: string }) {
   return (<div className="choice-list">{totalChoices}</div>)
 }
 
-export function OneChoice({ question, choices }: { question: string, choices: string[] }) {
+export default function Choices({ question, choices, mode }: { question: string, choices: string[], mode: string }) {
 
   return (
     <>
       <div className="q">{question}</div>
-      <ChoiceTable c={choices} mode="radio" />
+      <ChoiceTable c={choices} mode={mode} />
     </>
   )
 }

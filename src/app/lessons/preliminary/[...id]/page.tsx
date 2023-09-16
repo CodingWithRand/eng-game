@@ -3,7 +3,7 @@ import LessonBody from '@/components/templates/lesson-page';
 import { useState, useEffect } from 'react';
 import { useStage, Stage } from '@/components/client-caches'
 import { Explanations, ExplanationWithExamples } from '@/components/templates/lesson-structure/explanations';
-import { OneChoice } from '@/components/templates/lesson-structure/choices';
+import Choices from '@/components/templates/lesson-structure/choices';
 import '@/css/lesson-structure/preliminary/index.css'
 import { CheckSession } from '@/components/useEffect-utils';
 
@@ -29,9 +29,10 @@ function Render({ id }: { id: string[] }){
       ]}
       note={undefined}
     />,
-    <OneChoice
+    <Choices
       question='What is the meaning of "Prefix"?'
       choices={["Something", "IDK"]}
+      mode="radio"
     />
   ]
   const [ {}, { clp } ] = useStage()

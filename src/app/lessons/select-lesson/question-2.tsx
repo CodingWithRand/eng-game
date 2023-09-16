@@ -111,22 +111,22 @@ export default function Question2()
       for(let i = 0; i<lessons_number; i++){
         if(userState.lessons !== null && userState.lessons.some(elem => elem !== '') && i === userState.lessons.findIndex(elem => elem !== ''))
           lessonsListEl.push(
-            <div key={i} className='a-choice'>
+            <div key={i} className='lesson-choice'>
               <button className='check-box' onClick={() => radio_check_box(i, name)}>
               {checkImgs[i]}
               </button>
-              <label className='choice-name'>
+              <label className='lesson-name'>
                 {name[i]}
               </label>
             </div>  
           )
         else{
           lessonsListEl.push(
-            <div key={i} className='a-choice' style={{opacity: btnState.opacity}}>
+            <div key={i} className='lesson-choice' style={{opacity: btnState.opacity}}>
               <button className='check-box' onClick={() => radio_check_box(i, name)} disabled={btnState.deactivate}>
               {checkImgs[i]}
               </button>
-              <label className='choice-name'>
+              <label className='lesson-name'>
                 {name[i]}
               </label>
             </div>  
@@ -137,7 +137,7 @@ export default function Question2()
     }
 
     return(
-      <div className='choice-list'>
+      <div className='lessons-list'>
         <LessonsList name={["Premilinary", "Vocabularies"]} />
       </div>
      );

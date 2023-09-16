@@ -45,8 +45,8 @@ type ss = [
     setMaxPage: React.Dispatch<React.SetStateAction<number>>
   },
   {
-    choiceAns: string[]
-    setChoiceAns: React.Dispatch<React.SetStateAction<string[]>>
+    stageFooter: string
+    setFooterStyle: React.Dispatch<React.SetStateAction<string>>
   }
 ]
 
@@ -101,7 +101,7 @@ export const Stage = ({ children }: { children: React.ReactNode }) => {
   const [ s, nextS ] = useState<number>(LessonComponent.get("stage") || 1)
   const [ clp, nextCLP ] = useState<number>(LessonComponent.get("clp") || 1);
   const [ maxPage, setMaxPage] = useState<number>(LessonComponent.get("mp") || 1)
-  const [ choiceAns, setChoiceAns ] = useState<string[]>([])
+  const [ stageFooter, setFooterStyle ] = useState<string>('')
 
   if(LessonComponent.get("stage") === undefined) LessonComponent.set("stage", 1)
   else LessonComponent.set("stage", s)
@@ -121,7 +121,7 @@ export const Stage = ({ children }: { children: React.ReactNode }) => {
             { s, nextS },
             { clp, nextCLP },
             { maxPage, setMaxPage },
-            { choiceAns, setChoiceAns }
+            { stageFooter, setFooterStyle }
         ]}>
             {children}
         </StageState.Provider>

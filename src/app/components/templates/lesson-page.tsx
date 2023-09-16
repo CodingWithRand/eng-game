@@ -5,8 +5,10 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 export default function LessonBody({ children }: any) {
-  const [{ s }, { clp, nextCLP }, { maxPage }] = useStage()
+  const [{ s }, { clp, nextCLP }, { maxPage }, { stageFooter }] = useStage()
   const router = useRouter()
+  const generateArrsRandint = (arr) => Math.floor(Math.random() * arr.length)
+  let currentFooter: JSX.Element = <></>
 
   useEffect(() => {
     router.push(`/lessons/preliminary/${s}/${clp}`)
@@ -21,10 +23,10 @@ export default function LessonBody({ children }: any) {
     if (clp > 1) nextCLP(prevPage => prevPage - 1)
     else router.push('/lessons')
   }
-  return (
-    <main className='pre-lesson-body'>
-      {children}
-      <div className='prev-next'>
+  
+  useEffect(() => {
+    if(footerStyle === "prev-next"){
+      currentFooter = <div className='prev-next'>
         <button onClick={prevBtn} >
           <Image src="/imgs/icons/prev.png" width={50} height={50} alt="Previous Page" />
         </button>
@@ -32,6 +34,20 @@ export default function LessonBody({ children }: any) {
           <Image src="/imgs/icons/next.png" width={50} height={50} alt="Next Page" />
         </button>
       </div>
+    } else if(footerStyle === "notf-correct")
+      
+      const congratsText = ["You made it!", "Easy, does it?", "You're on fire!"]
+      const userResponseText = []
+      currentFooter = <div className='notf-correct'>
+        <label className="andy-resp">{congratsText[generateArrsRandint(congratsText)]}</label>
+        <button className="user-resp">{userResponseText[generateArrsRandint(userResponseText)]}</button>
+      </div>
+  }, [footerStyle])
+  
+  return (
+    <main className='pre-lesson-body'>
+      {children}
+      {currentFooter}
     </main>
   )
 }
