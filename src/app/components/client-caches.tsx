@@ -43,6 +43,10 @@ type ss = [
   {
     maxPage: number,
     setMaxPage: React.Dispatch<React.SetStateAction<number>>
+  },
+  {
+    choiceAns: string[]
+    setChoiceAns: React.Dispatch<React.SetStateAction<string[]>>
   }
 ]
 
@@ -96,12 +100,16 @@ export const Level = ({ children }: { children: React.ReactNode }) => {
 export const Stage = ({ children }: { children: React.ReactNode }) => {
   const [ s, nextS ] = useState<number>(LessonComponent.get("stage") || 1)
   const [ clp, nextCLP ] = useState<number>(LessonComponent.get("clp") || 1);
-  const [ maxPage, setMaxPage] = useState<number>(1)
+  const [ maxPage, setMaxPage] = useState<number>(LessonComponent.get("mp") || 1)
+  const [ choiceAns, setChoiceAns ] = useState<string[]>([])
 
   if(LessonComponent.get("stage") === undefined) LessonComponent.set("stage", 1)
   else LessonComponent.set("stage", s)
   if(LessonComponent.get("clp") === undefined) LessonComponent.set("clp", 1)
   else LessonComponent.set("clp", clp)
+  if(LessonComponent.get("mp") === undefined) LessonComponent.set("mp", 1)
+  else LessonComponent.set("mp", maxPage)
+
 
   if(MemberData.get("user")?.membership === 'guest'){
     LessonComponent.set("stage", s, { maxAge: 60 * 60 * 24})
@@ -112,7 +120,8 @@ export const Stage = ({ children }: { children: React.ReactNode }) => {
         <StageState.Provider value={[
             { s, nextS },
             { clp, nextCLP },
-            { maxPage, setMaxPage }
+            { maxPage, setMaxPage },
+            { choiceAns, setChoiceAns }
         ]}>
             {children}
         </StageState.Provider>

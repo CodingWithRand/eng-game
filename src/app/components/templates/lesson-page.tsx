@@ -13,14 +13,16 @@ export default function LessonBody({ children }: any) {
   }, [clp])
 
   function nextBtn() {
+    console.log(maxPage, clp)
     if (clp <= maxPage){ nextCLP(prevPage => prevPage + 1); }
     else return
   }
   function prevBtn() {
     if (clp > 1) nextCLP(prevPage => prevPage - 1)
+    else router.push('/lessons')
   }
   return (
-    <>
+    <main className='pre-lesson-body'>
       {children}
       <div className='prev-next'>
         <button onClick={prevBtn} >
@@ -30,6 +32,6 @@ export default function LessonBody({ children }: any) {
           <Image src="/imgs/icons/next.png" width={50} height={50} alt="Next Page" />
         </button>
       </div>
-    </>
+    </main>
   )
 }

@@ -1,0 +1,9 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    /* .check-box{
+        @apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-300 border-2 !important;
+    } */
+    .q{ @apply text-2xl mb-[-1rem] }
+}

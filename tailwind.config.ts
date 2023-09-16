@@ -36,6 +36,18 @@ const config: Config = {
         },
         '.btn-style': {
           '@apply rounded-xl p-5 text-white text-xl !important': {},
+        },
+        '.check-box': {
+          '@apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-300 border-2 !important': {}
+        },
+        '.choice-list': {
+          '@apply my-14 border-solid border-2 border-gray-400 rounded-md px-1 !important': {}
+        },
+        '.choice-list .a-choice:last-child': {
+          '@apply border-0 !important': {}
+        },
+        '.a-choice': {
+          '@apply border-solid border-gray-300 fr-ic gap-x-4 p-4 border-b-2 !important': {}
         }
       }
       addUtilities(initialUtilities)

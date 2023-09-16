@@ -1,4 +1,4 @@
-import '@/css/lesson-structure/explanation.css'
+import '@/css/lesson-structure/explanations.css'
 
 function ExplanationParagraphs({ explanations }: { explanations: string [] }){
   let holderJSX: JSX.Element[] = []
@@ -53,7 +53,7 @@ export function ExplanationWithExamples({ explanations, examples, initExampleWor
   )
 }
 
-export function Introduction({ intro, topics }: { intros: string[], topics: string[] }){
+export function Introduction({ intros, topics }: { intros: string[], topics: string[] }){
   let allIntros: JSX.Element[] = []
   let allTopics: JSX.Element[] = []
   intros.forEach(intr => allIntros.push(<p>{intr}</p>))

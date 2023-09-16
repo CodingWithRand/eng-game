@@ -2,13 +2,14 @@
 @tailwind base;
 
 @layer components{
-    body{
-        @apply f-ic flex-col
+    .pre-lesson { @apply min-h-screen h-full overflow-auto }
+    .pre-lesson-body{
+        @apply f-ic flex-col h-full w-full
     }
     .prev-next{
         @apply my-10 flex justify-between w-[90%];
     }
-    main{
+    .content{
         @apply h-[85%] w-[75%]
     }
     .topic-header{

@@ -2,8 +2,10 @@
 import LessonBody from '@/components/templates/lesson-page';
 import { useState, useEffect } from 'react';
 import { useStage, Stage } from '@/components/client-caches'
-import { Explanations, ExplanationWithExamples } from '@/components/templates/lesson-structure/explanation';
-import '@/css/lesson-structure/index.css'
+import { Explanations, ExplanationWithExamples } from '@/components/templates/lesson-structure/explanations';
+import { OneChoice } from '@/components/templates/lesson-structure/choices';
+import '@/css/lesson-structure/preliminary/index.css'
+import { CheckSession } from '@/components/useEffect-utils';
 
 function Render({ id }: { id: string[] }){
   const lessonStructure = [
@@ -26,6 +28,10 @@ function Render({ id }: { id: string[] }){
         ["-ed", "in", "jumped"]
       ]}
       note={undefined}
+    />,
+    <OneChoice
+      question='What is the meaning of "Prefix"?'
+      choices={["Something", "IDK"]}
     />
   ]
   const [ {}, { clp } ] = useStage()
@@ -35,16 +41,17 @@ function Render({ id }: { id: string[] }){
   useEffect(() => {
     if(clp > 0 && clp <= 1) setHeaderTXT('What is the Prefix?')
     else if(clp > 1 && clp <=2) setHeaderTXT('What is the Suffix?')
+    else if(clp > 2 && clp <=4) setHeaderTXT('Review')
     lessonStructure.forEach((page, index) => {
       if(Number(id[1]) === index + 1) setContent(page)
     })
-  }, [clp, id, lessonStructure])
+  }, [clp, id])
 
   return(
-    <main>
+    <div className='content'>
         <div className='topic-header'>{header}</div>
         {content}
-    </main>
+    </div>
   )
 }
 
@@ -53,6 +60,7 @@ export default function Premilinary({ params: { id } }: { params: { id: string[]
   return(
     <Stage>
       <LessonBody>
+        <CheckSession />
         <Render id={id}/>
       </LessonBody>
     </Stage>

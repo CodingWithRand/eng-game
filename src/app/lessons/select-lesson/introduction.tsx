@@ -26,17 +26,17 @@ export default function Introduction() {
   <>
     <div className="greeting-page">
     
-    <div className="msg-box">
-      <div className="nester">
-        <Image src="/imgs/icons/conversation.png" alt="outline" layout='fill' objectFit='contain'/>
-        <div className="msg">
-          <p>{msg}</p>
-          <button onClick={callMsg}>» Next »</button>
+      <div className="msg-box">
+        <div className="nester">
+          <Image src="/imgs/icons/conversation.png" alt="outline" layout='fill' objectFit='contain'/>
+          <div className="msg">
+            <p>{msg}</p>
+            <button onClick={callMsg}>» Next »</button>
+          </div>
         </div>
       </div>
+  	  <Image src="/imgs/andy/andy-greet.png" alt='teacher' width={240} height={160} className="teacher"/>
     </div>
-  	<Image src="/imgs/andy/andy-greet.png" alt='teacher' width={240} height={160} className="teacher"/>
-  </div>
   </>
   )
 }

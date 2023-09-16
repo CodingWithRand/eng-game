@@ -71,7 +71,10 @@ export default function FormPage({ children, utilities }: any) {
     if (utilities.footerStyle.name === 'one-btn') {
         footerEl =
             <div className='submit'>
-                <button className='continue-btn' onClick={submit}>{utilities.footerStyle.btnText}</button>
+                <div className="gradient"></div>
+                <div className="btn-nester">
+                  <button className='continue-btn' onClick={submit}>{utilities.footerStyle.btnText}</button>
+                </div>
             </div>
     } else if (utilities.footerStyle.name === 'prev-next') {
         footerEl =
@@ -99,7 +102,7 @@ export default function FormPage({ children, utilities }: any) {
     } else { headerEl = <></> }
 
     return (
-        <main>
+        <main className="form-body">
             {headerEl}
             <div className='form-container'>
                 {children}

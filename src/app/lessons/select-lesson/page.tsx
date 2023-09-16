@@ -44,9 +44,9 @@ function Render() {
     checkPeriodically();
   }, []);
 
+
   useEffect(() => {
     if (!userState.loggedIn || userState.loggedIn === null) return;
-    
     switch (q) {
       case 0:
         setLayoutUtilities(prevState => ({

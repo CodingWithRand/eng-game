@@ -8,14 +8,18 @@
   .center-head-text{
     @apply f-jc text-4xl mt-20 w-[80%];
   }
-  .check-box{
-    @apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-300 border-2 !important;
-  }
+  
   .lesson-name{
     @apply f-jc;
   }
   .submit{
-    @apply f-jc w-full pb-10
+    @apply f-jc w-full fixed bottom-[0rem] flex-wrap items-end
+  }
+  .gradient{
+    @apply w-[101.5%] h-[5rem] bg-gradient-to-t from-white to-white/0
+  }
+  .btn-nester{
+    @apply w-full pb-10 bg-white f-jc
   }
   .continue-btn{
     @apply shadow-btn-green btn-style bg-emerald-400 w-[40%] py-4 !important;
@@ -23,23 +27,14 @@
   .form-container{
     @apply h-full w-[80%]
   }
-  .lessons-list{
-    @apply my-14 border-solid border-2 border-gray-400 rounded-md px-1 !important;
-  }
-
-  .lessons-list .lesson-choice:last-child{
-    @apply border-0 !important
-  }
-  .lesson-choice{
-    @apply border-solid border-gray-300 fr-ic gap-x-4 p-4 border-b-2 !important;
-  }
 
   .prev-next{
     @apply my-10 flex justify-between w-[90%];
   }
   
-  main{
-    @apply f-ic flex-col w-full;
+  .form { @apply min-h-screen h-full overflow-auto }
+  .form-body {
+    @apply f-ic flex-col h-full justify-between;
   }
   
   .form-input{
@@ -93,6 +88,18 @@
   }
   .teacher{
     @apply select-none absolute 2xl:w-[20rem]
+  }
+  .lesson-info{
+    @apply my-4
+  }
+  .opening{
+    @apply text-lg my-6
+  }
+  .units{
+    @apply my-6
+  }
+  .units p span{
+    @apply mx-4
   }
 }
 
