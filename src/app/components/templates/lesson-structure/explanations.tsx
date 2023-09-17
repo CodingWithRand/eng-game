@@ -61,7 +61,7 @@ export function Introduction({ intros, topics }: { intros: string[], topics: str
   return(
     <div>
       {allIntros}
-      <strong>Here's what you will learn from this stage</strong>
+      <strong>Here&apos;s what you will learn from this stage</strong>
       <hr></hr>
       <ul>
         {allTopics}

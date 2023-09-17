@@ -30,6 +30,7 @@ function Render({ id }: { id: string[] }){
       note={undefined}
     />,
     <Choices
+      key="c-1"
       question='What is the meaning of "Prefix"?'
       choices={["Something", "IDK"]}
       answers={["Something"]}

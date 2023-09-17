@@ -24,7 +24,7 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
       if (b) appear((prevSelecting) => {
         return prevSelecting.map((se, index) => {
           if (index !== i) return se
-          return <Image src={'/imgs/icons/check-icon.png'} width='50' height='50' alt='checked' />
+          return <Image key={i} src={'/imgs/icons/check-icon.png'} width='50' height='50' alt='checked' />
         }
         )
       })
@@ -44,7 +44,7 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
         if(c[i] === a[i]) setFooterStyle("notf-correct")
       }
     })
-  }, [checked])
+  }, [checked, mode])
 
   function radio_check_box(currentIndex: number) {
     setCheck(prevCheck => {
