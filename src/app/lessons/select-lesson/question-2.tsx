@@ -7,10 +7,10 @@ import { generateStateArray } from "@/components/utils";
 
 export default function Question2() 
 {
-    const available_lesson = 2
+    const available_lesson = ["Preliminary", "Vocabularies"]
     const [ { userState, setUserState } ] = useRegistry();
-    const [ checked, check ] = useState<boolean[] | any[]>(generateStateArray("boolean", available_lesson));
-    const [ checkImgs, appear ] = useState<JSX.Element[] | any[]>(generateStateArray("JSX.Element", available_lesson));
+    const [ checked, check ] = useState<boolean[] | any[]>(generateStateArray("boolean", undefined, available_lesson));
+    const [ checkImgs, appear ] = useState<JSX.Element[] | any[]>(generateStateArray("JSX.Element", undefined, available_lesson));
     const [ btnState, setBtnState ] = useState<{ opacity: number, deactivate: boolean }>({opacity: 1, deactivate: false})
     let lessonsListEl: JSX.Element[] = [];
 
