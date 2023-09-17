@@ -114,6 +114,7 @@ export const Stage = ({ children }: { children: React.ReactNode }) => {
   if(MemberData.get("user")?.membership === 'guest'){
     LessonComponent.set("stage", s, { maxAge: 60 * 60 * 24})
     LessonComponent.set("clp", clp, { maxAge: 60 * 60 * 24})
+    LessonComponent.set("mp", maxPage, { maxAge: 60 * 60 * 24})
   }
 
   return (

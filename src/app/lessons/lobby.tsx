@@ -15,16 +15,15 @@ export default function Lobby() {
   const router = useRouter()
   
   
-  function enter(LessonComponent: number, les: string, totalPage: number){
+  function enter(LessonComponent: number, les: string){
     nextS(LessonComponent)
-    setMaxPage(totalPage)
     router.push(`/lessons/${les.toLowerCase()}/${LessonComponent}/${clp}`)
   }
   
   function PremilinaryStages(){
     return(
       <div>
-        <button onClick={() => enter(1, "Preliminary", 3)} className="a-stage"></button>
+        <button onClick={() => enter(1, "Preliminary")} className="a-stage"></button>
       </div>
     )
   }

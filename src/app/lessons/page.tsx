@@ -37,7 +37,6 @@ function Render() {
 
   return( 
   <>
-    <CheckSession />
     {holderPage}
   </>);
 }
@@ -47,6 +46,7 @@ export default function LessonMain() {
     <Registry>
       <Level>
         <Stage>
+          <CheckSession />
           <Render />
         </Stage>
       </Level>

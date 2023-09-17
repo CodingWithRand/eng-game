@@ -11,7 +11,11 @@
     .row p{
         @apply basis-1/3 text-center
     }
-    p { @apply text-lg }
+    p { @apply text-base sm:text-lg; }
+    .exp-p{ @apply indent-4 my-2 }
     hr { @apply my-4 !important }
     strong { @apply text-xl }
+    .real-lesson-content{
+        @apply h-[75%] overflow-auto
+    }
 }

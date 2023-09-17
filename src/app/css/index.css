@@ -68,5 +68,8 @@
   .shadow-btn-blue{
     box-shadow: 0 0.75rem 0 0 rgb(37 99 235);
   }
+  .btn-style {
+    @apply rounded-xl p-5 text-white text-xl !important
+  }
 }
 

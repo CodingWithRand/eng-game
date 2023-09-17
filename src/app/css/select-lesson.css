@@ -27,10 +27,6 @@
   .form-container{
     @apply h-full w-[80%]
   }
-
-  .prev-next{
-    @apply my-10 flex justify-between w-[90%];
-  }
   
   .form { @apply min-h-screen h-full overflow-auto }
   .form-body {
@@ -106,5 +102,8 @@
 @layer utilities{
   .shadow-btn-green{
     box-shadow: 0 0.75rem 0 0 rgb(16, 185, 129) !important;
+  }
+  .btn-style {
+    @apply rounded-xl p-5 text-white text-xl !important;
   }
 }

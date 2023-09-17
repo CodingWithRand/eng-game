@@ -34,20 +34,20 @@ const config: Config = {
         '.f-jc': {
           '@apply flex justify-center': {},
         },
-        '.btn-style': {
-          '@apply rounded-xl p-5 text-white text-xl !important': {},
-        },
         '.check-box': {
-          '@apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-300 border-2 !important': {}
+          '@apply min-w-[35px] min-h-[35px] bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-300 border-2 sm:min-w-[50px] sm:min-h-[50px] !important': {}
         },
         '.choice-list': {
-          '@apply my-14 border-solid border-2 border-gray-400 rounded-md px-1 !important': {}
+          '@apply my-10 border-solid border-2 border-gray-400 rounded-md px-1 sm:my-14 !important': {}
         },
         '.choice-list .a-choice:last-child': {
           '@apply border-0 !important': {}
         },
         '.a-choice': {
-          '@apply border-solid border-gray-300 fr-ic gap-x-4 p-4 border-b-2 !important': {}
+          '@apply border-solid border-gray-300 fr-ic p-2 border-b-2 gap-x-2 sm:p-4 sm:gap-x-4 !important': {}
+        },
+        '.prev-next': {
+          '@apply my-10 flex justify-between w-[90%]' :{}
         }
       }
       addUtilities(initialUtilities)

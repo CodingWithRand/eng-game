@@ -4,6 +4,7 @@ import Image from "next/image"
 import '@/css/lesson-structure/choices.css'
 
 export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: string[] }) {
+  console.log(c, a)
   const [checked, setCheck] = useState<boolean[]>((() => {
     let tempBools: boolean[] = []
     for (let i = 0; i < c.length; i++) tempBools.push(false)
@@ -42,11 +43,12 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
   useEffect(() => {
     if(mode === "radio") checked.forEach((b, i) => {
       if(b){
-        if(c[i] === a[i]) setFooterStyle("notf-correct");
+        console.log(b, i)
+        if(c[i] === a[a.findIndex((ans) => ans === c[i])]) setFooterStyle("notf-correct");
         else setFooterStyle("notf-wrong");
       }
     })
-  }, [checked, mode])
+  }, [checked, mode, c, a, setFooterStyle])
 
   function radio_check_box(currentIndex: number) {
     setCheck(prevCheck => {
@@ -75,7 +77,6 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
   }
 
   let btnFuncHolder: (i: number) => void;
-  
     if(mode === "radio"){
       btnFuncHolder = (i: number) => { radio_check_box(i) }
     } else if(mode === "check-box") {

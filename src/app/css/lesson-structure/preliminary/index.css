@@ -6,13 +6,10 @@
     .pre-lesson-body{
         @apply f-ic flex-col h-full w-full
     }
-    .prev-next{
-        @apply my-10 flex justify-between w-[90%];
-    }
     .content{
         @apply h-[85%] w-[75%]
     }
     .topic-header{
-        @apply text-[3rem] text-center my-5
+        @apply text-4xl text-center my-5 sm:my-10 sm:text-[3rem]
     }
 }

@@ -2,7 +2,7 @@ import '@/css/lesson-structure/explanations.css'
 
 function ExplanationParagraphs({ explanations }: { explanations: string [] }){
   let holderJSX: JSX.Element[] = []
-explanations.forEach((t) => holderJSX.push(<p>{t}</p>))
+explanations.forEach((t) => holderJSX.push(<p className='exp-p'>{t}</p>))
   return <>{holderJSX}</>
 }
 
@@ -33,7 +33,7 @@ function ExamplesTable({ init, examples, note }: { init: string, examples: strin
 
 export function Explanations({ explanations }: { explanations: string[] }){
   return(
-    <div className="exp">
+    <div className="exp real-lesson-content">
       <ExplanationParagraphs explanations={explanations} />
     </div>
   )
@@ -46,7 +46,7 @@ export function ExplanationWithExamples({ explanations, examples, initExampleWor
   note: string[] | undefined 
 }){
   return(
-    <div>
+    <div className='real-lesson-content'>
       <ExplanationParagraphs explanations={explanations} />
       <ExamplesTable init={initExampleWord} examples={examples} note={note} />
     </div>
@@ -59,7 +59,7 @@ export function Introduction({ intros, topics }: { intros: string[], topics: str
   intros.forEach(intr => allIntros.push(<p>{intr}</p>))
   topics.forEach(topc => allTopics.push(<li><p>{topc}</p></li>))
   return(
-    <div>
+    <div className='real-lesson-content'>
       {allIntros}
       <strong>Here&apos;s what you will learn from this stage</strong>
       <hr></hr>

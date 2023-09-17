@@ -8,23 +8,23 @@ export default function LessonBody({ children }: any) {
   const [{ s }, { clp, nextCLP }, { maxPage }, { stageFooter }] = useStage()
   const router = useRouter()
   const generateArrsRandint = (arr: any[]) => Math.floor(Math.random() * arr.length)
-  const [ currentFooter, setCF ] = useState<JSX.Element>(<></>)
+  const [currentFooter, setCF] = useState<JSX.Element>(<></>)
 
   useEffect(() => {
     router.push(`/lessons/preliminary/${s}/${clp}`)
   }, [clp])
 
   function nextBtn() {
-    if (clp <= maxPage){ nextCLP(prevPage => prevPage + 1); }
+    if (clp <= maxPage) { nextCLP(prevPage => prevPage + 1); }
     else return
   }
   function prevBtn() {
     if (clp > 1) nextCLP(prevPage => prevPage - 1)
     else router.push('/lessons')
   }
-  
+
   useEffect(() => {
-    if(stageFooter === "prev-next"){
+    if (stageFooter === "prev-next") {
       setCF(<div className='prev-next'>
         <button onClick={prevBtn} >
           <Image src="/imgs/icons/prev.png" width={50} height={50} alt="Previous Page" />
@@ -33,32 +33,35 @@ export default function LessonBody({ children }: any) {
           <Image src="/imgs/icons/next.png" width={50} height={50} alt="Next Page" />
         </button>
       </div>)
-    } else if(stageFooter === "notf-correct") {
-      
-      const congratsText = ["You made it!", "Easy, does it?", "You\'re on fire!"]
+    } else if (stageFooter === "notf-correct") {
+      const congratsText = ["You made it!", "Easy, does it?", "You\'re on fire!", "Execellent!", "Nicely Done!"]
       const userResponseText = ["Thank you", "...", ":)"]
       setCF(<div className='notf-correct'>
-        <Image src="" width={50} height={50} alt="andy-cheer" />
         <div className="chatbox">
-        <label className="andy-resp correct">{congratsText[generateArrsRandint(congratsText)]}</label>
-        <button className="user-resp correct">{userResponseText[generateArrsRandint(userResponseText)]}</button>
+          <Image src={`/imgs/andy/andy-cheer-${Math.floor(Math.random() * 2) + 1}.png`} width={100} height={100} alt="andy-cheer"/>
+          <div className='msg-box'>
+            <label className="andy-resp correct">{congratsText[generateArrsRandint(congratsText)]}</label>
+            <button className="user-resp correct" onClick={nextBtn}>{userResponseText[generateArrsRandint(userResponseText)]}</button>
+          </div>
         </div>
       </div>)
-    } else if(stageFooter === "notf-wrong") {
-const congratsText = ["Try Again", "Sorry, but that\'s wrong", "Meh, come one"]
-      const userResponseText = ["Let me try again", "OK", "...", ":("]
-      setCF(<div className='notf-wrong'>
-        <Image src="" width={50} height={50} alt="andy-cheer" />
+    } else if (stageFooter === "notf-wrong") {
+      const congratsText = ["Aww, too bad", "Sorry, but that\'s wrong", "Meh, come one"]
+      const userResponseText = ["OK", "...", ":("]
+      setCF(<div className='notf-wrong'> 
         <div className="chatbox">
-        <label className="andy-resp wrong">{congratsText[generateArrsRandint(congratsText)]}</label>
-        <button className="user-resp wrong">{userResponseText[generateArrsRandint(userResponseText)]}</button>
+          <Image src="" width={100} height={100} alt="andy-sad" />
+          <div className='msg-box'>
+            <label className="andy-resp wrong">{congratsText[generateArrsRandint(congratsText)]}</label>
+            <button className="user-resp wrong" onClick={nextBtn}>{userResponseText[generateArrsRandint(userResponseText)]}</button>
+          </div>
         </div>
       </div>)
     } else {
       setCF(<></>)
     }
   }, [stageFooter])
-  
+
   return (
     <main className='pre-lesson-body'>
       {children}

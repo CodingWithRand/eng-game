@@ -5,38 +5,47 @@
     /* .check-box{
         @apply bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-300 border-2 !important;
     } */
-    .q{ @apply text-2xl mb-[-1rem] }
+    .q{ @apply text-center text-lg mb-[-1rem] sm:text-2xl }
     .notf-correct{
-        @apply border-8 border-solid border-green-400 rounded-md bg-emerald-400/50 py-4 fr-ic justify-center w-[90%]
+        @apply fixed bottom-0 border-8 border-solid border-green-400 rounded-md bg-emerald-400/50 py-4 fr-ic justify-center w-[100%];
     }
     .andy-resp{
-        @apply w-[80%] text-start font-bold text-4xl my-4
+        @apply md:w-[80%] text-start font-bold my-4 text-2xl md:text-4xl;
     }
     .user-resp{
-        @apply w-[50%] text-start my-4 btn-style font-bold f-jc
+        @apply w-[75%] text-start my-4 btn-style font-bold f-jc lg:w-[50%];
     }
     .andy-resp.correct{
-        @apply text-green-600
+        @apply text-green-600;
     }
     .user-resp.correct{
-        @apply bg-green-400
+        @apply bg-green-400 correct-shadow;
     }
     .andy-resp.wrong{
-        @apply text-red-600
+        @apply text-red-600;
     }
     .user-resp.wrong{
-        @apply bg-red-400 wrong-shadow
+        @apply bg-red-400 wrong-shadow;
     }
     .notf-wrong{
-        @apply border-8 border-solid border-red-400 rounded-md bg-red-400/50 py-4 fr-ic justify-center w-[100%] gap-x-4
+        @apply fixed bottom-0 border-8 border-solid border-red-400 rounded-md bg-red-400/50 py-4 fr-ic justify-center w-[100%] gap-x-4;
     }
     .chatbox{
-
+        @apply w-[90%] fr-ic gap-x-4;
+    }
+    .msg-box{
+        @apply f-jc flex-col grow;
     }
 }
 
 @layer utilities{
     .wrong-shadow{
         box-shadow: 0 0.75rem 0 0 rgb(220 38 38);
+    }
+    .correct-shadow{
+        box-shadow: 0 0.75rem 0 0 rgb(22 163 74);
+    }
+    .btn-style {
+        @apply rounded-xl p-5 text-white text-xl !important;
     }
 }
