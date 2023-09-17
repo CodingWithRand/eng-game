@@ -6,6 +6,7 @@ import { Explanations, ExplanationWithExamples } from '@/components/templates/le
 import Choices from '@/components/templates/lesson-structure/choices';
 import '@/css/lesson-structure/preliminary/index.css'
 import { CheckSession } from '@/components/useEffect-utils';
+import { LessonComponent } from '@/server/cookies'
 
 function Render({ id }: { id: string[] }){
   const lessonStructure = [
@@ -40,22 +41,34 @@ function Render({ id }: { id: string[] }){
   const [ {}, { clp }, {}, { stageFooter, setFooterStyle } ] = useStage()
   const [ content, setContent ] = useState<JSX.Element>(<></>)
   const [ header, setHeaderTXT ] = useState<string>('')
+  
+  useEffect(() => {
+  if(document !== undefined){
+    const element = document?.querySelector("body");
+    const className = "pre-lesson";
 
-  const element = document?.querySelector("body");
-  const className = "pre-lesson-body";
-
-  if (!element?.classList.contains(className)) {
+    if (!element?.classList.contains(className)) {
       element?.classList.add(className);
-  }
-
+    }
+  }}, [])
+  
+  useEffect(() => {
+  if(LessonComponent.get("clp") === undefined && LessonComponent.get('mp') !== 1) window?.location.reload()
+  }, [])
+  
   useEffect(() => {    
     if(stageFooter !== "notf-correct"){ console.log('a'); setFooterStyle("prev-next") }
-    if(clp > 0 && clp <= 1) setHeaderTXT('What is the Prefix?')
+    
+    switch(Number(id[0])){
+      case 1: 
+if(clp > 0 && clp <= 1) setHeaderTXT('What is the Prefix?')
     else if(clp > 1 && clp <=2) setHeaderTXT('What is the Suffix?')
     else if(clp > 2 && clp <=4) setHeaderTXT('Review')
-    lessonStructure.forEach((page, index) => {
+        lessonStructure.forEach((page, index) => {
       if(Number(id[1]) === index + 1) setContent(page)
     })
+        break;
+    }
   }, [clp, id])
 
   return(
