@@ -12,7 +12,7 @@ import FormPage from '@/templates/select-lesson-form';
 import { MemberData, question } from '@/server/cookies';
 
 import '@/css/select-lesson.css';
-import { CheckSession } from '@/components/useEffect-utils';
+import { CheckSession } from '@/components/utils';
 
 function Render() {
   const [{ userState }, { q }] = useRegistry();

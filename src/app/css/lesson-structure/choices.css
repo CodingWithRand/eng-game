@@ -33,7 +33,7 @@
     .chatbox{
         @apply w-[90%] fr-ic gap-x-4;
     }
-    .msg-box{
+    .lesson-msg-box{
         @apply f-jc flex-col grow;
     }
 }

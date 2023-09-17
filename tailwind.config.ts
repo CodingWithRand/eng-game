@@ -15,6 +15,7 @@ const config: Config = {
       },
       screens:{
         'smd': {'min': '768px','max': '932px'},
+        'ssm': {'max': '640px'},
         'xs': {'min': '520px', 'max': '640px'},
         '2xs': {'min': '435px', 'max': '520px'},
         '3xs': {'min': '376px', 'max': '434px' },
@@ -33,6 +34,9 @@ const config: Config = {
         },
         '.f-jc': {
           '@apply flex justify-center': {},
+        },
+        '.fr-jc': {
+          '@apply f-jc flex-row': {},
         },
         '.check-box': {
           '@apply min-w-[35px] min-h-[35px] bg-transparent rounded-md p-1 w-10 h-10 border-solid border-gray-300 border-2 sm:min-w-[50px] sm:min-h-[50px] !important': {}

@@ -1,13 +1,13 @@
 'use client'
-import { useStage, Stage } from '@/components/client-caches'
+import { useStage } from '@/components/client-caches'
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { generateArrsRandint } from '@/components/utils';
 
 export default function LessonBody({ children }: any) {
   const [{ s }, { clp, nextCLP }, { maxPage }, { stageFooter }] = useStage()
   const router = useRouter()
-  const generateArrsRandint = (arr: any[]) => Math.floor(Math.random() * arr.length)
   const [currentFooter, setCF] = useState<JSX.Element>(<></>)
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function LessonBody({ children }: any) {
       setCF(<div className='notf-correct'>
         <div className="chatbox">
           <Image src={`/imgs/andy/andy-cheer-${Math.floor(Math.random() * 2) + 1}.png`} width={100} height={100} alt="andy-cheer"/>
-          <div className='msg-box'>
+          <div className='lesson-msg-box'>
             <label className="andy-resp correct">{congratsText[generateArrsRandint(congratsText)]}</label>
             <button className="user-resp correct" onClick={nextBtn}>{userResponseText[generateArrsRandint(userResponseText)]}</button>
           </div>
@@ -51,7 +51,7 @@ export default function LessonBody({ children }: any) {
       setCF(<div className='notf-wrong'> 
         <div className="chatbox">
           <Image src="" width={100} height={100} alt="andy-sad" />
-          <div className='msg-box'>
+          <div className='lesson-msg-box'>
             <label className="andy-resp wrong">{congratsText[generateArrsRandint(congratsText)]}</label>
             <button className="user-resp wrong" onClick={nextBtn}>{userResponseText[generateArrsRandint(userResponseText)]}</button>
           </div>

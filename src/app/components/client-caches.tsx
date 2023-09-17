@@ -87,6 +87,17 @@ export const Registry = ({ children }: { children: React.ReactNode }) => {
 export const Level = ({ children }: { children: React.ReactNode }) => {
   const [ xp, generateXP ] = useState<number>(UserStats.get("xp") || 0)
   const [ level, levelup ] = useState<number>(UserStats.get("level") || 1)
+
+  if(UserStats.get("xp") === undefined) LessonComponent.set("xp", 1)
+  else UserStats.set("xp", xp)
+  if(UserStats.get("level") === undefined) LessonComponent.set("level", 1)
+  else UserStats.set("level", level)
+
+  if(MemberData.get("user")?.membership === 'guest'){
+    UserStats.set("level", level, { maxAge: 60 * 60 * 24})
+    UserStats.set("xp", xp, { maxAge: 60 * 60 * 24})
+  }
+
   return (
         <LevelState.Provider value={[
             { xp, generateXP },

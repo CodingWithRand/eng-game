@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useRegistry, Registry, Level, Stage } from '@/components/client-caches';
-import { CheckSession } from '@/components/useEffect-utils';
+import { CheckSession } from '@/components/utils';
 import Lobby from './lobby';
 import '@/css/lobby.css'
 import { question } from '@/components/server/cookies';

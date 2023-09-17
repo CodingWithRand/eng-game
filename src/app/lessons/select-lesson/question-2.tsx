@@ -2,26 +2,15 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRegistry } from "../../components/client-caches";
+import { generateStateArray } from "@/components/utils";
 
 
 export default function Question2() 
 {
+    const available_lesson = 2
     const [ { userState, setUserState } ] = useRegistry();
-    const lessons_number: number = 2;
-    const [ checked, check ] = useState<boolean[]>(
-      (() => {
-        let tempArray: boolean[] = []
-        for(let i = 0; i<lessons_number; i++) tempArray.push(false);
-        return tempArray;
-      })()
-    );
-    const [ checkImgs, appear ] = useState<JSX.Element[]>(
-      (() => {
-        let tempArray: JSX.Element[] = []
-        for(let i = 0; i<lessons_number; i++) tempArray.push(<></>)
-        return tempArray;
-      })()
-    );
+    const [ checked, check ] = useState<boolean[] | any[]>(generateStateArray("boolean", available_lesson));
+    const [ checkImgs, appear ] = useState<JSX.Element[] | any[]>(generateStateArray("JSX.Element", available_lesson));
     const [ btnState, setBtnState ] = useState<{ opacity: number, deactivate: boolean }>({opacity: 1, deactivate: false})
     let lessonsListEl: JSX.Element[] = [];
 
@@ -108,7 +97,7 @@ export default function Question2()
     }
     
     function LessonsList ({ name }: { name: string[]}) {
-      for(let i = 0; i<lessons_number; i++){
+      for(let i = 0; i<available_lesson.length; i++){
         if(userState.lessons !== null && userState.lessons.some(elem => elem !== '') && i === userState.lessons.findIndex(elem => elem !== ''))
           lessonsListEl.push(
             <div key={i} className='a-choice'>
@@ -138,7 +127,7 @@ export default function Question2()
 
     return(
       <div className='choice-list'>
-        <LessonsList name={["Premilinary", "Vocabularies"]} />
+        <LessonsList name={available_lesson} />
       </div>
      );
 };

@@ -1,22 +1,15 @@
 import { useState, useEffect } from "react"
-import { useStage } from "@/components/client-caches"
+import { useStage, useLevel } from "@/components/client-caches"
 import Image from "next/image"
 import '@/css/lesson-structure/choices.css'
+import { generateStateArray } from "@/components/utils"
 
-export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: string[] }) {
-  console.log(c, a)
-  const [checked, setCheck] = useState<boolean[]>((() => {
-    let tempBools: boolean[] = []
-    for (let i = 0; i < c.length; i++) tempBools.push(false)
-    return tempBools
-  })())
-  const [isSelected, appear] = useState<JSX.Element[]>((() => {
-    let tempElem: JSX.Element[] = []
-    for (let i = 0; i < c.length; i++) tempElem.push(<></>)
-    return tempElem
-  })())
+export function ChoiceTable({ c, mode, a, xpg }: { c: string[], mode: string, a: string[], xpg: number }) {
+  const [checked, setCheck] = useState<boolean[] | any[]>(generateStateArray("boolean", c))
+  const [isSelected, appear] = useState<JSX.Element[] | any[]>(generateStateArray("boolean", c))
   const [ {}, {}, {}, { stageFooter, setFooterStyle } ] = useStage()
   const [ activateState, deactivate ] = useState(false)
+  const [{ generateXP }] = useLevel()
   let totalChoices: JSX.Element[] = []
 
   if(stageFooter !== "notf-correct" && stageFooter !== "notf-wrong") setFooterStyle('')
@@ -43,8 +36,7 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
   useEffect(() => {
     if(mode === "radio") checked.forEach((b, i) => {
       if(b){
-        console.log(b, i)
-        if(c[i] === a[a.findIndex((ans) => ans === c[i])]) setFooterStyle("notf-correct");
+        if(c[i] === a[a.findIndex((ans) => ans === c[i])]){ setFooterStyle("notf-correct"); generateXP(prevXP => prevXP + (xpg/2)) }
         else setFooterStyle("notf-wrong");
       }
     })
@@ -99,11 +91,11 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
   return (<div className="choice-list">{totalChoices}</div>)
 }
 
-export default function Choices({ question, choices, answers, mode }: { question: string, choices: string[], answers: string[], mode: string }) {
+export default function Choices({ question, choices, answers, mode, xpGain }: { question: string, choices: string[], answers: string[], mode: string, xpGain: number }) {
   return (
     <>
       <div className="q">{question}</div>
-      <ChoiceTable c={choices} mode={mode} a={answers} />
+      <ChoiceTable c={choices} mode={mode} a={answers} xpg={xpGain} />
     </>
   )
 }

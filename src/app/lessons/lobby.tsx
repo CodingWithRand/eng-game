@@ -1,19 +1,17 @@
 import { useStage, useRegistry } from '@/components/client-caches'
+import { generateStateArray } from '@/components/utils';
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 
 export default function Lobby() {
   const totalLesson = 1;
-  const [ { nextS }, { clp }, { maxPage, setMaxPage } ] = useStage()
+  const totalStage = 3;
+  const [ { s, nextS }, { clp } ] = useStage()
   const [ { userState } ] = useRegistry()
-  const [ availableZones, addAvailableZone ] = useState<JSX.Element[]>((() => {
-    let tempZone: JSX.Element[] = [];
-    for(let i = 0; i<totalLesson; i++) tempZone.push(<></>)
-    return tempZone;
-  })())
+  const [ availableZones, addAvailableZone ] = useState<JSX.Element[] | any[]>(generateStateArray("JSX.Element", totalLesson))
   const router = useRouter()
-  
+
   
   function enter(LessonComponent: number, les: string){
     nextS(LessonComponent)
@@ -21,9 +19,16 @@ export default function Lobby() {
   }
   
   function PremilinaryStages(){
+    let renderStage: JSX.Element[] = []
+    for(let i = 0; i<totalStage; i++) renderStage.push(
+      <button onClick={() => enter(i+1, "Preliminary")} className="a-stage" style={
+        s < i + 1 ? { pointerEvents: 'none', filter: 'grayscale(1)'} : {}
+      } disabled={s < i + 1 ? true : false}></button>
+    )
+
     return(
       <div>
-        <button onClick={() => enter(1, "Preliminary")} className="a-stage"></button>
+        {renderStage}
       </div>
     )
   }

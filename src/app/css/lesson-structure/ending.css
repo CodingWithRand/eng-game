@@ -1,0 +1,38 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    .lesson-end{
+        @apply f-ic flex-col w-screen h-[80vh] absolute bottom-0 left-0 right-0 justify-between ssm:h-[90vh]
+    }
+    .d-t{
+        @apply text-center w-[80%] text-lg md:text-2xl
+    }
+    .text-frame{
+        @apply f-ic flex-col gap-y-2 border-solid border-4 border-gray-300 rounded-md text-box-style text-box-shadow
+    }
+    .text-frame label{
+        @apply text-gray-400
+    }
+    .conc{
+        @apply fr-jc w-full gap-x-4
+    }
+    .exit{
+        @apply btn-style bg-red-400 exit-shadow w-[20%]
+    }
+}
+
+@layer utilities{
+    .text-box-style {
+        @apply rounded-xl p-3 text-xl !important;
+    }
+    .btn-style{
+        @apply rounded-xl text-white text-4xl !important;
+    }
+    .text-box-shadow{
+        box-shadow: 0 0.5rem 0 0 rgb(209 213 219);
+    }
+    .exit-shadow{
+        box-shadow: 0 0.5rem 0 0 rgb(220 38 38);
+    }
+}

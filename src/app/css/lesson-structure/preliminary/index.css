@@ -10,6 +10,6 @@
         @apply h-[85%] w-[75%]
     }
     .topic-header{
-        @apply text-4xl text-center my-5 sm:my-10 sm:text-[3rem]
+        @apply text-4xl text-center my-5 ssm:text-2xl sm:my-10 sm:text-[3rem]
     }
 }
