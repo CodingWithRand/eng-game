@@ -7,13 +7,13 @@
     } */
     .q{ @apply text-2xl mb-[-1rem] }
     .notf-correct{
-        @apply border-8 border-solid border-green-400 rounded-md bg-emerald-400/50 py-4 fr-ic justify-center w-[100%]
+        @apply border-8 border-solid border-green-400 rounded-md bg-emerald-400/50 py-4 fr-ic justify-center w-[90%]
     }
     .andy-resp{
         @apply w-[80%] text-start font-bold text-4xl my-4
     }
     .user-resp{
-        @apply w-[50%] text-start my-4 
+        @apply w-[50%] text-start my-4 btn-style font-bold f-jc
     }
     .andy-resp.correct{
         @apply text-green-600
@@ -25,12 +25,18 @@
         @apply text-red-600
     }
     .user-resp.wrong{
-        @apply bg-red-400
+        @apply bg-red-400 wrong-shadow
     }
     .notf-wrong{
-        @apply border-8 border-solid border-red-400 rounded-md bg-red-400/50 py-4 fr-ic justify-center w-[100%]
+        @apply border-8 border-solid border-red-400 rounded-md bg-red-400/50 py-4 fr-ic justify-center w-[100%] gap-x-4
     }
     .chatbox{
 
+    }
+}
+
+@layer utilities{
+    .wrong-shadow{
+        box-shadow: 0 0.75rem 0 0 rgb(220 38 38);
     }
 }
