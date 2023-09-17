@@ -15,9 +15,10 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
     return tempElem
   })())
   const [ {}, {}, {}, { stageFooter, setFooterStyle } ] = useStage()
+  const [ activateState, deactivate ] = useState(false)
   let totalChoices: JSX.Element[] = []
 
-  if(stageFooter !== "notf-correct") setFooterStyle('')
+  if(stageFooter !== "notf-correct" && stageFooter !== "notf-wrong") setFooterStyle('')
 
   useEffect(() => {
     checked.forEach((b, i) => {
@@ -41,7 +42,8 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
   useEffect(() => {
     if(mode === "radio") checked.forEach((b, i) => {
       if(b){
-        if(c[i] === a[i]) setFooterStyle("notf-correct")
+        if(c[i] === a[i]) setFooterStyle("notf-correct");
+        else setFooterStyle("notf-wrong");
       }
     })
   }, [checked, mode])
@@ -50,12 +52,14 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
     setCheck(prevCheck => {
       return prevCheck.map((b, i) => {
         if (i === currentIndex){
-          if (!b) return true
-          else return false
-        } else {
-          if (!b) return b
-          else return false
-        }
+          if (!b){ 
+            deactivate(true);
+            return true
+          } else {
+            deactivate(true);
+            return false
+          } 
+        } else { return b }
       })
     });
   }
@@ -83,10 +87,12 @@ export function ChoiceTable({ c, mode, a }: { c: string[], mode: string, a: stri
     }
 
   c.forEach((choice, index) => {
-    totalChoices.push(<div key={index} className="a-choice">
-      <button className="check-box" onClick={() => { btnFuncHolder(index) }}>{isSelected[index]}</button>
-      <label className="choice-name">{choice}</label>
-    </div>)
+    totalChoices.push(
+      <div key={index} className="a-choice">
+        <button className="check-box" onClick={() => { btnFuncHolder(index) }} disabled={activateState}>{isSelected[index]}</button>
+        <label className="choice-name">{choice}</label>
+      </div>
+    )
   })
   
   return (<div className="choice-list">{totalChoices}</div>)

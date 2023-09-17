@@ -9,9 +9,10 @@ import LessonsInfo from './info';
 import Introduction from './introduction'
 import Term from './term';
 import FormPage from '@/templates/select-lesson-form';
-import { MemberData } from '@/server/cookies';
+import { MemberData, question } from '@/server/cookies';
 
 import '@/css/select-lesson.css';
+import { CheckSession } from '@/components/useEffect-utils';
 
 function Render() {
   const [{ userState }, { q }] = useRegistry();
@@ -28,29 +29,22 @@ function Render() {
   })
   const [TSXholder, setTSXHolder] = useState<JSX.Element | null>(null);
 
-  const element = document?.querySelector("body");
-  const className = "pre-lesson-body";
-
-  if (!element?.classList.contains(className)) {
-      element?.classList.add(className);
-  }
-
-  if(userState.lessons?.some(elem => elem !== '') && userState.name !== '' && q === 5) router.push('/lessons')
-  
   useEffect(() => {
-    function checkPeriodically() {
-      if(MemberData.get('user') === undefined){
-        alert("Your session has expired")
-        router.push('/')
-      }
-      const timeoutId = setTimeout(checkPeriodically, 5000);
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }
-    checkPeriodically();
-  }, []);
+    if(document !== undefined){
+      const element = document?.querySelector("body");
+      const className = "form";
 
+      if (!element?.classList.contains(className)) {
+          element?.classList.add(className);
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if(question.get('question') === undefined) window.location.reload()
+  })
+  
+  if(userState.lessons?.some(elem => elem !== '') && userState.name !== '' && q === 5) router.push('/lessons')
 
   useEffect(() => {
     if (!userState.loggedIn || userState.loggedIn === null) return;
@@ -154,6 +148,7 @@ function Render() {
 export default function SelectPage() {
   return (
     <Registry>
+      <CheckSession/>
       <Render />
     </Registry>
   );

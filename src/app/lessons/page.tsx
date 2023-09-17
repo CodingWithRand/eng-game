@@ -5,13 +5,16 @@ import { useRegistry, Registry, Level, Stage } from '@/components/client-caches'
 import { CheckSession } from '@/components/useEffect-utils';
 import Lobby from './lobby';
 import '@/css/lobby.css'
+import { question } from '@/components/server/cookies';
 
 function Render() {
   const [ holderPage, setHolderPage ] = useState<JSX.Element>(<></>)
   const [ { userState, setUserState }, { q, setQ } ] = useRegistry()
   const router = useRouter()
 
-  if(q === undefined) setQ(0);
+  if(q === undefined && question.get("question") === undefined){
+    setQ(0);
+  } 
 
   useEffect(() => {
     if(userState.lessons === null || userState.lessons.length === 0 || userState.lessons?.every((elem) => elem === '')) {

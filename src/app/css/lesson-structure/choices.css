@@ -7,12 +7,30 @@
     } */
     .q{ @apply text-2xl mb-[-1rem] }
     .notf-correct{
-        @apply border-8 border-solid border-green-400 rounded-md bg-emerald-400/50 py-4 f-ic flex-col w-[100%]
+        @apply border-8 border-solid border-green-400 rounded-md bg-emerald-400/50 py-4 fr-ic justify-center w-[100%]
     }
     .andy-resp{
-        @apply w-[80%] text-start font-bold text-green-600 text-4xl my-6
+        @apply w-[80%] text-start font-bold text-4xl my-4
     }
     .user-resp{
-        @apply w-[50%] bg-green-400 text-start
+        @apply w-[50%] text-start my-4 
+    }
+    .andy-resp.correct{
+        @apply text-green-600
+    }
+    .user-resp.correct{
+        @apply bg-green-400
+    }
+    .andy-resp.wrong{
+        @apply text-red-600
+    }
+    .user-resp.wrong{
+        @apply bg-red-400
+    }
+    .notf-wrong{
+        @apply border-8 border-solid border-red-400 rounded-md bg-red-400/50 py-4 fr-ic justify-center w-[100%]
+    }
+    .chatbox{
+
     }
 }

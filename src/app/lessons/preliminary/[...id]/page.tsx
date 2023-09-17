@@ -43,21 +43,22 @@ function Render({ id }: { id: string[] }){
   const [ header, setHeaderTXT ] = useState<string>('')
   
   useEffect(() => {
-  if(document !== undefined){
-    const element = document?.querySelector("body");
-    const className = "pre-lesson";
+    if(document !== undefined){
+      const element = document?.querySelector("body");
+      const className = "pre-lesson";
 
-    if (!element?.classList.contains(className)) {
-      element?.classList.add(className);
-    }
+      if (!element?.classList.contains(className)) {
+        element?.classList.add(className);
+      }
   }}, [])
   
   useEffect(() => {
-  if(LessonComponent.get("clp") === undefined && LessonComponent.get('mp') !== 1) window?.location.reload()
+    console.log(LessonComponent.get('mp'))
+    if(LessonComponent.get("clp") === undefined && LessonComponent.get('mp') !== 1) window?.location.reload()
   }, [])
   
   useEffect(() => {    
-    if(stageFooter !== "notf-correct"){ console.log('a'); setFooterStyle("prev-next") }
+    if(stageFooter !== 'notf-correct' && stageFooter !== 'notf-wrong') setFooterStyle("prev-next")
     
     switch(Number(id[0])){
       case 1: 

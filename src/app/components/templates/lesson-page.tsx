@@ -40,18 +40,18 @@ export default function LessonBody({ children }: any) {
       setCF(<div className='notf-correct'>
         <Image src="" width={50} height={50} alt="andy-cheer" />
         <div className="chatbox">
-        <label className="andy-resp">{congratsText[generateArrsRandint(congratsText)]}</label>
-        <button className="user-resp">{userResponseText[generateArrsRandint(userResponseText)]}</button>
+        <label className="andy-resp correct">{congratsText[generateArrsRandint(congratsText)]}</label>
+        <button className="user-resp correct">{userResponseText[generateArrsRandint(userResponseText)]}</button>
         </div>
       </div>)
     } else if(stageFooter === "notf-wrong") {
-const congratsText = ["You made it!", "Easy, does it?", "You\'re on fire!"]
-      const userResponseText = ["Thank you", "...", ":)"]
+const congratsText = ["Try Again", "Sorry, but that\'s wrong", "Meh, come one"]
+      const userResponseText = ["Let me try again", "OK", "...", ":("]
       setCF(<div className='notf-wrong'>
         <Image src="" width={50} height={50} alt="andy-cheer" />
         <div className="chatbox">
-        <label className="andy-resp">{congratsText[generateArrsRandint(congratsText)]}</label>
-        <button className="user-resp">{userResponseText[generateArrsRandint(userResponseText)]}</button>
+        <label className="andy-resp wrong">{congratsText[generateArrsRandint(congratsText)]}</label>
+        <button className="user-resp wrong">{userResponseText[generateArrsRandint(userResponseText)]}</button>
         </div>
       </div>)
     } else {

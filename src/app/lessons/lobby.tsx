@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 
 export default function Lobby() {
   const totalLesson = 1;
-  const [ { nextS }, { clp }, { setMaxPage } ] = useStage()
+  const [ { nextS }, { clp }, { maxPage, setMaxPage } ] = useStage()
   const [ { userState } ] = useRegistry()
   const [ availableZones, addAvailableZone ] = useState<JSX.Element[]>((() => {
     let tempZone: JSX.Element[] = [];
