@@ -1,5 +1,6 @@
 import { useRegistry } from "@/components/client-caches";
-import { renderToStaticMarkup } from 'react-dom/server'
+import { generateStateArray } from "@/components/utils";
+import { useEffect, useState } from 'react'
 
 const PremilinaryTopic = (
     <>
@@ -106,19 +107,32 @@ const PremilinaryTopic = (
 )
 
 function LessonsPreview({ selectedLesson }: { selectedLesson: string[] | null }){
-    const lesson_preview: JSX.Element[] = []
     if(selectedLesson === null) return 
+    let lessonPreview: JSX.Element[] = [];
     selectedLesson.forEach((lesson) => {
-        if(lesson === "Premilinary"){
-            lesson_preview.push(PremilinaryTopic)
+        if(lesson === "Preliminary"){
+            lessonPreview.push(PremilinaryTopic)
         }
     })
-    return lesson_preview
+    // useEffect(() => {
+    //     setlP((prevElem) => {
+    //         return prevElem.map((elem, i) => {
+    //             console.log(selectedLesson.findIndex(lesson => lesson === "Preliminary") === i)
+    //             if(selectedLesson.findIndex(lesson => lesson === "Premilinary") === i){
+    //                 console.log('s'); return PremilinaryTopic}
+    //             else return elem
+    //         })
+    //     })
+    // }, [])
+
+    
+    console.log(lessonPreview)
+    return lessonPreview
 }
 
 export default function LessonsInfo() {
     const [ { userState } ] = useRegistry()
-
+    console.log('as')
     return(
         <LessonsPreview selectedLesson={userState.lessons}/>
     )

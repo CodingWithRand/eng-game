@@ -37,7 +37,7 @@ export default function Lobby() {
     if(userState.lessons === null || userState.lessons.length === 0 || userState.lessons.every(elem => elem === '')) return
     userState.lessons.forEach((lesson) => {
       switch(lesson){
-        case 'Premilinary':
+        case 'Preliminary':
           addAvailableZone(prevZones => {
             if(!prevZones.some(zone => zone === <PremilinaryStages/>)) return prevZones.concat(<PremilinaryStages/>) 
             else return prevZones
