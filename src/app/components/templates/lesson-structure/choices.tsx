@@ -5,8 +5,8 @@ import '@/css/lesson-structure/choices.css'
 import { generateStateArray } from "@/components/utils"
 
 export function ChoiceTable({ c, mode, a, xpg }: { c: string[], mode: string, a: string[], xpg: number }) {
-  const [checked, setCheck] = useState<boolean[] | any[]>(generateStateArray("boolean", c))
-  const [isSelected, appear] = useState<JSX.Element[] | any[]>(generateStateArray("boolean", c))
+  const [checked, setCheck] = useState<boolean[] | any[]>(generateStateArray("boolean", undefined, c))
+  const [isSelected, appear] = useState<JSX.Element[] | any[]>(generateStateArray("boolean", undefined, c))
   const [ {}, {}, {}, { stageFooter, setFooterStyle } ] = useStage()
   const [ activateState, deactivate ] = useState(false)
   const [{ generateXP }] = useLevel()
