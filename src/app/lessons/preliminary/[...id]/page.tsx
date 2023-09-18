@@ -1,20 +1,16 @@
 'use client';
 import LessonBody from '@/components/templates/lesson-page';
 import { useState, useEffect } from 'react';
-import { useStage, Stage, Level, useLevel } from '@/components/client-caches'
+import { useStage, Stage, Level } from '@/components/client-caches'
 import lessonStructure from './lesson-structure';
 import '@/css/lesson-structure/preliminary/index.css'
 import { CheckSession, generateArrsRandint } from '@/components/utils';
 import { LessonComponent } from '@/server/cookies'
-import { ref, set, onValue } from "firebase/database";
-import { MemberData } from '@/server/cookies'
-import db from "@/firebase";
 
 function Render({ id }: { id: string[] }) {
   const [{ }, { clp }, { maxPage, setMaxPage }, { stageFooter, setFooterStyle }] = useStage()
   const [content, setContent] = useState<JSX.Element>(<></>)
   const [header, setHeaderTXT] = useState<string>('')
-  const [{xp}] = useLevel()
 
   useEffect(() => {
     if (document !== undefined) {
@@ -26,15 +22,6 @@ function Render({ id }: { id: string[] }) {
       }
     }
   }, [])
-  
-  useEffect(() => {
-    if (MemberData.get('user').name === null || MemberData.get('user').name === "") return
-    const userXP = ref(db, `${MemberData.get('user').name}/xp`)
-    let storingXP: number;
-    onValue(userXP, (snapshot) => { storingXP = snapshot.val(); });
-    const saveXP = async () => await set(userXP, storingXP + xp)
-    saveXP()
-  }, [xp])
 
   useEffect(() => {
     if (LessonComponent.get("clp") === undefined || LessonComponent.get('mp') === 1) window?.location.reload()
