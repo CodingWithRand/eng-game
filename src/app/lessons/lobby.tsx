@@ -1,4 +1,4 @@
-import { useStage, useRegistry } from '@/components/client-caches'
+import { useStage, useRegistry, useLevel } from '@/components/client-caches'
 import { generateStateArray } from '@/components/utils';
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
