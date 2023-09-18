@@ -11,10 +11,12 @@ export default function Lobby() {
   const totalStage = 3;
   const [ { s, nextS }, { clp, nextCLP } ] = useStage()
   const [ { userState } ] = useRegistry()
-  const [ { xp } ] = useLevel()
+  const [ { xp, generateXP } ] = useLevel()
   const [ availableZones, addAvailableZone ] = useState<JSX.Element[] | any[]>(generateStateArray("JSX.Element", totalLesson))
   const router = useRouter()
-  
+
+  generateXP(0)
+
   function enter(LessonComponent: number, les: string){
     nextS(LessonComponent)
     nextCLP(1)
@@ -39,7 +41,8 @@ export default function Lobby() {
   useEffect(() => {
     if(userState.name === null || userState.name === "") return
     const userStage = ref(db, `${userState.name}/stage`)
-    (async saveData() => await set(userStage, s))()
+    const saveStage = async () => set(userStage, s)
+    saveStage()
   }, [userState, s])
  
   useEffect(() => {

@@ -11,7 +11,7 @@ export default function LessonEnd({ descriptiveText }: { descriptiveText: string
     setFooterStyle('')
 
     function directBack(){ 
-        nextS(prevS => prevS + 1); generateXP(0)
+        nextS(prevS => prevS + 1);
         router.push('/lessons'); 
     }
 

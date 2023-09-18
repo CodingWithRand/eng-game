@@ -30,8 +30,10 @@ function Render({ id }: { id: string[] }) {
   useEffect(() => {
     if (MemberData.get('user').name === null || MemberData.get('user').name === "") return
     const userXP = ref(db, `${MemberData.get('user').name}/xp`)
-    (async () => await set(userXP, xp))()
-    
+    let storingXP: number;
+    onValue(userXP, (snapshot) => { storingXP = snapshot.val(); });
+    const saveXP = async () => await set(userXP, storingXP + xp)
+    saveXP()
   }, [xp])
 
   useEffect(() => {
