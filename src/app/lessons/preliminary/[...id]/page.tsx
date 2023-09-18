@@ -24,7 +24,7 @@ function Render({ id }: { id: string[] }) {
   }, [])
 
   useEffect(() => {
-    if (LessonComponent.get("clp") === undefined && LessonComponent.get('mp') !== 1) window?.location.reload()
+    if (LessonComponent.get("clp") === undefined || LessonComponent.get('mp') === 1) window?.location.reload()
   }, [])
 
   useEffect(() => {
