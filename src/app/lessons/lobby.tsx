@@ -38,14 +38,9 @@ export default function Lobby() {
   
   useEffect(() => {
     if(userState.name === null || userState.name === "") return
-    const userXP = ref(db, `${userState.name}/xp`)
     const userStage = ref(db, `${userState.name}/stage`)
-    async function saveData(){
-      await set(userXP, xp)
-      await set(userStage, s)
-    }
-    saveData()
-  }, [userState, xp])
+    (async saveData() => await set(userStage, s))()
+  }, [userState, s])
  
   useEffect(() => {
     if(userState.lessons === null || userState.lessons.length === 0 || userState.lessons.every(elem => elem === '')) return

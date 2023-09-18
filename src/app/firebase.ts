@@ -18,6 +18,4 @@ getApps().length === 0 ? initializeApp(clientCredentials) : getApp();
 
 const db = getDatabase()
 
-console.log(db)
-
 export default db;
