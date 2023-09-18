@@ -1,5 +1,7 @@
 import { ChangeEvent, useState, useEffect } from 'react'
 import { useRegistry } from '@/components/client-caches'
+import { ref, set, onValue } from "firebase/database";
+import db from "@/firebase";
 
 export default function Question1(){
   const [ { userState, setUserState } ] = useRegistry()
@@ -16,7 +18,10 @@ export default function Question1(){
 
   useEffect(() => {
     const EnglishFormat = /^[A-Za-z0-9\s]+$/g
-    if(name.length > 2 && EnglishFormat.test(name)){
+    const rootDB = ref(db)
+    let usedUsername: string[] = []
+    onValue(rootDB, (snapshot) => usedUsername = Object.keys(snapshot.val()))
+    if(name.length > 2 && EnglishFormat.test(name) && usedUsername.some(registeredName => registered === name)){
       setUserState((prevUserState) => ({
         ...prevUserState,
         name: name
@@ -30,7 +35,8 @@ export default function Question1(){
       setWarning(prevState => ({...prevState, className: 'warning', warningText: (() => {
         if(name.length < 3) return 'Name to short (Minimum: 3 characters)';
         else if(!EnglishFormat.test(name)) return 'Name doesn\'t satisfy the expected format (No special character, except \'_\', is English and not start with \'_\')'
-        return 'Invalid name'
+        else if(usedUsername.some(registeredName => registered === name)) return 'This username has been taken'
+        else return 'Invalid name'
       })()}))
     }
   }, [name])
