@@ -52,7 +52,7 @@ const lessonStructure = {
       />,
       <Explanations 
         key='exp2'
-        explanations={["Suffixมีทั้งหมด 7 ประเภท ได้แก่ Noun -> Noun Suffix, Verb -> Noun Suffix, Adjective -> Noun Suffix, Verb -> Adjective Suffix, Noun -> Adjective Suffix, Adjective -> Adverb Suffix และ Noun/Adjective -> Adverb Suffix", 'ในหัวข้อนี้ เราจะพูดถึง Noun -> Noun Suffix กัน']}
+        explanations={["Suffix มีทั้งหมด 7 ประเภท ได้แก่ Noun -> Noun Suffix, Verb -> Noun Suffix, Adjective -> Noun Suffix, Verb -> Adjective Suffix, Noun -> Adjective Suffix, Adjective -> Adverb Suffix และ Noun/Adjective -> Adverb Suffix", 'ในหัวข้อนี้ เราจะพูดถึง Noun -> Noun Suffix กัน']}
       />,
       <Choices
         key='c-1'
@@ -70,30 +70,86 @@ const lessonStructure = {
     VerbSuffix: [
       <Explanations
         key='exp1'
-        explanations={["Guys, it's time for the Verb Suffixes! Even though you're not so ready, you're gonna do it right?", "Anyway, I hope you'll enjoy with my class"]}
+        explanations={["โอเค ทุกคน!! ตอนนี้เราจะไปเรียนเรื่อง Verb -> Noun Suffix แล้วนะ พร้อมกันยังงง", "พร้อมไม่พร้อมไม่รู้ละ ไปเลยละกัน"]}
       />,
       <ExplanationWithExamples
-        key='exp-expn1'
-        explanations={["In the Verb Suffix, we can classify it into these groups"]}
-        initExampleWord="Which are..."
+        key='expn-exp1'
+        explanations={["Verb -> Noun Suffix จะเป็น Suffix ที่เปลี่ยนจากคำกริยา (Verb) ไปเป็นคำนาม (Noun) โดยเราสามารถจัดหมวดหมู่ Suffix ชนิดนี้ได้เป็น 5 หมวดหมู่"]}
+        initExampleWord="ได้แก่"
         examples={[
-          ["Suffixes that indicate relevant of people being", "such as", "-er, -ee"],
-          ["Suffixes that indicate of action of a person or something being acted", "such as", "-ant, -ent"],
-          ["Suffixes that change word's part of speech", "such as", "-ation, -ition, -ion"],
-          ["Suffixes that indicate charecteristic or appearance of things", "such as", "-al"],
-          ["Suffixes that indicate action, status or process of things", "such as", "-age"]
+          ["Suffixes ที่บ่งบอกถึงความเกี่ยวข้องกับบุคคล", "เช่น", "-er, -ee"],
+          ["Suffixes ที่บ่งบอกถึงการกระทำของบุคคลหรือบางสิ่งบางอย่างที่ถูกกระทำ", "เช่น", "-ant, -ent"],
+          ["Suffixes ที่เปลี่ยน part of speech ของคำ", "เช่น", "-ation, -ition, -ion"],
+          ["Suffixes ที่อธิบายถึงคุณลักษณะของคำเพิ่มเติมในความหมายที่ใกล้เคียงกัน", "เช่น", "-al"],
+          ["Suffixes ที่แสดงการกระทำ สถานะ หรือกระบวนการของสิ่งต่างๆ", "เช่น", "-age"]
         ]}
         note={undefined}
       />,
-      <Explanations 
-        key='exp4'
-        explanations={["**Due to the disadvantage of our project, we may not be able to provide all English contents in the webpage**", 
-        'เราสามารถใช้ suffix "-er", "-ee", และ "-or" ในภาษาอังกฤษเพื่อสร้างคำใหม่จากคำต้นฉบับ และคำใหม่ที่สร้างขึ้นมักจะมีความหมายที่แตกต่างจากคำต้นฉบับ'
-      ]}
+      <ExplanationWithExamples
+        key='expn-exp2'
+        explanations={['เราสามารถใช้ suffix "-er", "-ee", และ "-or" ในภาษาอังกฤษเพื่อสร้างคำใหม่จากคำต้นฉบับ และคำใหม่ที่สร้างขึ้นมักจะมีความหมายที่แตกต่างจากคำต้นฉบับ', 'โดย "-er" มักจะใช้สร้างคำนามที่หมายถึงบุคคลหรือสิ่งที่ทำบางอย่าง "-ee" ใช้สร้างคำนามที่หมายถึงบุคคลที่ได้รับการกระทำ และ "-or" ใช้สร้างคำนามที่หมายถึงบุคคลที่ทำบางอย่าง']}
+        initExampleWord="ยกตัวอย่าง เช่น"
+        examples={[
+          ["\"-er\"", "-->", "driver (ผู้ขับขี่), writer (ผู้เขียน)"],
+          ["\"-ee\"", "-->", "employee (ผู้ถูกจ้าง), payee (ผู้รับเงิน)"],
+          ["\"-or\"", "-->", "director"],
+        ]}
+        note={undefined}
+      />,
+      <ExplanationWithExamples
+        key='expn-exp3'
+        explanations={['ในภาษาอังกฤษ, ทั้ง “-ant” และ “-ent” นั้นเป็น suffixes ที่ใช้ในการสร้างคำคุณภาพหรือคำนาม. ทั้งสอง suffixes นี้มาจากภาษาละตินและภาษาฝรั่งเศส, และมีความหมายว่า “ผู้ที่กำลังทำ” หรือ “สิ่งที่กำลังถูกทำ”. ']}
+        initExampleWord="ยกตัวอย่าง เช่น"
+        examples={[
+          ["Assistant (ผู้ช่วย)", "มาจาก", "assist (ช่วย) + \"-ant\" (ผู้ที่กำลังทำ)"],
+          ["Different (ต่าง)", "มาจาก", "differ (ต่าง) + \"-ent\" (สิ่งที่กำลังถูกทำ)"],
+        ]}
+        note={undefined}
+      />,
+      <ExplanationWithExamples
+        key='expn-exp4'
+        explanations={["คำส่วนท้าย “-ation”, “-ition”, “-tion”, “-sion”, และ “-ion” ในภาษาอังกฤษเป็นส่วนที่เรียกว่า “suffix” หรือ “คำเสมือน” ที่ใช้ในการสร้างคำใหม่โดยการเพิ่มความหมายของคำที่มีอยู่แล้ว", "โดย “-ation” มักจะใช้กับคำกริยาเพื่อสร้างคำนามที่แสดงถึงการกระทำหรือผลลัพธ์ และ “-ition”, “-tion”, “-sion”, “-ion” เป็นคำเสมือนที่ใช้ในการสร้างคำนามจากคำกริยา"]}
+        initExampleWord="ยกตัวอย่าง เช่น"
+        examples={[
+          ["Information (ข้อมูล)", "มาจาก", "inform (แจ้งข้อมูล) + \"-ation\""],
+          ["Definition (ความหมาย)", "มาจาก", "define (นิยาม) + \"-ition\""],
+          ["Action (การกระทำ)", "มาจาก", "act (กระทำ) + \"-tion\""],
+          ["Decision (การตัดสินใจ)", "มาจาก", "decide (ตัดสินใจ) + \"-sion\""],
+          ["Opinion (ความคิดเห็น)", "มาจาก", "opine (แสดงความคิดเห็น) + \"-ion\""]
+        ]}
+        note={undefined}
+      />,
+      <ExplanationWithExamples
+        key='expn-exp5'
+        explanations={["คำเติมเข้าไปในภาษาอังกฤษที่มีลำดับ “-al” มีหลายความหมาย ขึ้นอยู่กับบริบทที่ใช้"]}
+        initExampleWord="ยกตัวอย่าง เช่น"
+        examples={[
+          ["มีลักษณะของ", "เช่น", "remedial, denial"],
+          ["สภาพ, คุณภาพ", "-", "-"],
+        ]}
+        note={undefined}
+      />,
+      <ExplanationWithExamples
+        key='expn-exp6'
+        explanations={["Suffix “-age” ในภาษาอังกฤษหมายถึงการกระทำ, สถานะ, หรือกระบวนการ"]}
+        initExampleWord="ยกตัวอย่าง เช่น"
+        examples={[
+          ["postage", "มีความหมายคือ", "ค่าไปรษณีย์"],
+          ["package", "มีความหมายคือ", "การห่อหุ้ม"],
+          ["baggage", "มีความหมายคือ", "กระบวนการจัดกระเป๋า"],
+          ["marriage", "มีความหมายคือ", "การสมรส"],
+          ["breakage", "มีความหมายคือ", "การแตก"],
+          ["passage", "มีความหมายคือ", "การผ่านไป (นอกจากนี้อาจหมายถึง บทความหรือทางได้เช่นกัน)"]
+        ]}
+        note={undefined}
+      />,
+      <Explanations
+        key='exp2'
+        explanations={["ในภาษาอังกฤษ, คำเสริม “-ing” ที่ต่อท้ายคำมักใช้แสดงถึงการกระทำที่กำลังเกิดขึ้นในปัจจุบัน³ หรือใช้แสดงถึงการกระทำ, สถานะ, หรือกระบวนการ. ตัวอย่างเช่น “landing”, “writing”, “ending”, “seating”, “blessing”, “feeding”"]}
       />,
       <LessonEnd 
         key="end"
-        descriptiveText={'Quite tough right? Don\'t worry, the next topic will be even more tougher'}
+        descriptiveText={'เนื้อหาในด่านนี้เยอะหน่อยน้าา เดี๋ยวด่านหน้าก็จะได้พักละ น่าจะยังเหลืออีกสัก 1-2 ด่านที่เนื้อหาเยอะเท่านี้'}
       />
     ]
 }

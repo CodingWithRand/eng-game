@@ -51,8 +51,8 @@ function Render({ id }: { id: string[] }) {
         })
         break;
       case 3:
-        setMaxPage(3)
-        if (clp > 0 && clp <= 3) setHeaderTXT('Introduction')
+        setMaxPage(9)
+        if (clp > 0 && clp <= 8) setHeaderTXT('Verb -> Noun Suffix')
         lessonStructure.VerbSuffix.forEach((page, index) => {
           if (Number(id[1]) === index + 1) setContent(page)
         })
