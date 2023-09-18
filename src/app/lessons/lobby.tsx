@@ -2,6 +2,8 @@ import { useStage, useRegistry } from '@/components/client-caches'
 import { generateStateArray } from '@/components/utils';
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import { ref, set, onValue } from "firebase/database";
+import db from "@/firebase";
 
 
 export default function Lobby() {
@@ -9,6 +11,7 @@ export default function Lobby() {
   const totalStage = 3;
   const [ { s, nextS }, { clp, nextCLP } ] = useStage()
   const [ { userState } ] = useRegistry()
+  const [ { xp } ] = useLevel()
   const [ availableZones, addAvailableZone ] = useState<JSX.Element[] | any[]>(generateStateArray("JSX.Element", totalLesson))
   const router = useRouter()
   
@@ -32,6 +35,17 @@ export default function Lobby() {
       </div>
     )
   }
+  
+  useEffect(() => {
+    if(userState.name === null || userState.name === "") return
+    const userXP = ref(db, `${userState.name}/xp`)
+    const userStage = ref(db, `${userState.name}/stage`)
+    async function saveData(){
+      await set(userXP, xp)
+      await set(userStage, s)
+    }
+    saveData()
+  }, [userState, xp])
  
   useEffect(() => {
     if(userState.lessons === null || userState.lessons.length === 0 || userState.lessons.every(elem => elem === '')) return

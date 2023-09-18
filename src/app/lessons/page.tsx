@@ -6,8 +6,6 @@ import { CheckSession } from '@/components/utils';
 import Lobby from './lobby';
 import '@/css/lobby.css'
 import { question } from '@/components/server/cookies';
-import { ref, set, onValue } from "firebase/database";
-import db from "@/firebase";
 
 function Render() {
   const [ holderPage, setHolderPage ] = useState<JSX.Element>(<></>)
@@ -34,15 +32,6 @@ function Render() {
       )
     }
   }, [])
-
-  useEffect(() => {
-    if(userState.name === null || userState.name === "") return
-    const userDB = ref(db, userState.name)
-    async function saveData(){
-      
-    }
-  })
-  
 
   return( 
   <>
