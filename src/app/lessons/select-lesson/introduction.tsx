@@ -9,10 +9,10 @@ export default function Introduction() {
   useEffect(() => {
     switch(dmsg){
       case 0:
-        setMsg("Hello, my name is Andy. I'll be your teacher for this English course");
+        setMsg("สวัสดี ฉันชื่อแอนดี้ ฉันจะเป็นครูสอนอังกฤษในคอร์สนี้เอง");
         break;
       case 1:
-        setMsg('Now, please let me know more about you by filling the form in the next page');
+        setMsg('เอาล่ะ เดี๋ยวฉันจะพาคุณไปกรอกแบบฟอร์ม เพื่อที่จะได้ทำความรู้จักกับคุณมากยิ่งขึ้น');
         break;
     }
   },[dmsg])
@@ -35,7 +35,7 @@ export default function Introduction() {
           </div>
         </div>
       </div>
-  	  <Image src="/imgs/andy/andy-greet.png" alt='teacher' width={240} height={160} className="teacher"/>
+  	  <Image src="/imgs/andy/andy-greet.png" alt='teacher' width={240} height={160} className="teacher absolute bottom-0" />
     </div>
   </>
   )

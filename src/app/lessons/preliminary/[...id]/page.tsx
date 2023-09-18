@@ -14,11 +14,13 @@ function Render({ id }: { id: string[] }) {
 
   useEffect(() => {
     if (document !== undefined) {
-      const element = document?.querySelector("body");
+      const bodyElem = document?.querySelector("body");
+      const htmlElem = document?.querySelector("html");
       const className = "pre-lesson";
 
-      if (!element?.classList.contains(className)) {
-        element?.classList.add(className);
+      if (!bodyElem?.classList.contains(className) || !htmlElem?.classList.contains(className)) {
+        bodyElem?.classList.add(className);
+        htmlElem?.classList.add(className);
       }
     }
   }, [])
@@ -33,16 +35,17 @@ function Render({ id }: { id: string[] }) {
     switch (Number(id[0])) {
       case 1:
         setMaxPage(5)
-        if (clp > 0 && clp <= 1) setHeaderTXT('What is the Prefix?')
-        else if (clp > 1 && clp <= 2) setHeaderTXT('What is the Suffix?')
-        else if (clp > 2 && clp <= 4) setHeaderTXT('Review')
+        if (clp > 0 && clp <= 1) setHeaderTXT('ความหมายของ Prefix')
+        else if (clp > 1 && clp <= 2) setHeaderTXT('ความหมายของ Suffix')
+        else if (clp > 2 && clp <= 4) setHeaderTXT('ถึงเวลาทบทวน!')
         lessonStructure.Introduction.forEach((page, index) => {
           if (Number(id[1]) === index + 1) setContent(page)
         })
         break;
       case 2:
-        setMaxPage(3)
-        if (clp > 0 && clp <= 3) setHeaderTXT('Introduction')
+        setMaxPage(4)
+        if (clp > 0 && clp <= 2) setHeaderTXT('แนะนำให้รู้จักกับ Suffix มากยิ่งขึ้น')
+        else if (clp > 2 && clp <= 3) setHeaderTXT('ทบทวนสักหน่อย')
         lessonStructure.NounSuffix.forEach((page, index) => {
           if (Number(id[1]) === index + 1) setContent(page)
         })
@@ -56,7 +59,7 @@ function Render({ id }: { id: string[] }) {
         break;
     }
 
-    const congratsText = ["Congratulations!", "You did it!", "Way to go!", "Great job folk!", "What a dashy learner!"]
+    const congratsText = ["ขอแสดงความยินดีด้วย!", "คุณทำมันสำเร็จแล้ว!", "คุณทำมันได้ดีสุดๆไปเลย!", "เยี่ยมมากนักเรียน!", "ช่างเป็นผู้ที่เรียนรู้เร็วจริงๆ!"]
     if(clp === maxPage) setHeaderTXT(congratsText[generateArrsRandint(congratsText)])
 
   }, [clp, id])

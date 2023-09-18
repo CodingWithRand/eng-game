@@ -4,32 +4,35 @@ export default function Term() {
   <div className="term-nester">
   <ol className="term-ol">
     <li>
-      <p>When you sign up by clicking the blue button on the homepage, it means you&apos;re browsing this website as a &quot;Guest&quot; user, and you&apos;re allowing us create and modify your caches data in the form of &quot;Cookies&quot;</p>
+      <p>เมื่อคุณลงทะเบียนโดยคลิกที่ปุ่มสีน้ำเงินบนหน้าแรก หมายความว่าคุณกำลังเรียกดูเว็บไซต์นี้ในฐานะ &quot;ผู้เยี่ยมชม&quot; และคุณอนุญาตให้เราสร้างและแก้ไขข้อมูลแคชของคุณในรูปแบบของ &quot;คุกกี้&quot;</p>
     </li>
     <li>
-      <p>The purpose of cookies is only for storing the user data while browsing the webpage</p>
+      <p>วัตถุประสงค์ของคุกกี้มีไว้เพื่อจัดเก็บข้อมูลผู้ใช้ขณะเรียกดูหน้าเว็บเท่านั้น</p>
     </li>
     <li>
-      <p>A guest account&apos;s accessibility is limited to presently available objects. It cannot access to systems that need server data calling, such as daily rewards, badge hunting, quests, and so on due to the limitation of account age (the account will be terminated after being inactive for more than a day), such as daily rewards, badge hunting, quests, and so on.</p>
+      <p>การเข้าถึงบัญชีผู้เยี่ยมชมนั้นจำกัดอยู่เพียงออบเจ็กต์ที่มีอยู่ในปัจจุบัน ไม่สามารถเข้าถึงระบบที่ต้องการการเรียกข้อมูลเซิร์ฟเวอร์ เช่น รางวัลรายวัน การล่าเหรียญตรา ภารกิจ และอื่นๆ เนื่องจากการจำกัดอายุบัญชี (บัญชีจะถูกยกเลิกหลังจากไม่ได้ใช้งานเป็นเวลานานกว่า 1 วัน)</p>
     </li>
     <li>
-      <p>Here are the list of your data we will collect in the form of &quot;Cookies&quot;</p>
+      <p>นี่คือรายการข้อมูลของคุณที่เราจะรวบรวมในรูปแบบของ &quot;คุกกี้&quot;</p>
       <hr className="term-hr"></hr>
       <ul className="term-ul">
         <li>
-          <p>Your custom name</p>
+          <p>ชื่อที่คุณกำหนดเอง ผ่านทางแบบฟอร์มที่จะกรอกต่อไปนี้</p>
         </li>
         <li>
-          <p>The lessons you would like to take on</p>
+          <p>บทเรียนที่คุณอยากจะเรียน ผ่านทางแบบฟอร์มที่จะกรอกต่อไปนี้เช่นกัน</p>
         </li>
         <li>
-          <p>Your learning progress, in form of completed staged, levels, and experiences</p>
+          <p>ความก้าวหน้าในการเรียนรู้ของคุณ ในรูปแบบของด่าน ระดับ และประสบการณ์ที่เสร็จสมบูรณ์</p>
         </li>
       </ul>
       <hr className="term-hr"></hr>
     </li>
     <li>
-      <p>Some of the mentioned data may be also collected to database, such as experiences which is a part of leaderboard system</p>
+      <p>ฐานข้อมูลในการเก็บข้อมูลสำหรับเว็บไซต์นี้ เป็นฐานข้อมูลแบบ Realtime โดย Firebase (เวอร์ชั่น 10.4.0)</p>
+    </li>
+    <li>
+      <p>ข้อมูลดังกล่าวบางส่วนอาจถูกรวบรวมไปยังฐานข้อมูล เช่น ประสบการณ์ที่เป็นส่วนหนึ่งของระบบลีดเดอร์บอร์ด</p>
     </li>
   </ol>
   </div>

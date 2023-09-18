@@ -71,10 +71,7 @@ export default function FormPage({ children, utilities }: any) {
     if (utilities.footerStyle.name === 'one-btn') {
         footerEl =
             <div className='submit'>
-                <div className="gradient"></div>
-                <div className="btn-nester">
-                  <button className='continue-btn' onClick={submit}>{utilities.footerStyle.btnText}</button>
-                </div>
+                <button className='continue-btn' onClick={submit}>{utilities.footerStyle.btnText}</button>
             </div>
     } else if (utilities.footerStyle.name === 'prev-next') {
         footerEl =

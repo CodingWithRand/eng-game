@@ -70,12 +70,12 @@ function Render() {
           headerStyle: {
             ...prevState.headerStyle,
             name: "center",
-            headerText: "Term of uses & Condition"
+            headerText: "ข้อกำหนดในการใช้งาน"
           },
           footerStyle: {
             ...prevState.footerStyle,
             name: "one-btn",
-            btnText: "I accept"
+            btnText: "ฉันยอมรับ"
           }
         }));
         if (TSXholder !== <Term />) setTSXHolder(<Term />);
@@ -86,7 +86,7 @@ function Render() {
           headerStyle: {
             ...prevState.headerStyle,
             name: "center",
-            headerText: "Enter your name in English"
+            headerText: "ใส่ชื่อของคุณเป็นภาษาอังกฤษ"
           },
           footerStyle: {
             ...prevState.footerStyle,
@@ -101,7 +101,7 @@ function Render() {
           headerStyle: {
             ...prevState.headerStyle,
             name: "center",
-            headerText: "Select the lesson you'd like to take"
+            headerText: "เลือกหัวข้อที่ต้องการจะเรียน"
           }
         }))
         if (TSXholder !== <Question2 />) setTSXHolder(<Question2 />);
@@ -112,7 +112,7 @@ function Render() {
           headerStyle: {
             ...prevState.headerStyle,
             name: "default",
-            headerText: `You've selected ${
+            headerText: `คุณเลือก ${
               (() => {
                 const SelectedLesson: string[] = [];
                 if(userState.lessons === null) return []
@@ -126,7 +126,7 @@ function Render() {
           footerStyle: {
             ...prevState.footerStyle,
             name: "one-btn",
-            btnText: "Let's go!"
+            btnText: "ไปลุยกันเลย!"
           }
         }))
         if (TSXholder !== <LessonsInfo />) setTSXHolder(<LessonsInfo />);

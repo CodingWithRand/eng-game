@@ -34,8 +34,8 @@ export default function LessonBody({ children }: any) {
         </button>
       </div>)
     } else if (stageFooter === "notf-correct") {
-      const congratsText = ["You made it!", "Easy, does it?", "You\'re on fire!", "Execellent!", "Nicely Done!"]
-      const userResponseText = ["Thank you", "...", ":)"]
+      const congratsText = ["คุณทำได้แล้ว!", "ง่ายใช่ไหมละ", "คุณมีไฟมากเลย!", "เยี่ยมมาก!", "ทำได้ดี!"]
+      const userResponseText = ["ขอบคุณครับ / ค่ะ", "...", ":)"]
       setCF(<div className='notf-correct'>
         <div className="chatbox">
           <Image src={`/imgs/andy/andy-cheer-${Math.floor(Math.random() * 2) + 1}.png`} width={100} height={100} alt="andy-cheer"/>
@@ -46,7 +46,7 @@ export default function LessonBody({ children }: any) {
         </div>
       </div>)
     } else if (stageFooter === "notf-wrong") {
-      const congratsText = ["Aww, too bad", "Sorry, but that\'s wrong", "Meh, come one"]
+      const congratsText = ["โอ้แย่จัง", "โทษทีนะ แต่คำตอบนั้นผิด", "แหมะ ตั้งใจหน่อยสิ"]
       const userResponseText = ["OK", "...", ":("]
       setCF(<div className='notf-wrong'> 
         <div className="chatbox">

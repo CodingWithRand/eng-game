@@ -6,57 +6,65 @@ const lessonStructure = {
     Introduction: [
       <ExplanationWithExamples
         key="expn-exp1"
-        explanations={["Prefix is a group of letters added to the beginning of a word to change its meaning or create a new word."]}
-        initExampleWord='For example'
+        explanations={["Prefix กลุ่มของตัวอักษรที่เพิ่มไว้หน้าคำเพื่อเปลี่ยนความหมายหรือสร้างคำใหม่"]}
+        initExampleWord='ยกตัวอย่าง เช่น'
         examples={[
-          ["un-", "in", "undo"],
-          ["re-", "in", "rewrite"]
+          ["un-", "ใน", "undo"],
+          ["re-", "ใน", "rewrite"]
         ]}
         note={undefined}
       />,
       <ExplanationWithExamples
         key="expn-exp2"
-        explanations={["Suffix is a group of letters added to the end of a word to modify its meaning or create a new word, which also changes its part of speech", "Suffix is a group of letters added to the end of a word to modify its meaning or create a new word, which also changes its part of speech", "Suffix is a group of letters added to the end of a word to modify its meaning or create a new word, which also changes its part of speech", "Suffix is a group of letters added to the end of a word to modify its meaning or create a new word, which also changes its part of speech", "Suffix is a group of letters added to the end of a word to modify its meaning or create a new word, which also changes its part of speech"]}
-        initExampleWord='For instance'
+        explanations={["กลุ่มของตัวอักษรที่เพิ่มต่อท้ายคำเพื่อแก้ไขความหมายหรือสร้างคำใหม่ซึ่งเปลี่ยน Part of speech ของคำด้วย"]}
+        initExampleWord='ยกตัวอย่าง เช่น'
         examples={[
-          ["-ing", "in", "running"],
-          ["-ed", "in", "jumped"]
+          ["-ing", "ใน", "running"],
+          ["-ed", "ใน", "jumped"]
         ]}
         note={undefined}
       />,
       <Choices
         key="c-1"
-        question='What is the meaning of "Prefix"?'
-        choices={["Something", "IDK"]}
-        answers={["Something"]}
+        question='"Prefix" คืออะไร'
+        choices={["กลุ่มของคำที่ต่อด้านหน้าคำศัพท์ แล้วทำให้ความหมายของคำเปลี่ยนไป", "คำอุปสรรค เช่น milli-, centi- ใช้เพื่อลดจำนวนเลขศูนย์ที่แสดงในจำนวนที่เป็นตัวเลข"]}
+        answers={["กลุ่มของคำที่ต่อด้านหน้าคำศัพท์ แล้วทำให้ความหมายของคำเปลี่ยนไป"]}
         mode="radio"
         xpGain={5}
       />,
       <Choices
         key="c-2"
-        question='What is the meaning of "Suffix"?'
-        choices={["A group of word that come at the end", "A group of word that could change word's part of speech", "All of the above"]}
-        answers={["All of the above"]}
+        question='"Suffix" คืออะไร'
+        choices={["กลุ่มคำที่มาต่อท้ายคำศัพท์", "กลุ่มคำที่สามารถเปลี่ยน part of speech ของคำนั้นได้", "ทั้งหมดที่กล่าวมา"]}
+        answers={["ทั้งหมดที่กล่าวมา"]}
         mode="radio"
         xpGain={5}
       />,
       <LessonEnd 
         key="end"
-        descriptiveText='This is only a beginning to this memorable (Really?) journey on this topic. Shh... not gonna spoil more :)'
+        descriptiveText='นี่เป็นเพียงจุดเริ่มต้นการเดินทางที่น่าจดจำ (จริงเหรอ?) ในหัวข้อนี้ ชู่... พอละ ฉันจะไม่สปอยเพิ่มอีก:)'
       />
     ],
     NounSuffix: [
       <Explanations 
         key='exp1'
-        explanations={["Alright. After we know what are prefix and suffix, it's time to go deeper in each topic.", "Please note that, we'll only focus on the suffixes in this lesson"]}
+        explanations={["หลังจากที่เรารู้ว่า Prefix และ Suffix คร่าวๆแล้วว่าคืออะไร ก็ถึงเวลาที่เราจะเจาะลึกเข้าไปในแต่ละหัวข้อว่า มีอะไรในหัวข้อเหล่านั้นบ้าง", "ขอบอกก่อนนะว่า เราจะพูดถึงเพียงแค่ Suffix เท่านั้นในบทเรียน Preliminary นี้"]}
       />,
       <Explanations 
         key='exp2'
-        explanations={["There are total 7 types of suffixes, Noun Suffix, Verb Suffix, ...", 'In this topic, we\'ll talk about Noun Suffix']}
+        explanations={["Suffixมีทั้งหมด 7 ประเภท ได้แก่ Noun -> Noun Suffix, Verb -> Noun Suffix, Adjective -> Noun Suffix, Verb -> Adjective Suffix, Noun -> Adjective Suffix, Adjective -> Adverb Suffix และ Noun/Adjective -> Adverb Suffix", 'ในหัวข้อนี้ เราจะพูดถึง Noun -> Noun Suffix กัน']}
+      />,
+      <Choices
+        key='c-1'
+        question='เลือกทุกอย่างที่เป็นประเภทของ Suffix'
+        choices={["Front suffixes", "Adjoint suffixes", "Noun -> Noun Suffix", "Verb -> Adjective Suffix", "Adjective -> Adverb Suffix"]}
+        answers={["Noun -> Noun Suffix", "Verb -> Adjective Suffix", "Adjective -> Adverb Suffix"]}
+        mode='check-box'
+        xpGain={15}
       />,
       <LessonEnd 
         key="end"
-        descriptiveText={'Quite tough right? Don\'t worry, the next topic will be even more tougher'}
+        descriptiveText={'ยากใช่ไหมละ ไม่ต้องห่วง ด่านต่อไปจะยากกว่านี้อีก 55'}
       />
     ],
     VerbSuffix: [

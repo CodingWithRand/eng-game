@@ -3,8 +3,41 @@
 
 @layer components{
   .a-stage{
-    @apply w-[50px] h-[50px] rounded-full bg-blue-400 stage-btn-style
+    @apply w-20 h-20 rounded-full bg-blue-400 stage-btn-style
   }
+  .lobby-body{
+    @apply h-full overflow-auto
+  }
+  .zone{
+    @apply f-jc flex-col gap-y-10
+  }
+  .zone-nav{
+    @apply w-full p-4 flex justify-between items-center lg:px-8
+  }
+  .zone-name{
+    @apply text-lg font-bold text-white sm:text-4xl
+  }
+  .stage-comp{
+    @apply text-sm font-semibold text-white sm:text-base
+  }
+  .zone-container{
+    @apply flex justify-evenly
+  }
+  .lobby{ @apply h-full }
+
+  .stage-container{
+    @apply f-ic flex-col w-[20%]
+  }
+  .stage{ @apply my-4 w-full}
+
+  .s-left{ @apply text-start }
+  .s-right{ @apply text-end }
+  .s-center{ @apply text-center }
+
+  .env-2, .env-1 { @apply flex flex-col }
+
+  .img-nester{ @apply f-ic }
+  .btn-img-nester{ @apply w-full h-full f-ic f-jc }
 }
 
 @layer utilities{

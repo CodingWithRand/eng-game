@@ -3,38 +3,33 @@
 
 @layer component{
   .default-head-text{
-    @apply flex justify-normal text-4xl mt-20 w-[80%];
+    @apply flex justify-normal text-2xl mt-20 w-[80%] sm:text-4xl;
   }
   .center-head-text{
-    @apply f-jc text-4xl mt-20 w-[80%];
+    @apply f-jc text-2xl mt-20 w-[80%] text-center sm:text-4xl;
   }
   
   .lesson-name{
     @apply f-jc;
   }
   .submit{
-    @apply f-jc w-full fixed bottom-[0rem] flex-wrap items-end
+    @apply f-jc w-full bottom-[0rem] flex-wrap items-end mb-6 sm:mb-8
   }
-  .gradient{
-    @apply w-[101.5%] h-[5rem] bg-gradient-to-t from-white to-white/0
-  }
-  .btn-nester{
-    @apply w-full pb-10 bg-white f-jc
-  }
+
   .continue-btn{
     @apply shadow-btn-green btn-style bg-emerald-400 w-[40%] py-4 !important;
   }
   .form-container{
-    @apply h-full w-[80%]
+    @apply h-[60%] w-[80%] overflow-auto
   }
   
   .form { @apply min-h-screen h-full overflow-auto }
   .form-body {
-    @apply f-ic flex-col h-full justify-between;
+    @apply f-ic flex-col h-full gap-y-4 sm:gap-y-8;
   }
   
   .form-input{
-    @apply p-2 text-xl w-full border-solid border-gray-300 border-2 rounded-md !important;
+    @apply p-2 text-base w-full border-solid border-gray-300 border-2 rounded-md sm:text-xl !important;
   }
 
   .lessons-preview{
@@ -50,7 +45,7 @@
   }
 
   .warning-message{
-    @apply text-red-400 my-2;
+    @apply text-sm text-red-400 my-2 sm:text-xl;
   }
   .greeting-page{
     @apply flex flex-col justify-end h-full items-center sm:items-start;
@@ -67,11 +62,10 @@
   .msg-box{
     @apply select-none absolute flex justify-center items-center top-[10%] h-[50%] w-[100%] sm:top-[25%] sm:bottom-[25%] sm:w-[90%] md:h-[50%] md:w-[70%] lg:w-[60%] xl:w-[60%];
   }
-  .term-container{
-    @apply flex justify-center
-  }
+  .term-container{ @apply f-jc }
+  .term-ol p{ @apply text-[0.9rem] sm:text-base }
   .term-nester{
-    @apply w-[80%] flex flex-col justify-center items-center my-10
+    @apply w-[80%] flex flex-col justify-center items-center my-6 sm:my-10
   }
   .term-ol{
     @apply list-decimal !important
@@ -86,7 +80,7 @@
     @apply select-none absolute 2xl:w-[20rem]
   }
   .lesson-info{
-    @apply my-4
+    @apply text-sm my-4 sm:text-base
   }
   .opening{
     @apply text-lg my-6

@@ -7,7 +7,7 @@
     } */
     .q{ @apply text-center text-lg mb-[-1rem] sm:text-2xl }
     .notf-correct{
-        @apply fixed bottom-0 border-8 border-solid border-green-400 rounded-md bg-emerald-400/50 py-4 fr-ic justify-center w-[100%];
+        @apply border-8 border-solid border-green-400 rounded-md bg-emerald-400/50 py-4 fr-ic justify-center w-[100%];
     }
     .andy-resp{
         @apply md:w-[80%] text-start font-bold my-4 text-2xl md:text-4xl;
@@ -28,7 +28,7 @@
         @apply bg-red-400 wrong-shadow;
     }
     .notf-wrong{
-        @apply fixed bottom-0 border-8 border-solid border-red-400 rounded-md bg-red-400/50 py-4 fr-ic justify-center w-[100%] gap-x-4;
+        @apply border-8 border-solid border-red-400 rounded-md bg-red-400/50 py-4 fr-ic justify-center w-[100%] gap-x-4;
     }
     .chatbox{
         @apply w-[90%] fr-ic gap-x-4;
@@ -36,6 +36,7 @@
     .lesson-msg-box{
         @apply f-jc flex-col grow;
     }
+    .choice-list-nester{ @apply my-6 overflow-auto h-[60%]}
 }
 
 @layer utilities{

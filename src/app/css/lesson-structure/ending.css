@@ -3,10 +3,10 @@
 
 @layer components{
     .lesson-end{
-        @apply f-ic flex-col w-screen h-[80vh] absolute bottom-0 left-0 right-0 justify-between ssm:h-[90vh]
+        @apply f-ic flex-col gap-y-4 sm:absolute sm:bottom-0 sm:left-0 sm:right-0 sm:h-[80%]
     }
     .d-t{
-        @apply text-center w-[80%] text-lg md:text-2xl
+        @apply text-center w-[80%] text-base sm:text-lg md:text-2xl
     }
     .text-frame{
         @apply f-ic flex-col gap-y-2 border-solid border-4 border-gray-300 rounded-md text-box-style text-box-shadow
@@ -24,10 +24,10 @@
 
 @layer utilities{
     .text-box-style {
-        @apply rounded-xl p-3 text-xl !important;
+        @apply rounded-xl p-3 text-base sm:text-xl !important;
     }
     .btn-style{
-        @apply rounded-xl text-white text-4xl !important;
+        @apply rounded-xl text-white text-xl sm:text-4xl !important;
     }
     .text-box-shadow{
         box-shadow: 0 0.5rem 0 0 rgb(209 213 219);

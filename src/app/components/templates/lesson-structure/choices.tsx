@@ -40,6 +40,14 @@ export function ChoiceTable({ c, mode, a, xpg }: { c: string[], mode: string, a:
         else setFooterStyle("notf-wrong");
       }
     })
+    else if(mode === "check-box"){
+      let chosenAns: string[] = []
+      checked.forEach((b, i) => { if(b){ console.log(b); chosenAns.push(a[a.findIndex((ans) => ans === c[i])]) }})
+      if(chosenAns.length === a.length){
+        if(JSON.stringify(a) === JSON.stringify(chosenAns)){ deactivate(true); setFooterStyle("notf-correct"); generateXP(prevXP => prevXP + (xpg/2)) }
+        else{ deactivate(true); setFooterStyle("notf-wrong"); }
+      }
+    }
   }, [checked, mode, c, a, setFooterStyle])
 
   function radio_check_box(currentIndex: number) {
@@ -88,7 +96,7 @@ export function ChoiceTable({ c, mode, a, xpg }: { c: string[], mode: string, a:
     )
   })
   
-  return (<div className="choice-list">{totalChoices}</div>)
+  return (<div className="choice-list-nester"><div className="choice-list">{totalChoices}</div></div>)
 }
 
 export default function Choices({ question, choices, answers, mode, xpGain }: { question: string, choices: string[], answers: string[], mode: string, xpGain: number }) {

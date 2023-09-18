@@ -40,6 +40,7 @@ function Render() {
         <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Handicon - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/left-arrow" title="left arrow icons">Left arrow icons created by Freepik - Flaticon</a>
         <a href="https://www.flaticon.com/free-icons/chat" title="chat icons">Chat icons created by srip - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/star" title="star icons">Star icons created by Revicon - Flaticon</a>
         */}
       </main>
     </>
