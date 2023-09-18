@@ -7,14 +7,14 @@ import React, { useEffect, useState } from 'react'
 export default function Lobby() {
   const totalLesson = 1;
   const totalStage = 3;
-  const [ { s, nextS }, { clp } ] = useStage()
+  const [ { s, nextS }, { clp, nextCLP } ] = useStage()
   const [ { userState } ] = useRegistry()
   const [ availableZones, addAvailableZone ] = useState<JSX.Element[] | any[]>(generateStateArray("JSX.Element", totalLesson))
   const router = useRouter()
-
   
   function enter(LessonComponent: number, les: string){
     nextS(LessonComponent)
+    nextCLP(1)
     router.push(`/lessons/${les.toLowerCase()}/${LessonComponent}/${clp}`)
   }
   
