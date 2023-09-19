@@ -9,7 +9,7 @@ import Image from 'next/image';
 export default function Lobby() {
   const totalLesson = 1;
   const totalStage = {
-    Preliminary: 7
+    Preliminary: 11
   };
   const [ { s, nextS }, { clp, nextCLP } ] = useStage()
   const [ { userState } ] = useRegistry()

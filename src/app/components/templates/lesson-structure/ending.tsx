@@ -5,11 +5,16 @@ import { useRouter } from "next/navigation";
 import { ref, set, onValue } from "firebase/database";
 import { MemberData } from '@/server/cookies'
 import db from "@/firebase";
+import { useEffect } from "react";
 
-export default function LessonEnd({ descriptiveText }: { descriptiveText: string }) {
+export default function LessonEnd({ descriptiveText, defaultXP }: { descriptiveText: string, defaultXP?: number }) {
     const [{ nextS }, {}, {}, { setFooterStyle }] = useStage();
-    const [{ xp }] = useLevel()
+    const [{ xp, generateXP }] = useLevel()
     const router = useRouter()
+
+    useEffect(() => {
+        if(defaultXP !== undefined) generateXP(prevXP => prevXP + defaultXP)
+    }, [])
 
     setFooterStyle('')
 
@@ -19,6 +24,7 @@ export default function LessonEnd({ descriptiveText }: { descriptiveText: string
         const userXP = ref(db, `${MemberData.get('user').name}/xp`)
         let storingXP: number = 0;
         onValue(userXP, (snapshot) => { storingXP = snapshot.val(); });
+        console.log(storingXP)
         const saveXP = async () => await set(userXP, storingXP + xp)
         saveXP()
         router.push('/lessons'); 

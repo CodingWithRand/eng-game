@@ -6,7 +6,7 @@ explanations.forEach((t) => holderJSX.push(<p className='exp-p'>{t}</p>))
   return <>{holderJSX}</>
 }
 
-function ExamplesTable({ init, examples, note }: { init: string, examples: string[][], note: string[] | undefined }){
+function ExamplesTable({ init, examples }: { init: string, examples: string[][] }){
   let tableRows: JSX.Element[] = []
   examples.forEach((example) => {
     if(example.length !== 3) return
@@ -39,16 +39,30 @@ export function Explanations({ explanations }: { explanations: string[] }){
   )
 }
 
-export function ExplanationWithExamples({ explanations, examples, initExampleWord, note }: { 
+export function ExplanationWithExamples({ explanations, examples, initExampleWord, notes }: { 
   explanations: string[], 
   initExampleWord: string,
   examples: string[][], 
-  note: string[] | undefined 
+  notes?: string[]
 }){
+
+  let totalNote: JSX.Element[] = []
+
+  notes?.forEach((note, ni) => {
+    totalNote.push(<p className='note'>{`${(() => {
+      let tempAsterisk: string[] = []
+      for(let i = 0; i<notes.length; i++) tempAsterisk.push("*")
+      return tempAsterisk.join(" ")
+    })()} ${note}`}</p>)
+  })
+
   return(
     <div className='real-lesson-content'>
       <ExplanationParagraphs explanations={explanations} />
-      <ExamplesTable init={initExampleWord} examples={examples} note={note} />
+      <ExamplesTable init={initExampleWord} examples={examples} />
+      <div>
+        {totalNote}
+      </div>
     </div>
   )
 }

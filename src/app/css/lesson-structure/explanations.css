@@ -18,4 +18,5 @@
     .real-lesson-content{
         @apply h-[75%] overflow-auto
     }
+    .note{ @apply text-sm py-4 }
 }
