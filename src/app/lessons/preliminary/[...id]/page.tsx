@@ -46,14 +46,14 @@ function Render({ id }: { id: string[] }) {
         setMaxPage(4)
         if (clp > 0 && clp <= 2) setHeaderTXT('แนะนำให้รู้จักกับ Suffix มากยิ่งขึ้น')
         else if (clp > 2 && clp <= 3) setHeaderTXT('ทบทวนสักหน่อย')
-        lessonStructure.NounSuffix.forEach((page, index) => {
+        lessonStructure.IntroductionToSuffix.forEach((page, index) => {
           if (Number(id[1]) === index + 1) setContent(page)
         })
         break;
       case 3:
         setMaxPage(9)
-        if (clp > 0 && clp <= 8) setHeaderTXT('Verb -> Noun Suffix')
-        lessonStructure.VerbSuffix.forEach((page, index) => {
+        if (clp > 0 && clp <= 8) setHeaderTXT('Noun -> Noun Suffix')
+        lessonStructure.NounNounSuffix.forEach((page, index) => {
           if (Number(id[1]) === index + 1) setContent(page)
         })
         break;
