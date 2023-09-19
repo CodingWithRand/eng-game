@@ -181,7 +181,41 @@ const lessonStructure = {
         ["Feminism", "คือ" , "ความเชื่อในสิทธิและความเสมอภาคของเพศหญิง"],
       ]}
       note={undefined}
-    />,
+    />,   
+    <ExplanationWithExamples
+          key='expn-exp12'
+          explanations={["\"-ing\" จะบ่งบอกถึงวัสดุที่คำนามนั้นหมายถึง หรือสสารที่นามนั้นเอ่ยถึงประกอบรวมกัน"]}
+          initExampleWord="ยกตัวอย่างคำ เช่น"
+          examples={[
+            ["Roofing", "คือ", "วัสดุมุงหลังคา เช่นกระเบื้อง"],
+            ["Bedding", "คือ" , "วัสดุบนเตียงนอน เช่นหมอน"],
+          ]}
+          note={undefined}
+        />,
+       <ExplanationWithExamples
+          key='expn-exp13'
+          explanations={["\"-ful\" จำนวนที่นามนั้นมีอยู่ บ่งบอกถึงจำนวนเต็มๆของตำนามนั้น"}
+          initExampleWord="ยกตัวอย่างคำ เช่น"
+          examples={[
+            ["Handful", "แปลว่า", "เต็มมือ"],
+            ["Mouthful", "แปลว่า" , "เต็มปาก"],
+          ]}
+          note={undefined}
+        />,
+       <ExplanationWithExamples
+          key='expn-exp14'
+          explanations={["\"-ite\" คนที่เป็นสมาชิกของกลุ่มหรือเผ่า คนที่เชื่อหรือนิยมชมชอบในตัวผู้นำ หรือลัทธิความเชื่อ"]}
+          initExampleWord="ยกตัวอย่างคำ เช่น"
+          examples={[
+            ["Israelite", "คือ", "กลุ่มชนชาวอิสราเอล"],
+            ["Stalinite", "คือ" , "คนที่ชื่นชอบสตาลิน"],
+          ]}
+          note={undefined}
+        />,
+           <Explanations
+              key='expn-exp14'
+              explanations={["\"-ese\" บ่งบอกถึง ประชาชน หรือภาษาของประเทศต่างๆ ยกตัวอย่างคำ เช่น Japanese คือชาวญี่ปุ่นหรือภาษาญี่ปุ่น"]}
+            />,
   ],
   VerbNounSuffix: [
     <Explanations
@@ -390,6 +424,20 @@ const lessonStructure = {
       ]}
       note={undefined}
     />,
+           <ExplanationWithExamples
+              key='expn-exp14'
+              explanations={["\"-ship\"  หรือ \"-cy\" และ \"acy\" ต่างมีความหมายที่บ่งบอกถึง สถานะ คุณลักษณะ สภาพหรือสถาวะตำแหน่งเหมือนกัน แต่มีสิ่งที่แตกต่างกันเล็กน้อยคือ \"-acy\" และ \"-cy\" จะยังเป็นการบอกว่าคำนามนั้นเป็นสิ่งที่เกี่ยวกับบริษัท"]}
+              initExampleWord="ยกตัวอย่างคำ เช่น"
+              examples={[
+                ["Friendship", "แปลว่า", "มิตรภาพ"],
+                ["Professorship", "แปลว่า" , "ตำแหน่งศาสตราจารย์"],
+                ["Membership", "แปลว่า", "สมาชิกภาพ"],
+                ["Workmanship", "แปลว่า", "ฝีมือการทำงาน"],
+                ["Infancy", "แปลว่า", "วัยทารก"],
+                ["Agency", "แปลว่า", "สำนักงานตัวแทน"]
+              ]}
+              note={undefined}
+            />,
   ]
 }
 
