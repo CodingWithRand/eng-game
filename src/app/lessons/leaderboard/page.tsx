@@ -8,7 +8,7 @@ export default function Leaderboard(){
   let maxXP: number = 0;
   let minXP: number = 0;
   onValue(rootDB, (snapshot) => {
-    if(snapshot.val() === null) retur
+    if(snapshot.val() === null) return
     let ci: number = 0
     Object.keys(snapshot.val()).forEach((username) => {
       const userXP = snapshot.val().username.xp
