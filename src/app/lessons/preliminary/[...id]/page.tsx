@@ -113,6 +113,28 @@ function Render({ id }: { id: string[] }) {
         lessonStructure.VASExercise.forEach((page, index) => {
           if (Number(id[1]) === index + 1) setContent(page)
         })
+        break
+      case 12:
+        setMaxPage(3)
+        if (clp > 0 && clp <= 2) setHeaderTXT('Adjective -> Adverb Suffix')
+        lessonStructure.AdjectiveAdverbSuffix.forEach((page, index) => {
+          if (Number(id[1]) === index + 1) setContent(page)
+        })
+        break
+      case 13:
+        setMaxPage(3)
+        if (clp > 0 && clp <= 2) setHeaderTXT('Noun / Adjective -> Verb Suffix')
+        lessonStructure.NounAdjectiveVerbSuffix.forEach((page, index) => {
+          if (Number(id[1]) === index + 1) setContent(page)
+        })
+        break
+      case 14:
+        setMaxPage(6)
+        if (clp > 0 && clp <= 5) setHeaderTXT('Exercises')
+        lessonStructure.TOPS3Exercise.forEach((page, index) => {
+          if (Number(id[1]) === index + 1) setContent(page)
+        })
+        break
     }
 
     const congratsText = ["ขอแสดงความยินดีด้วย!", "คุณทำมันสำเร็จแล้ว!", "คุณทำมันได้ดีสุดๆไปเลย!", "เยี่ยมมากนักเรียน!", "ช่างเป็นผู้ที่เรียนรู้เร็วจริงๆ!"]

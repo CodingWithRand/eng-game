@@ -7,10 +7,12 @@ import { generateStateArray } from "@/components/utils"
 export function ChoiceTable({ c, mode, a, xpg }: { c: string[], mode: string, a: string[], xpg: number }) {
   const [checked, setCheck] = useState<boolean[] | any[]>(generateStateArray("boolean", undefined, c))
   const [isSelected, appear] = useState<JSX.Element[] | any[]>(generateStateArray("boolean", undefined, c))
-  const [ {}, {}, {}, { stageFooter, setFooterStyle } ] = useStage()
+  const [ {}, {}, {}, { stageFooter, setFooterStyle }, { setCSA } ] = useStage()
   const [ activateState, deactivate ] = useState(false)
   const [{ generateXP }] = useLevel()
   let totalChoices: JSX.Element[] = []
+
+  setCSA(a)
 
   if(stageFooter !== "notf-correct" && stageFooter !== "notf-wrong") setFooterStyle('')
 

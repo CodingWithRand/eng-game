@@ -2,14 +2,14 @@ import { useStage, useRegistry, useLevel } from '@/components/client-caches'
 import { generateStateArray } from '@/components/utils';
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { ref, set, onValue } from "firebase/database";
+import { ref, set, get } from "firebase/database";
 import db from "@/firebase";
 import Image from 'next/image';
 
 export default function Lobby() {
   const totalLesson = 1;
   const totalStage = {
-    Preliminary: 11
+    Preliminary: 14
   };
   const [ { s, nextS }, { clp, nextCLP } ] = useStage()
   const [ { userState } ] = useRegistry()
@@ -55,7 +55,7 @@ export default function Lobby() {
               <div className='total-stage'>{`ด่านทั้งหมด: ${totalStage.Preliminary}`}</div>
               <div className='completed-stage'>{`ด่านสำเร็จแล้ว: ${(() => {
                 if(s > totalStage.Preliminary) return totalStage.Preliminary
-                else return s
+                else return s - 1
               })()}/${totalStage.Preliminary}`}</div>
             </div>
           </div>

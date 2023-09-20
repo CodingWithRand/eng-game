@@ -1,49 +1,72 @@
-"use client"
-
-import { ref, set, onValue } from "firebase/database";
+'use client'
+import { ref, onValue } from "firebase/database";
 import db from "@/firebase";
-import { useEffect } from "react"
+import { useEffect, useState } from "react";
+import "./l.css"
 
-export default function Leaderboard(){
-  const rootDB = ref(db)
+export default function Leaderboard() {
+  const rootDB = ref(db);
+  const [leaderboardTuple, setLeaderboardTuple] = useState<string[][]>([]);
+  const [leaderboard, setLeaderboard] = useState<JSX.Element[]>([]);
 
-  let leaderboardTuple: string[][] = [];
-  let leaderboard: JSX.Element[] = [];
-  let maxXP: number = 0;
-  let minXP: number = 0;
-  onValue(rootDB, (snapshot) => {
-    if(snapshot.val() === null) return
-    let ci: number = 0
-    Object.keys(snapshot.val()).forEach((username) => {
-      const userXP = snapshot.val().username.xp
-      const userStage = snapshot.val().username.stage
-      let currentUserLeaderstat = leaderboardTuple[ci]
-      if(userXP > maxXP){
-        maxXP = userXP
-        currentUserLeaderstat[0] = username
-        currentUserLeaderstat[1] = userXP
-        currentUserLeaderstat[2] = userStage
-        ci++
-      }else if(userXP < maxXP && userXP > minXP){
-        minXP = userXP
-        currentUserLeaderstat[0] = username
-        currentUserLeaderstat[1] = userXP
-        currentUserLeaderstat[2] = userStage
-        ci++
-      }else{
-        currentUserLeaderstat[0] = username
-        currentUserLeaderstat[1] = userXP
-        currentUserLeaderstat[2] = userStage
-        ci++
-      }
-    })
-  })
-  
   useEffect(() => {
-    leaderboardTuple.forEach((lt) => {
-      leaderboard.push(<label>{`${lt[0]}, ${lt[1]}, ${lt[2]}`}</label>)
+    if (document !== undefined) {
+      const bodyElem = document?.querySelector("body");
+      const htmlElem = document?.querySelector("html");
+      const className = "leaderboard";
+
+      if (!bodyElem?.classList.contains(className) || !htmlElem?.classList.contains(className)) {
+        bodyElem?.classList.add(className);
+        htmlElem?.classList.add(className);
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    onValue(rootDB, (snapshot) => {
+      if (snapshot.val() === null) return;
+
+      const newLeaderboardTuple: string[][] = [];
+
+      const rank: any[] = Object.values(snapshot.val()).sort((a: any,b: any) => b.xp - a.xp)
+      const user = Object.keys(snapshot.val())
+      console.log(rank, user)
+
+      if(rank.length === user.length)
+      {
+        for(let i = 0; i<user.length; i++)
+        {
+          newLeaderboardTuple.push([user[i], rank[i].xp, rank[i].stage])
+        }
+      }
+
+      console.log(newLeaderboardTuple)
+      setLeaderboardTuple(newLeaderboardTuple);
+
     })
-  }, [leaderboardTuple])
-  
-  return <>{leaderboard}</>
+  }, [rootDB]);
+
+  useEffect(() => {
+    const newLeaderboard: JSX.Element[] = leaderboardTuple.map((lt, index) => (
+      <div className="user-rank" key={index}>
+        <label>{lt[0]}</label>
+        <label>{lt[1]}</label>
+        <label>{lt[2]}</label>
+      </div>
+      
+    ));
+
+    setLeaderboard(newLeaderboard);
+  }, [leaderboardTuple]);
+
+  return (
+    <div className="leaderboard-content">
+      <div className="attrb">
+        <label>Username</label>
+        <label>Experience</label>
+        <label>Stage</label>
+      </div>
+      {leaderboard}
+    </div>
+  );
 }

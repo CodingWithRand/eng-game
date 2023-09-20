@@ -52,7 +52,7 @@ const lessonStructure = {
     />,
     <Explanations
       key='exp2'
-      explanations={["Suffix มีทั้งหมด 7 ประเภท ได้แก่ Noun -> Noun Suffix, Verb -> Noun Suffix, Adjective -> Noun Suffix, Verb -> Adjective Suffix, Noun -> Adjective Suffix, Adjective -> Adverb Suffix และ Noun/Adjective -> Adverb Suffix", 'ในหัวข้อถัดไป เราจะพูดถึง Noun -> Noun Suffix กัน']}
+      explanations={["Suffix มีทั้งหมด 7 ประเภท ได้แก่ Noun -> Noun Suffix, Verb -> Noun Suffix, Adjective -> Noun Suffix, Verb -> Adjective Suffix, Noun -> Adjective Suffix, Adjective -> Adverb Suffix และ Noun/Adjective -> Verb Suffix", 'ในหัวข้อถัดไป เราจะพูดถึง Noun -> Noun Suffix กัน']}
     />,
     <Choices
       key='c-1'
@@ -857,6 +857,111 @@ const lessonStructure = {
       descriptiveText={'เอาจริงๆนะ ฉันควรที่จะหยุดออกคำถามแปลกๆแบบข้อ 3 ได้ละนะ 555'}
     />
   ],
+  AdjectiveAdverbSuffix: [
+    <ExplanationWithExamples
+      key="expn-exp1"
+      explanations={[
+        "\"-ly\" ใช้ในการเปลี่ยนคำกริยาหรือคำคุณศัพท์เป็นคำกริยาวิเศษหรือคำคุณศัพท์วิเศษโดยทั่วไป โดยมักใช้ในการแสดงถึงวิธีการกระทำ และมักใช้กับคำกริยา เปลี่ยนคำกริยาให้กลายเป็นคำกริยาที่มีคุณสมบัติของ \"อย่าง\" หรือ \"ด้วยวิธี\" แต่บางครั้งก็ใช้กับคำคุณศัพท์",
+        "\"-ally\" มีความคล้ายคลึงกับ \"-ly\" โดยใช้ในการเปลี่ยนคำคุณศัพท์เป็นคำคุณศัพท์วิเศษโดยเฉพาะ และมักใช้กับคำคุณศัพท์ที่มีลักษณะเป็นบุรุษหรือเพศหญิง"
+      ]}
+      initExampleWord="ยกตัวอย่าง เช่น"
+      examples={[
+        ["Quick", "เปลี่ยนเป็น", "Quickly (อย่างรวดเร็ว)"],
+        ["Happy", "เปลี่ยนเป็น", "Happily (อย่างมีความสุข)"],
+        ["Beautiful", "เปลี่ยนเป็น", "Beautifully (อย่างงดงาม)"],
+        ["Dramatic", "เปลี่ยนเป็น", "Dramatically (อย่างรวดเร็วกระทันหัน)"]
+      ]}
+    />,
+    <ExplanationWithExamples
+      key="expn-exp2"
+      explanations={[
+        "\"-ably\" รูปแบบนี้มักใช้ในการเปลี่ยนคำคุณศัพท์เป็นคำคุณศัพท์วิเศษโดยทั่วไป",
+        "\"-ibly\" รูปแบบนี้มักใช้ในบางคำคุณศัพท์ที่ลอกเลียนแบบคำคุณศัพท์ในรูปแบบ \"-able\" แต่มีความหมายหรือเสียงที่ไม่สามารถใช้ \"-ably\" ได้ โดยมักใช้ในบริบทที่พิเศษ"
+      ]}
+      initExampleWord="ยกตัวอย่าง เช่น"
+      examples={[
+        ["Comfortable", "เปลี่ยนเป็น", "Comfortably"],
+        ["Reasonable", "เปลี่ยนเป็น", "Reasonably"],
+        ["Horrible", "เปลี่ยนเป็น", "Horribly"],
+        ["Terrible", "เปลี่ยนเป็น", "Terribly"],
+      ]}
+    />,
+    <LessonEnd
+      key="end"
+      descriptiveText={'หัวข้อหลังๆนี้จะไม่มีอะไรมากละ เพราะ Suffix ที่เปลี่ยนเป็น Adverb มีไม่ค่อยเยอะ'}
+      defaultXP={10}
+    />
+  ],
+  NounAdjectiveVerbSuffix: [
+    <Explanations
+      key="exp-1"
+      explanations={["คำลงท้ายด้วย \"-en\", \"-efy\" / \"-ify\", \"-ize\" / \"-ise\", และ \"-ate\" มักเป็นลักษณะของคำกริยาที่มีการเปลี่ยนรูปหรือการเพิ่มส่วนท้ายเพื่อแสดงความหมายเฉพาะหรือเปลี่ยนคุณลักษณะของคำกริยาต้นฉบับ", "ซึ่งแม้ว่าจะมีความหมายว่า ทำให้ ทำให้กลายเป็น หรือก่อให้เกิดเหมือนกัน แต่ก็มีความแตกต่างกัน ดังที่จะแสดงให้ดูในนหน้าถัดๆไป"]}
+    />,
+    <Explanations
+      key="exp-2"
+      explanations={[
+        "\"-en\" เป็นส่วนท้ายที่ใช้เพิ่มเข้ากับคำกริยาต้นฉบับเพื่อเปลี่ยนคุณลักษณะของคำนั้น ๆ โดยบางครั้งอาจมีการเปลี่ยนส่วนหน้าของคำกริยาด้วย",
+        "เช่น Brighten แปลว่า ทำให้สว่าง, Darken แปลว่า ทำให้มืด",
+        "\"-efy\" / \"-ify\" เป็นส่วนท้ายที่ใช้เพิ่มเข้ากับคำกริยาต้นฉบับเพื่อแสดงการทำให้เป็นหรือการแปลงให้เป็น",
+        "เช่น Simplify แปลว่า ทำให้ง่าย, Intensify แปลว่า ทำให้แรงขึ้น",
+        "\"-ize\" / \"-ise\" เป็นส่วนท้ายที่ใช้เพิ่มเข้ากับคำกริยาต้นฉบับเพื่อแสดงการกระทำหรือการเปลี่ยนแปลง",
+        "เช่น Realize (รู้เรื่อง) - รู้เรื่องหรือเข้าใจ, Organize (จัดระเบียบ) - จัดระเบียบหรือสร้างระเบียบ",
+        "\"-ate\" เป็นส่วนท้ายที่ใช้เพิ่มเข้ากับคำกริยาต้นฉบับเพื่อแสดงการกระทำหรือสถานะ",
+        "เช่น Celebrate (เฉลิมฉลอง) - เฉลิมฉลองหรือทำให้เฉลิมฉลอง, Educate (ศึกษา) - ศึกษาหรือสอนให้รู้"
+      ]}
+    />,
+    <LessonEnd
+      key="end"
+      descriptiveText={'ใช่ มีแค่นี้แหละ ไม่ต้องตกใจไป เดี๋ยวมีให้ตอบคำถามวัดความรู้อยู่'}
+      defaultXP={10}
+    />
+  ],
+  TOPS3Exercise:[
+    <Choices
+      key="c-1"
+      question='คำที่ลงท้ายด้วย "-ly" มักมีความหมายอย่างไรบ้าง'
+      choices={["อย่าง...", "ระยะ...", "แนวโน้ม...", "ด้วยวิธี...", "...ดี"]}
+      answers={["อย่าง...", "ด้วยวิธี..."]}
+      mode="check-box"
+      xpGain={10}
+    />,
+    <Choices
+      key="c-2"
+      question='ข้อใดที่เมื่อเติม -ly แล้วความหมายไม่ใกล้เคียงกับคำเดิม'
+      choices={["Quick", "Dramatic", "Happy", "Beautiful"]}
+      answers={["Dramatic"]}
+      mode="radio"
+      xpGain={5}
+    />,
+    <Choices
+      key="c-3"
+      question='คำใดใช้ "-ibly" ไม่ได้'
+      choices={["Horrific", "Terrible", "Horrible"]}
+      answers={["Horrific"]}
+      mode="radio"
+      xpGain={5}
+    />,
+    <Choices
+      key="c-4"
+      question='สิ่งใดบ่งบอกถึงข้อแตกต่างระหว่าง "-ise" และ "-ize"'
+      choices={["การเขียน ซึ่ง \"-ise\" เป็นแบบ British และ \"-ize\" เป็นแบบ American", "ความหมาย ซึ่ง \"-ise\" มีความหมายว่าแสดงการกระทำ และ \"-ize\" ให้ความหมายว่าการเปลี่ยนแปลง", "ไม่มีข้อแตกต่างระหว่าง Suffix สองตัวนี้"]}
+      answers={["การเขียน ซึ่ง \"-ise\" เป็นแบบ British และ \"-ize\" เป็นแบบ American"]}
+      mode="radio"
+      xpGain={5}
+    />,
+    <Choices
+      key="c-5"
+      question='บอก Part of Speech ของ Darkness กับ Darken'
+      choices={["Noun, Verb", "Adjective, Verb", "Verb, Noun", "Noun, Adverb"]}
+      answers={["Noun, Verb"]}
+      mode="radio"
+      xpGain={5}
+    />,
+    <LessonEnd
+      key="end"
+      descriptiveText={'และแล้วเราก็เดินทางมาสู่จุดจบของบทเรียนนี้...'}
+    />
+  ]
 }
 
 export default lessonStructure

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { generateArrsRandint } from '@/components/utils';
 
 export default function LessonBody({ children }: any) {
-  const [{ s }, { clp, nextCLP }, { maxPage }, { stageFooter }] = useStage()
+  const [{ s }, { clp, nextCLP }, { maxPage }, { stageFooter }, { currentStageAns }] = useStage()
   const router = useRouter()
   const [currentFooter, setCF] = useState<JSX.Element>(<></>)
 
@@ -50,9 +50,10 @@ export default function LessonBody({ children }: any) {
       const userResponseText = ["OK", "...", ":("]
       setCF(<div className='notf-wrong'> 
         <div className="chatbox">
-          <Image src="" width={100} height={100} alt="andy-sad" />
+          <Image src="/imgs/andy/andy-angry.png" width={100} height={100} alt="andy-sad" />
           <div className='lesson-msg-box'>
             <label className="andy-resp wrong">{congratsText[generateArrsRandint(congratsText)]}</label>
+            <label className='real-answer'>{`คำตอบที่ถูกต้องคือ ${currentStageAns.join(", ")}`}</label>
             <button className="user-resp wrong" onClick={nextBtn}>{userResponseText[generateArrsRandint(userResponseText)]}</button>
           </div>
         </div>

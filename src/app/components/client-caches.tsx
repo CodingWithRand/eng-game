@@ -1,5 +1,5 @@
 'use client';
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import { MemberData, question, UserStats, LessonComponent } from '@/server/cookies'
 
 type user = {
@@ -47,6 +47,10 @@ type ss = [
   {
     stageFooter: string
     setFooterStyle: React.Dispatch<React.SetStateAction<string>>
+  },
+  {
+    currentStageAns: string[]
+    setCSA: React.Dispatch<React.SetStateAction<string[]>>
   }
 ]
 
@@ -61,6 +65,7 @@ export const Registry = ({ children }: { children: React.ReactNode }) => {
         name: null,
         lessons: null,
     }
+
     const [ userState, setUserState] = useState<user>(MemberData.get("user") || initialUserData);
     const [ q, setQ ] = useState<number>(question.get("question") || 0);
 
@@ -87,6 +92,7 @@ export const Registry = ({ children }: { children: React.ReactNode }) => {
 export const Level = ({ children }: { children: React.ReactNode }) => {
   const [ xp, generateXP ] = useState<number>(UserStats.get("xp") || 0)
   const [ level, levelup ] = useState<number>(UserStats.get("level") || 1)
+  
 
   if(UserStats.get("xp") === undefined) LessonComponent.set("xp", 1)
   else UserStats.set("xp", xp)
@@ -108,11 +114,12 @@ export const Level = ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export const Stage = ({ children }: { children: React.ReactNode }) => {
+export const Stage = ({ children }: { children: React.ReactNode }) => {  
   const [ s, nextS ] = useState<number>(LessonComponent.get("stage") || 1)
   const [ clp, nextCLP ] = useState<number>(LessonComponent.get("clp") || 1);
   const [ maxPage, setMaxPage] = useState<number>(LessonComponent.get("mp") || 1)
   const [ stageFooter, setFooterStyle ] = useState<string>('')
+  const [ currentStageAns, setCSA ] = useState<string[]>([])
 
   if(LessonComponent.get("stage") === undefined) LessonComponent.set("stage", 1)
   else LessonComponent.set("stage", s)
@@ -133,7 +140,8 @@ export const Stage = ({ children }: { children: React.ReactNode }) => {
             { s, nextS },
             { clp, nextCLP },
             { maxPage, setMaxPage },
-            { stageFooter, setFooterStyle }
+            { stageFooter, setFooterStyle },
+            { currentStageAns, setCSA }
         ]}>
             {children}
         </StageState.Provider>

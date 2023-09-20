@@ -1,0 +1,15 @@
+.leaderboard{
+    @apply h-full
+}
+.leaderboard-content{
+    @apply h-full f-ic flex-col p-10
+}
+.user-rank, .attrb{
+    @apply f-jc flex-row w-full
+}
+.user-rank label{
+    @apply basis-1/3 text-center border-solid border-gray-300 border-2
+}
+.attrb label{
+    @apply basis-1/3 text-center bg-gray-300
+}
