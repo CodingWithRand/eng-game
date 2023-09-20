@@ -3,8 +3,8 @@ import db from "@/firebase";
 export default function Leaderboard(){
   const rootDB = ref(db)
 
-  let leaderboardTuple = [];
-  let leaderboard = [];
+  let leaderboardTuple: string[][] = [];
+  let leaderboard: JSX.Element[] = [];
   let maxXP: number = 0;
   let minXP: number = 0;
   onValue(rootDB, (snapshot) => {
