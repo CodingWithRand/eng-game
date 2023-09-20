@@ -16,18 +16,18 @@ export default function Leaderboard(){
       let currentUserLeaderstat = leaderboardTuple[ci]
       if(userXP > maxXP){
         maxXP = userXP
-        currentUserLeaderstat[0] = user
+        currentUserLeaderstat[0] = username
         currentUserLeaderstat[1] = userXP
         currentUserLeaderstat[2] = userStage
         ci++
       }else if(userXP < maxXP && userXP > minXP){
         minXP = userXP
-        currentUserLeaderstat[0] = user
+        currentUserLeaderstat[0] = username
         currentUserLeaderstat[1] = userXP
         currentUserLeaderstat[2] = userStage
         ci++
       }else{
-        currentUserLeaderstat[0] = user
+        currentUserLeaderstat[0] = username
         currentUserLeaderstat[1] = userXP
         currentUserLeaderstat[2] = userStage
         ci++
