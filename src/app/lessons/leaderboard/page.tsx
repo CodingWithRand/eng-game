@@ -1,5 +1,7 @@
 import { ref, set, onValue } from "firebase/database";
 import db from "@/firebase";
+import { useEffect } from "react"
+
 export default function Leaderboard(){
   const rootDB = ref(db)
 
