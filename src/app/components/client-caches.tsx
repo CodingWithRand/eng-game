@@ -121,8 +121,8 @@ export const Stage = ({ children }: { children: React.ReactNode }) => {
   const [ stageFooter, setFooterStyle ] = useState<string>('')
   const [ currentStageAns, setCSA ] = useState<string[]>([])
 
-  if(LessonComponent.get("stage") === undefined) LessonComponent.set("stage", 1)
-  else LessonComponent.set("stage", s)
+  if(LessonComponent.get("stage") === undefined) LessonComponent.set("stage", 1, { path: '/' })
+  else LessonComponent.set("stage", s, { path: '/' })
   if(LessonComponent.get("clp") === undefined) LessonComponent.set("clp", 1)
   else LessonComponent.set("clp", clp)
   if(LessonComponent.get("mp") === undefined) LessonComponent.set("mp", 1)
@@ -130,7 +130,7 @@ export const Stage = ({ children }: { children: React.ReactNode }) => {
 
 
   if(MemberData.get("user")?.membership === 'guest'){
-    LessonComponent.set("stage", s, { maxAge: 60 * 60 * 24})
+    LessonComponent.set("stage", s, { maxAge: 60 * 60 * 24, path: '/'})
     LessonComponent.set("clp", clp, { maxAge: 60 * 60 * 24})
     LessonComponent.set("mp", maxPage, { maxAge: 60 * 60 * 24})
   }
