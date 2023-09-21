@@ -129,8 +129,8 @@ function Render({ id }: { id: string[] }) {
         })
         break
       case 14:
-        setMaxPage(7)
-        if (clp > 0 && clp <= 6) setHeaderTXT('Exercises')
+        setMaxPage(6)
+        if (clp > 0 && clp <= 5) setHeaderTXT('Exercises')
         lessonStructure.TOPS3Exercise.forEach((page, index) => {
           if (Number(id[1]) === index + 1) setContent(page)
         })
