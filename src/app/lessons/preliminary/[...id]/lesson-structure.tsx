@@ -957,6 +957,14 @@ const lessonStructure = {
       mode="radio"
       xpGain={5}
     />,
+    <Choices
+      key="c-6"
+      question='Suffix ใดไม่ได้ให้ความหมายว่า "ทำให้..."'
+      choices={["\"-en\"", "\"-ify\"", "\"-efy\"", "\"-ote\"", "\"-ate\""]}
+      answers={["\"-ote\""]}
+      mode="radio"
+      xpGain={5}
+    />,
     <LessonEnd
       key="end"
       descriptiveText={'และแล้วเราก็เดินทางมาสู่จุดจบของบทเรียนนี้...'}
