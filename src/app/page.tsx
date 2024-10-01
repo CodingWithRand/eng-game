@@ -23,7 +23,14 @@ function Render() {
     <>
       <Nav />
       <header style={{ overflowX: 'hidden' }}>
-        <Coroussel />
+        <Coroussel 
+          totalPages={3}
+          corousselElements={[<></>]}
+          corousselWrappersStyle={[{
+            width: '100%',
+            height: '100vh',
+          }]}
+        />
       </header>
       <main>
         <section className='get-start'>

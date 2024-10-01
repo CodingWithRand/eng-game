@@ -13,7 +13,17 @@ function CorousselPage(props: { maxPages: number, btnFunc: (p: number) => void, 
     return tabs;
 };
 
-export default function Coroussel() {
+function CorousselElements({ total, bgImgsSrc, autoScroll, elems, wrappersStyle }: { total: number, bgImgsSrc: string, autoScroll: CSSProperties, elems: JSX.Element[], wrappersStyle: CSSProperties[] }) {
+    let imgs = [];
+    for (let i = 0; i < total; i++) imgs.push(
+        <div className="c-elem w-screen h-screen" style={{ ...autoScroll, ...wrappersStyle[i], backgroundImage: `url(${bgImgsSrc + `/wallpaper-${i + 1}.png`})`, backgroundPositionX: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+            {elems[i]}
+        </div>
+    );
+    return imgs;
+}
+
+export default function Coroussel({ totalPages, corousselElements, corousselWrappersStyle }: { totalPages: number, corousselElements: JSX.Element[], corousselWrappersStyle: CSSProperties[] }) {
     
     const maxPages: number = 3;
     const [inUsed, setInUsed] = useState({
@@ -65,6 +75,15 @@ export default function Coroussel() {
 
     return (
         <div className='coroussel'>
+            <div className='_elems'>
+                <CorousselElements 
+                    total={totalPages}
+                    bgImgsSrc='/imgs/coroussel'
+                    autoScroll={{ transform: `translateX(${(page - 1) * -100}%)` }} 
+                    elems={corousselElements}
+                    wrappersStyle={corousselWrappersStyle}
+                />
+            </div>
             <div className='ctrl-btn'>
                 <div className='arrows'>
                     <button id='lft' onClick={ls} disabled={inUsed.leftArrow}>
@@ -78,9 +97,9 @@ export default function Coroussel() {
                     <CorousselPage maxPages={maxPages} btnFunc={setPage} tabsOpacity={tabsOpaque} />
                 </div>
             </div>
-            <div className='imgs'>
+            {/* <div className='imgs'>
                 <CorousselImgs totalImgs={3} imgsSrc='/imgs/coroussel' imgsStyle={{ transform: `translateX(${(page - 1) * -100}%)` }} />
-            </div>
+            </div> */}
         </div>
     );
 }
