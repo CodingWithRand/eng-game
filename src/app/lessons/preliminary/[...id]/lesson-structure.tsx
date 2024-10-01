@@ -43,6 +43,7 @@ const lessonStructure = {
     <LessonEnd
       key="end"
       descriptiveText='นี่เป็นเพียงจุดเริ่มต้นการเดินทางที่น่าจดจำ (จริงเหรอ?) ในหัวข้อนี้ ชู่... พอละ ฉันจะไม่สปอยเพิ่มอีก:)'
+      stageName='Preliminary'
     />
   ],
   IntroductionToSuffix: [
@@ -65,6 +66,7 @@ const lessonStructure = {
     <LessonEnd
       key="end"
       descriptiveText={'คราวนี้คุณก็รู้จักประเภทของ Suffix แล้ว ต่อไปเราจะเริ่มเรียนเรื่อง Noun -> Noun Suffix กัน'}
+      stageName='Preliminary'
     />
   ],
   NounNounSuffix: [
@@ -232,6 +234,7 @@ const lessonStructure = {
     <LessonEnd
       key="end"
       descriptiveText='เนื้อหาด่านนี้เยอะหน่อยนะ เดี๋ยวไปพักเบรกทำแบบฝึกหัดกัน'
+      stageName='Preliminary'
       defaultXP={10}
     />
   ],
@@ -303,13 +306,14 @@ const lessonStructure = {
     <Choices
       key="c-9"
       question='ข้อใดต่อไปนี้ผิด'
-      choices={["Vietnamese คือประชาชนชาวเวียดนาม พูดภาษาเวียดนาม", "Chinese คือภาษาจีน หรือประชาชนชาวจีน", "Protugese คือชาวโปรตุกีส พูดภาษาโปตุกีส"]} 
-      answers={["Protugese คือชาวโปรตุกีส พูดภาษาโปตุกีส"]}
+      choices={["Vietnamese คือประชาชนชาวเวียดนาม พูดภาษาเวียดนาม", "Chinese คือภาษาจีน หรือประชาชนชาวจีน", "Protugese คือชาวโปรตุกีส พูดภาษาโปรตุกีส"]} 
+      answers={["Protugese คือชาวโปรตุกีส พูดภาษาโปรตุกีส"]}
       mode="radio"
       xpGain={5}
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'คิดว่าคำถามกวนได้ใจไหม 555 คงกาพลาดไปหลายข้อเลยล่ะสิ'}
     />
   ],
@@ -413,6 +417,7 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'เนื้อหาในด่านนี้เยอะหน่อยน้าา แต่อย่างน้อยก็น้อยกว่า Noun -> Noun Suffix ละกัน เอาเถอะ เดี๋ยวเราไปทำแบบฝึกหัดต่อ'}
       defaultXP={10}
     />
@@ -476,6 +481,7 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'รู้แนวการออกคำถามยัง อ่านดีๆ อย่ารีบ!'}
     />
   ],
@@ -502,19 +508,20 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'ด่านนี้สั้นดี ชอบไหม'}
       defaultXP={10}
     />
   ],
   NounAdjectiveSuffix: [
-    <Choices 
-      key="c-1"
-      question='วันนี้วันที่เท่าไร (Format: YYYY/M/DD)'
-      choices={["2023/8/20", `${ new Date().getFullYear() }/${ new Date().getMonth() + 1 }/${ new Date().getDate() }`, "2022/9/20"]}
-      answers={[`${ new Date().getFullYear() }/${ new Date().getMonth() + 1 }/${ new Date().getDate() }`]}
-      mode='radio'
-      xpGain={2}
-    />,
+    // <Choices 
+    //   key="c-1"
+    //   question='วันนี้วันที่เท่าไร (Format: YYYY/M/DD)'
+    //   choices={["2023/8/20", `${ new Date().getFullYear() }/${ new Date().getMonth() + 1 }/${ new Date().getDate() }`, "2022/9/20"]}
+    //   answers={[`${ new Date().getFullYear() }/${ new Date().getMonth() + 1 }/${ new Date().getDate() }`]}
+    //   mode='radio'
+    //   xpGain={2}
+    // />,
     <ExplanationWithExamples
       key='expn-exp1'
       explanations={["\"-ful\" หรือ \"-ate\" มักถูกเพิ่มลงในคำนามหรือคำกริยาเพื่อแสดงความเต็มเปี่ยมหรือความมีคุณสมบัตินั้นๆ หรือให้คำเป็นคำนามที่สื่อความหมายของ เต็ม หรือ เต็มไปด้วย"]}
@@ -627,6 +634,7 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'ถ้าสังเกตดีๆ จะเห็นว่า Suffix บางตัวซ้ำกัน แต่พอไปรวมกับคำที่มี Part of speech ต่างกัน หน้าที่ก็ต่างกันนะ'}
       defaultXP={10}
     />
@@ -714,6 +722,7 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'2 ข้อสุดท้ายนี้เป็นยังไงบ้าง แทบมึนเลยใช่มะ โจทย์ที่ออกให้นี้ให้เอาสิ่งที่สอนให้ไปวิเคราะห์ต่ออีกทีนะ เพราะงั้นจำให้ได้ และวิเคราะห์ให้ดี'}
     />
   ],
@@ -807,6 +816,7 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'เก่งมากจ้ะ ยังเหลืออีก Suffix อีก 2 ประเภทนะ สู้สู้!'}
       defaultXP={10}
     />
@@ -854,6 +864,7 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'เอาจริงๆนะ ฉันควรที่จะหยุดออกคำถามแปลกๆแบบข้อ 3 ได้ละนะ 555'}
     />
   ],
@@ -888,6 +899,7 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'หัวข้อหลังๆนี้จะไม่มีอะไรมากละ เพราะ Suffix ที่เปลี่ยนเป็น Adverb มีไม่ค่อยเยอะ'}
       defaultXP={10}
     />
@@ -912,6 +924,7 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'ใช่ มีแค่นี้แหละ ไม่ต้องตกใจไป เดี๋ยวมีให้ตอบคำถามวัดความรู้อยู่'}
       defaultXP={10}
     />
@@ -967,6 +980,7 @@ const lessonStructure = {
     />,
     <LessonEnd
       key="end"
+      stageName='Preliminary'
       descriptiveText={'และแล้วเราก็เดินทางมาสู่จุดจบของบทเรียนนี้...'}
     />
   ]

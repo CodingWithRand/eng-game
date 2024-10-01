@@ -37,3 +37,4 @@ next-env.d.ts
 # unrelease feature
 /src/firebase.ts
 database.rules.json
+/firebase-test/page.tsx

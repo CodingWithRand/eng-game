@@ -9,7 +9,7 @@ export function ChoiceTable({ c, mode, a, xpg }: { c: string[], mode: string, a:
   const [isSelected, appear] = useState<JSX.Element[] | any[]>(generateStateArray("boolean", undefined, c))
   const [ {}, {}, {}, { stageFooter, setFooterStyle }, { setCSA } ] = useStage()
   const [ activateState, deactivate ] = useState(false)
-  const [{ generateXP }] = useLevel()
+  const [{ generateLevelXP }] = useLevel()
   let totalChoices: JSX.Element[] = []
 
   setCSA(a)
@@ -38,7 +38,7 @@ export function ChoiceTable({ c, mode, a, xpg }: { c: string[], mode: string, a:
   useEffect(() => {
     if(mode === "radio") checked.forEach((b, i) => {
       if(b){
-        if(c[i] === a[a.findIndex((ans) => ans === c[i])]){ setFooterStyle("notf-correct"); generateXP(prevXP => prevXP + (xpg/2)) }
+        if(c[i] === a[a.findIndex((ans) => ans === c[i])]){ setFooterStyle("notf-correct"); generateLevelXP(prevXP => prevXP + (xpg/2)) }
         else setFooterStyle("notf-wrong");
       }
     })
@@ -46,7 +46,7 @@ export function ChoiceTable({ c, mode, a, xpg }: { c: string[], mode: string, a:
       let chosenAns: string[] = []
       checked.forEach((b, i) => { if(b){ console.log(b); chosenAns.push(a[a.findIndex((ans) => ans === c[i])]) }})
       if(chosenAns.length === a.length){
-        if(JSON.stringify(a) === JSON.stringify(chosenAns)){ deactivate(true); setFooterStyle("notf-correct"); generateXP(prevXP => prevXP + (xpg/2)) }
+        if(JSON.stringify(a) === JSON.stringify(chosenAns)){ deactivate(true); setFooterStyle("notf-correct"); generateLevelXP(prevXP => prevXP + (xpg/2)) }
         else{ deactivate(true); setFooterStyle("notf-wrong"); }
       }
     }

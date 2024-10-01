@@ -1,7 +1,7 @@
 'use client';
 import LessonBody from '@/components/templates/lesson-page';
 import { useState, useEffect } from 'react';
-import { useStage, Stage, Level } from '@/components/client-caches'
+import { useStage, Stage, Level, Registry } from '@/components/client-caches'
 import lessonStructure from './lesson-structure';
 import '@/css/lesson-structure/preliminary/index.css'
 import { CheckSession, generateArrsRandint } from '@/components/utils';
@@ -152,13 +152,15 @@ function Render({ id }: { id: string[] }) {
 
 export default function Premilinary({ params: { id } }: { params: { id: string[] } }) {
   return (
-    <Level>
-      <Stage>
-        <LessonBody>
-          <CheckSession />
-          <Render id={id} />
-        </LessonBody>
-      </Stage>
-    </Level>
+    <Registry>
+      <Level>
+        <Stage>
+          <LessonBody>
+            <CheckSession />
+            <Render id={id} />
+          </LessonBody>
+        </Stage>
+      </Level>
+    </Registry>
   )
 }

@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const config: Config = {
   content: [
@@ -22,6 +23,10 @@ const config: Config = {
         '4xs': {'min': '320px', 'max': '376px'}
       }
     },
+    screens: {
+      'nmob': {'min': '400px'},
+      ...defaultTheme.screens
+    }
   },
   plugins: [
     function ({ addUtilities }: any){

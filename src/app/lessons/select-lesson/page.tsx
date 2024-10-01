@@ -120,7 +120,7 @@ function Render() {
                   if(lesson !== '') SelectedLesson.push(lesson)
                 })
                 return SelectedLesson
-              })().join()
+              })().join(",")
             }`
           },
           footerStyle: {

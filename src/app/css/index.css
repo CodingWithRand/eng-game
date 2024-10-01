@@ -5,47 +5,69 @@
 
 @layer component{
     .nav-bar{
-    @apply bg-blue-400 px-2 py-3;
+    @apply bg-blue-400;
   }
   .nav-bar ul{
-    @apply fr-ic justify-between;
+    @apply flex flex-col items-center;
   }
   .app-name{
-    @apply grow f-ic justify-center text-4xl text-white;
+    @apply grow f-ic justify-center text-4xl text-white py-3;
   }
   .menu{
     @apply f-ic ml-3;
   }
   .reg{
-    @apply fr-ic mr-10 text-white gap-x-10 text-lg;
+    @apply flex flex-col w-full bg-blue-500 p-4 text-white text-base nmob:text-lg;
   }
 
   .coroussel{
     @apply f-ic;
   }
 
-  .coroussel .imgs > img{
-    /* width: 100vw !important;
-    height: 75vh !important; */
+  /*
+    .coroussel .imgs > img{
+      ////////////////////////
+      width: 100vw !important;
+      height: 75vh !important; 
+      ////////////////////////
+      aspect-ratio: 2.25 / 1;
+      @apply transition-transform duration-500;
+    }
+
+    .coroussel .imgs{
+      @apply flex flex-row;
+    }
+  */
+
+  .coroussel ._elems .c-elem {
+    max-height: 65vh;
     aspect-ratio: 2.25 / 1;
     @apply transition-transform duration-500;
   }
 
-  .coroussel .imgs{
+  .coroussel ._elems {
     @apply flex flex-row;
   }
 
   .ctrl-btn{
     aspect-ratio: 2.25 / 1;
-    @apply absolute f-ic flex-col-reverse h-max w-full z-[10];
+    @apply absolute f-ic flex-col-reverse h-[65vh] w-full z-[10];
   }
 
   .arrows{
     @apply fr-ic justify-between absolute w-full h-[100%];
   }
 
-  .arrows #lft{@apply h-full pl-6 !important;}
-  .arrows #rght{@apply h-full pr-6 !important;}
+  .arrows #lft{@apply h-full pl-6 pointer-events-auto ssm:pl-2 !important;}
+  .arrows #rght{@apply h-full pr-6 pointer-events-auto ssm:pr-2 !important;}
+
+  .arrows #rght:not(:disabled):hover{
+    background-image: linear-gradient(to right, transparent, rgba(0,0,0,0.5)) !important;
+  }
+
+  .arrows #lft:not(:disabled):hover{
+    background-image: linear-gradient(to left, transparent, rgba(0,0,0,0.5)) !important;
+  }
 
   .page-selector{
     @apply absolute fr-ic justify-evenly w-[50%] mb-4 gap-x-2 cursor-pointer;
@@ -56,11 +78,34 @@
   }
 
   .get-start{
-    @apply f-jc p-20;
+    @apply f-jc p-10 sm:p-20;
   }
 
   .get-start button {
     @apply bg-blue-400 shadow-btn-blue btn-style !important;
+  }
+  .slide-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1rem;
+    height: 100%;
+    padding: 12vw;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .slide-block *{
+    @apply text-white;
+  }
+
+  .slide-block .title{
+    @apply text-3xl nmob:text-4xl sm:text-6xl md:text-8xl !important;
+  }
+
+  .slide-block .subtitle{
+    @apply text-sm nmob:text-lg sm:text-xl md:text-2xl !important;  
   }
 }
 

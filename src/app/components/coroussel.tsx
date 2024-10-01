@@ -16,7 +16,7 @@ function CorousselPage(props: { maxPages: number, btnFunc: (p: number) => void, 
 function CorousselElements({ total, bgImgsSrc, autoScroll, elems, wrappersStyle }: { total: number, bgImgsSrc: string, autoScroll: CSSProperties, elems: JSX.Element[], wrappersStyle: CSSProperties[] }) {
     let imgs = [];
     for (let i = 0; i < total; i++) imgs.push(
-        <div className="c-elem w-screen h-screen" style={{ ...autoScroll, ...wrappersStyle[i], backgroundImage: `url(${bgImgsSrc + `/wallpaper-${i + 1}.png`})`, backgroundPositionX: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+        <div className="c-elem w-screen h-screen" style={{ ...autoScroll, ...wrappersStyle[i], backgroundImage: `url(${bgImgsSrc + `/wallpaper-${i + 1}.jpg`})`, backgroundPositionX: "center", backgroundPositionY: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
             {elems[i]}
         </div>
     );
@@ -86,10 +86,10 @@ export default function Coroussel({ totalPages, corousselElements, corousselWrap
             </div>
             <div className='ctrl-btn'>
                 <div className='arrows'>
-                    <button id='lft' onClick={ls} disabled={inUsed.leftArrow}>
+                    <button id='lft' onClick={ls} disabled={inUsed.leftArrow} style={{ opacity: inUsed.leftArrow ? 0.5 : 1 }}>
                         <Image src="/imgs/icons/left-arrow.png" alt='Left next arrow' height='50' width='50'></Image>
                     </button>
-                    <button id='rght' onClick={rs} disabled={inUsed.rightArrow}>
+                    <button id='rght' onClick={rs} disabled={inUsed.rightArrow} style={{ opacity: inUsed.rightArrow ? 0.5 : 1 }}>
                         <Image src="/imgs/icons/right-arrow.png" alt='Right next arrow' height='50' width='50'></Image>
                     </button>
                 </div>

@@ -5,6 +5,7 @@ import { Registry, useRegistry } from '@/components/client-caches';
 import Link from 'next/link'
 import '@/css/index.css';
 import dynamic from 'next/dynamic';
+import { MemberData, selectLesson, UserStats } from "@/server/cookies"
 
 const Nav = dynamic(() => import('@/components/navbar'), { ssr: false })
 
@@ -25,17 +26,48 @@ function Render() {
       <header style={{ overflowX: 'hidden' }}>
         <Coroussel 
           totalPages={3}
-          corousselElements={[<></>]}
+          corousselElements={[
+            <div key={1} className="slide-block">
+              <h1 className="title">ภาพรวมของตัวแอป</h1>
+              <h2 className="subtitle"><i>เรามาดูกันเถอะว่าตัวแอปนี้มีอะไรบ้าง</i></h2>
+            </div>
+          ]}
           corousselWrappersStyle={[{
-            width: '100%',
-            height: '100vh',
+            
           }]}
         />
       </header>
       <main>
+        <section className='p-4 flex justify-center'>
+          {(() => { 
+            if (MemberData.get("user").loggedIn !== null && MemberData.get("user").loggedIn === true && MemberData.get("user").lessons?.some((elem: string) => elem !== ''))
+            return (
+              <div className='border-solid border-gray-300 border-4 rounded-md p-4'>
+                <div>{`บทเรียนที่เลือก: ${MemberData.get("user").lessons.join(",")}`}</div>
+                <div>{`กำลังเรียนในบทเรียน: ${selectLesson.get("selectLesson")}`}</div>
+                <div>{`XP ที่ได้รับ`}</div>
+                {(() => {
+                  let lessonXp = []
+                  for(const lesson in UserStats.get("stageXp")){
+                    lessonXp.push(<div key={lesson}>{`• ${lesson}: ${UserStats.get("stageXp")[lesson]}`}</div>)
+                  }
+                  return lessonXp
+                })()}
+                <div>รวมทั้งสิ้น: {(() => {
+                  let totalXp = 0
+                  for(const lesson in UserStats.get("stageXp")){
+                    totalXp += UserStats.get("stageXp")[lesson]
+                  }
+                  return totalXp
+                })()}</div>
+                <div>{`ชื่อผู้ใช้: ${MemberData.get("user").name}`}</div>
+              </div>
+            )
+          })()}
+        </section>
         <section className='get-start'>
           <Link href='/lessons'>
-            <button onClick={start}>Get started now for FREE!</button>
+            <button onClick={start}>เริ่มเรียนได้ฟรีตอนนี้</button>
           </Link>
         </section>
         {/* 
