@@ -35,6 +35,9 @@ yarn-error.log*
 next-env.d.ts
 
 # unrelease feature
-/src/firebase.ts
+/src/app/firebase.ts
 database.rules.json
-/firebase-test/page.tsx
+/src/app/firebase-test/
+/src/app/leaderboard/
+
+.vercel

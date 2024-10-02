@@ -16,7 +16,7 @@ function CorousselPage(props: { maxPages: number, btnFunc: (p: number) => void, 
 function CorousselElements({ total, bgImgsSrc, autoScroll, elems, wrappersStyle }: { total: number, bgImgsSrc: string, autoScroll: CSSProperties, elems: JSX.Element[], wrappersStyle: CSSProperties[] }) {
     let imgs = [];
     for (let i = 0; i < total; i++) imgs.push(
-        <div className="c-elem w-screen h-screen" style={{ ...autoScroll, ...wrappersStyle[i], backgroundImage: `url(${bgImgsSrc + `/wallpaper-${i + 1}.jpg`})`, backgroundPositionX: "center", backgroundPositionY: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+        <div className="c-elem w-screen h-screen" style={{ ...autoScroll, ...wrappersStyle[i], backgroundImage: `url(${bgImgsSrc + `/wallpaper-${i + 1}.png`})`, backgroundPositionX: "center", backgroundPositionY: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
             {elems[i]}
         </div>
     );
@@ -25,7 +25,7 @@ function CorousselElements({ total, bgImgsSrc, autoScroll, elems, wrappersStyle 
 
 export default function Coroussel({ totalPages, corousselElements, corousselWrappersStyle }: { totalPages: number, corousselElements: JSX.Element[], corousselWrappersStyle: CSSProperties[] }) {
     
-    const maxPages: number = 3;
+    // const maxPages: number = 3;
     const [inUsed, setInUsed] = useState({
         rightArrow: false,
         leftArrow: false
@@ -33,7 +33,7 @@ export default function Coroussel({ totalPages, corousselElements, corousselWrap
     const [page, setPage] = useState(1);
     const [tabsOpaque, setTabsOpaque] = useState((() => {
         let initial_opacity: number[] = [];
-        for (let i = 0; i < maxPages; i++) initial_opacity.push(0.5);
+        for (let i = 0; i < totalPages; i++) initial_opacity.push(0.5);
         return initial_opacity;
     })());
     const rs = () => setPage((prevState) => prevState + 1);
@@ -41,7 +41,7 @@ export default function Coroussel({ totalPages, corousselElements, corousselWrap
 
     useEffect(() => {
         const autoScroll = setInterval(() => {
-            if (!(page === maxPages)) rs();
+            if (!(page === totalPages)) rs();
             else for (let currentPage = page; currentPage > 1; currentPage--) ls();
         }, 5000);
         return () => clearInterval(autoScroll);
@@ -53,7 +53,7 @@ export default function Coroussel({ totalPages, corousselElements, corousselWrap
                 rightArrow: false,
                 leftArrow: true
             });
-        } else if (page === maxPages) {
+        } else if (page === totalPages) {
             setInUsed({
                 rightArrow: true,
                 leftArrow: false
@@ -94,7 +94,7 @@ export default function Coroussel({ totalPages, corousselElements, corousselWrap
                     </button>
                 </div>
                 <div className='page-selector'>
-                    <CorousselPage maxPages={maxPages} btnFunc={setPage} tabsOpacity={tabsOpaque} />
+                    <CorousselPage maxPages={totalPages} btnFunc={setPage} tabsOpacity={tabsOpaque} />
                 </div>
             </div>
             {/* <div className='imgs'>

@@ -1,7 +1,7 @@
 import { useStage, useLevel, useRegistry } from "@/components/client-caches";
 import '@/css/lesson-structure/ending.css'
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 // import { ref, set, onValue } from "firebase/database";
 import { MemberData } from '@/server/cookies'
 // import db from "@/firebase";

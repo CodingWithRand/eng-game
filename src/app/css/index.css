@@ -40,7 +40,6 @@
   */
 
   .coroussel ._elems .c-elem {
-    max-height: 65vh;
     aspect-ratio: 2.25 / 1;
     @apply transition-transform duration-500;
   }
@@ -51,10 +50,11 @@
 
   .ctrl-btn{
     aspect-ratio: 2.25 / 1;
-    @apply absolute f-ic flex-col-reverse h-[65vh] w-full z-[10];
+    @apply absolute f-ic flex-col-reverse h-[65vh] sm:h-full w-full z-[10];
   }
 
   .arrows{
+    filter: brightness(0.5);
     @apply fr-ic justify-between absolute w-full h-[100%];
   }
 
@@ -74,7 +74,7 @@
   }
 
   .tab{
-    @apply grow h-2 rounded-md bg-neutral-200 opacity-50;
+    @apply grow h-2 rounded-md bg-neutral-400 opacity-50;
   }
 
   .get-start{
@@ -96,16 +96,22 @@
     backdrop-filter: blur(10px);
   }
 
-  .slide-block *{
-    @apply text-white;
-  }
-
   .slide-block .title{
     @apply text-3xl nmob:text-4xl sm:text-6xl md:text-8xl !important;
   }
 
-  .slide-block .subtitle{
+  .slide-block .subtitle, .c-elem .subtitle{
     @apply text-sm nmob:text-lg sm:text-xl md:text-2xl !important;  
+  }
+
+  .slide-desc{
+    @apply flex flex-col justify-end h-full;
+  }
+
+  .slide-desc .subtitle.desc{
+    @apply w-full text-center p-8;
+    backdrop-filter: blur(10px); 
+    mask: linear-gradient(to bottom, transparent, black 80%);
   }
 }
 
@@ -118,3 +124,8 @@
   }
 }
 
+@media (max-width: 640px){
+  .coroussel ._elems .c-elem {
+    max-height: 65vh;
+  }
+}
